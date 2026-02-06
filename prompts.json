@@ -1,0 +1,156 @@
+[
+  {
+    "Equipo": "Operaciones Empresariales Adopcion IA",
+    "Use Case": "Preparar workshop de adopcion IA",
+    "Situacion / Problema": "Tengo que preparar una sesion para explicar que es ChatGPT Enterprise a negocio, con ejemplos claros y sin tecnicismos.",
+    "Prompt 1": "Explica que es ChatGPT Enterprise y para que sirve en una empresa.",
+    "Prompt 2": "Explica ChatGPT Enterprise para un publico de negocio, usando ejemplos practicos y un lenguaje no tecnico.",
+    "Prompt 3": "Act as an AI adoption lead.\nExplain ChatGPT Enterprise to a non-technical business audience.\nInclude:\n What it is (in simple terms)\no 3 concrete daily work examples\n Benefits and limitations\n One short elevator pitch\nKeep the tone clear, practical and reassuring.",
+    "Valor / Beneficio": "Facilita la adopcion, reduce resistencia y acelera el entendimiento del valor de la IA.",
+    "Nivel de datos (DPC / DSK)": "DPC 0",
+    "Notas": ""
+  },
+  {
+    "Equipo": "Arquitectura",
+    "Use Case": "Explicar una decision de Arquitectura",
+    "Situacion / Problema": "He tomado una decision de Arquitectura (por ejemplo, uso de una plataforma o integracion) y necesito explicarla a management de forma clara y no tecnica.",
+    "Prompt 1": "Explica esta decision de Arquitectura.",
+    "Prompt 2": "Explica esta decision de Arquitectura para un publico no tecnico, destacando beneficios y riesgos.",
+    "Prompt 3": "Act as an enterprise architect. Explain the following architecture decision to a management audience. Include: context, the chosen option, alternatives considered, key benefits, main risks and long-term impact. Keep it concise and business-oriented.",
+    "Valor / Beneficio": "Facilita la alineacion con management y reduce malentendidos sobre decisiones tecnicas.",
+    "Nivel de datos (DPC / DSK)": "DPC 0",
+    "Notas": "Arquitectura"
+  },
+  {
+    "Equipo": "Arquitectura",
+    "Use Case": "Comparar opciones de Arquitectura",
+    "Situacion / Problema": "Debemos elegir entre varias opciones tecnicas y necesito una comparacion estructurada para apoyar la decision.",
+    "Prompt 1": "Compara estas opciones de Arquitectura.",
+    "Prompt 2": "Compara estas opciones de Arquitectura indicando pros y contras.",
+    "Prompt 3": "Act as an enterprise architect. Compare the following architecture options. Provide a structured comparison including scalability, security, cost, complexity and long-term sustainability. End with a clear recommendation and rationale.",
+    "Valor / Beneficio": "Mejora la calidad de las decisiones y aporta una base clara para justificar la opcion elegida.",
+    "Nivel de datos (DPC / DSK)": "DPC 0",
+    "Notas": "Arquitectura"
+  },
+  {
+    "Equipo": "Arquitectura",
+    "Use Case": "Documentar Arquitectura y estandares",
+    "Situacion / Problema": "Necesito documentar una Arquitectura o estandar tecnico de forma clara y reutilizable para otros Equipos.",
+    "Prompt 1": "Documenta esta Arquitectura.",
+    "Prompt 2": "Documenta esta Arquitectura de forma clara para otros Equipos tecnicos.",
+    "Prompt 3": "Act as an enterprise architect. Create clear and structured documentation for the following architecture or standard. Include purpose, scope, key components, dependencies, does and doents, and a short summary for non-architects.",
+    "Valor / Beneficio": "Reduce dependencia de conocimiento individual y mejora la reutilizacion y coherencia arqueitectonica.",
+    "Nivel de datos (DPC / DSK)": "DPC 0",
+    "Notas": "Arquitectura"
+  },
+  {
+    "Equipo": "Product Management",
+    "Use Case": "Definir y estructurar requeisitos de producto",
+    "Situacion / Problema": "Tengo ideas, feedback o requeisitos poco claros y necesito estructurarlos para avanzar en el desarrollo.",
+    "Prompt 1": "Define estos requeisitos de producto.",
+    "Prompt 2": "Estructura estos requeisitos de producto de forma clara y ordenada.",
+    "Prompt 3": "Act as a senior product manager. Help me structure the following product requeirements. Turn them into clear user needs, assumptions and constraints. Highlight open queestions and suggest next steps.",
+    "Valor / Beneficio": "Aporta claridad, reduce ambiguedad y acelera la toma de decisiones en fases tempranas.",
+    "Nivel de datos (DPC / DSK)": "DPC 1",
+    "Notas": "Product Management"
+  },
+  {
+    "Equipo": "Product Management",
+    "Use Case": "Creacion de epicas y user stories",
+    "Situacion / Problema": "Necesito transformar una idea o iniciativa en epicas y user stories claras para el Equipo de desarrollo.",
+    "Prompt 1": "Crea user stories a partir de esta idea.",
+    "Prompt 2": "Crea epicas y user stories con criterios de aceptacion.",
+    "Prompt 3": "Act as a senior product manager. Create well-structured epics and user stories based on the following input. Use the INVEST principle and include clear acceptance criteria.",
+    "Valor / Beneficio": "Mejora la calidad del backlog y facilita la alineacion entre negocio y desarrollo.",
+    "Nivel de datos (DPC / DSK)": "DPC 1",
+    "Notas": "Product Management"
+  },
+  {
+    "Equipo": "Product Management",
+    "Use Case": "Preparar comunicacion de producto para stakeholders",
+    "Situacion / Problema": "Tengo quee explicar el estado, decisiones o proximos pasos del producto a stakeholders no tecnicos.",
+    "Prompt 1": "Resume el estado del producto.",
+    "Prompt 2": "Explica el estado del producto para stakeholders no tecnicos.",
+    "Prompt 3": "Act as a product manager. Prepare a concise stakeholder update about the product. Include current status, key decisions, risks, next milestones and clear takeaways. Use business-oriented language.",
+    "Valor / Beneficio": "Facilita la comunicacion con stakeholders y mejora la confianza y alineacion.",
+    "Nivel de datos (DPC / DSK)": "DPC 1",
+    "Notas": "Product Management"
+  },
+  {
+    "Equipo": "Project Management",
+    "Use Case": "Planificacion de proyecto",
+    "Situacion / Problema": "Necesito estructurar un proyecto desde cero o revisar un plan existente para asegurar tiempos, dependencias y entregables claros.",
+    "Prompt 1": "Crea un plan de proyecto.",
+    "Prompt 2": "Crea un plan de proyecto con fases y hitos.",
+    "Prompt 3": "Act as a senior project manager. Create a structured project plan based on the following input. Include phases, key milestones, dependencies, risks and a high-level timeline. Keep it clear and actionable.",
+    "Valor / Beneficio": "Mejora la claridad del proyecto y reduce riesgos desde fases tempranas.",
+    "Nivel de datos (DPC / DSK)": "DPC 1",
+    "Notas": "Project Management"
+  },
+  {
+    "Equipo": "Project Management",
+    "Use Case": "Seguimiento y reporte de estado",
+    "Situacion / Problema": "Debo informar regularmente sobre el estado del proyecto a stakeholders y necesito un resumen claro y coherente.",
+    "Prompt 1": "Resume el estado del proyecto.",
+    "Prompt 2": "Prepara un informe de estado del proyecto.",
+    "Prompt 3": "Act as a project manager. Prepare a concise project status report for stakeholders. Include current status, progress vs plan, key risks, blockers and next steps. Use a clear and neutral tone.",
+    "Valor / Beneficio": "Ahorra tiempo en reporting y mejora la transparencia con stakeholders.",
+    "Nivel de datos (DPC / DSK)": "DPC 1",
+    "Notas": "Project Management"
+  },
+  {
+    "Equipo": "Project Management",
+    "Use Case": "Gestion de riesgos del proyecto",
+    "Situacion / Problema": "Necesito identificar y estructurar riesgos del proyecto y posibles medidas de mitigacion.",
+    "Prompt 1": "Identifica riesgos del proyecto.",
+    "Prompt 2": "Identifica riesgos y propone medidas de mitigacion.",
+    "Prompt 3": "Act as a senior project manager. Identify potential risks based on the following project context. Assess their impact and likelihood, and propose concrete mitigation actions.",
+    "Valor / Beneficio": "Endereza problemas antes de quee escalen y mejora la gestion proactiva del proyecto.",
+    "Nivel de datos (DPC / DSK)": "DPC 1",
+    "Notas": "Project Management"
+  },
+  {
+    "Equipo": "Data Science",
+    "Use Case": "Explicar resultados de un analisis",
+    "Situacion / Problema": "Tengo resultados de un analisis o modelo y necesito explicarlos a stakeholders no tecnicos.",
+    "Prompt 1": "Explica estos resultados.",
+    "Prompt 2": "Explica estos resultados de forma sencilla.",
+    "Prompt 3": "Act as a senior data scientist. Explain the following analysis results to a non-technical audience. Focus on key insights, business implications, limitations and recommended actions. Avoid technical jargon.",
+    "Valor / Beneficio": "Mejora la comprension de los resultados y facilita la toma de decisiones basada en datos.",
+    "Nivel de datos (DPC / DSK)": "DPC 1",
+    "Notas": "Data Science"
+  },
+  {
+    "Equipo": "Data Science",
+    "Use Case": "Soporte para analisis y SQL",
+    "Situacion / Problema": "Necesito ayuda para crear o mejorar queeries SQL y acelerar el analisis de datos.",
+    "Prompt 1": "Ayudame con esta query SQL.",
+    "Prompt 2": "Optimiza esta queery SQL y explica los cambios.",
+    "Prompt 3": "Act as a senior data analyst. Review the following SQL queery. Optimize it for performance and readability, explain the changes made, and highlight any assumptions or risks.",
+    "Valor / Beneficio": "Ahorra tiempo en analisis y mejora la calidad y eficiencia de las consultas.",
+    "Nivel de datos (DPC / DSK)": "DPC 1",
+    "Notas": "Data Science"
+  },
+  {
+    "Equipo": "Data Science",
+    "Use Case": "Seleccion de modelos y enfoquees",
+    "Situacion / Problema": "Debo elegir entre distintos modelos o enfoquees analaticos y necesito apoyo para tomar una decision informada.",
+    "Prompt 1": "Recomienda un modelo para este problema.",
+    "Prompt 2": "Compara modelos adecuados para este caso.",
+    "Prompt 3": "Act as a senior data scientist. Evaluate the following problem and compare suitable modeling approaches. Discuss pros and cons, assumptions, data requeirements and risks. Conclude with a clear recommendation.",
+    "Valor / Beneficio": "Mejora la calidad de las decisiones tecnicas y reduce sesgos en la eleccion del modelo.",
+    "Nivel de datos (DPC / DSK)": "DPC 1",
+    "Notas": "Data Science"
+  },
+  {
+    "Equipo": "Data Science",
+    "Use Case": "Documentacion de modelos y analisis",
+    "Situacion / Problema": "Necesito documentar un modelo o analisis para quee sea comprensible y reutilizable por otros Equipos.",
+    "Prompt 1": "Documenta este modelo.",
+    "Prompt 2": "Documenta este modelo de forma clara y estructurada.",
+    "Prompt 3": "Act as a senior data scientist. Create clear documentation for the following model or analysis. Include purpose, data used, methodology, assumptions, limitations, and guidance for reuse.",
+    "Valor / Beneficio": "Reduce dependencia de conocimiento individual y mejora la reutilizacion y gobernanza de modelos.",
+    "Nivel de datos (DPC / DSK)": "DPC 1",
+    "Notas": "Data Science"
+  }
+]

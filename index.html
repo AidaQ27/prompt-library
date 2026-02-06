@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <title>ChatGPT Enterprise – Prompt Library</title>
+</head>
+<body>
+  <header>
+    <h1>ChatGPT Enterprise – Prompt Library</h1>
+  </header>
+
+  <div class="container">
+    <div class="topRow">
+  <div class="legend">
+    <div class="legendTitle">DPC (guía rápida)</div>
+    <div class="legendRow"><span class="dot"></span><b>DPC 0</b> Público / anónimo</div>
+    <div class="legendRow"><span class="dot"></span><b>DPC 1</b> Profesional</div>
+    <div class="legendRow"><span class="dot"></span><b>DPC 2</b> Sensible (solo con normas)</div>
+    <div class="legendRow"><span class="dot"></span><b>DPC 3</b> Crítico (prohibido)</div>
+  </div>
+
+  <div class="toolbar">
+    <div>
+      <div class="labelTop">Escoge tu perfil</div>
+      <select id="teamSelect">
+        <option value="">Escoge tu perfil...</option>
+      </select>
+    </div>
+
+    <div>
+      <div class="labelTop">Buscar</div>
+      <input id="searchInput" type="text" placeholder="Busca por título o descripción…" />
+    </div>
+  </div>
+</div>
+
+<div id="cards"></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
