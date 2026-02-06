@@ -1,6 +1,9 @@
 fetch("prompts.json")
   .then((res) => res.json())
   .then((data) => {
+    console.log("JS OK. Rows:", data.length);
+    console.log("Keys:", Object.keys(data[0] || {}));
+    
     const teamSelect = document.getElementById("teamSelect");
     const cards = document.getElementById("cards");
     const searchInput = document.getElementById("searchInput");
@@ -153,5 +156,6 @@ fetch("prompts.json")
     render();
   })
   .catch((e) => console.error("Error:", e));
+
 
 
