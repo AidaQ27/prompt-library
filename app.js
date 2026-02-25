@@ -1,4 +1,4 @@
-fetch("/prompts.json")
+fetch("prompts.json")
   .then((res) => res.json())
   .then((data) => {
     const teamSelect = document.getElementById("teamSelect");
