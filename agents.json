@@ -1,0 +1,63 @@
+[
+  {
+    "id": "prompt-gold-builder",
+    "name": "Constructor de Prompts Gold",
+    "description": "Un asistente paso a paso que genera prompts premium y optimizados según tus necesidades específicas.",
+    "icon": "✨",
+    "questions": [
+      {
+        "id": "objective",
+        "title": "¿Cuál es tu objetivo principal?",
+        "type": "text",
+        "placeholder": "Ej: Generar documentación técnica, Crear contenido de marketing, Explicar un concepto complejo...",
+        "help": "Sé específico sobre lo que quieres lograr"
+      },
+      {
+        "id": "audience",
+        "title": "¿Quién es tu audiencia objetivo?",
+        "type": "select",
+        "options": [
+          { "value": "technical", "label": "Técnico/Ingeniería" },
+          { "value": "business", "label": "Negocio/Management" },
+          { "value": "executive", "label": "Ejecutivo/C-Level" },
+          { "value": "general", "label": "Público General" },
+          { "value": "other", "label": "Otro" }
+        ],
+        "help": "Esto afecta el tono y nivel de complejidad"
+      },
+      {
+        "id": "tone",
+        "title": "¿Qué tono debe tener la respuesta?",
+        "type": "select",
+        "options": [
+          { "value": "formal", "label": "Formal y Profesional" },
+          { "value": "casual", "label": "Casual y Amigable" },
+          { "value": "technical", "label": "Técnico y Preciso" },
+          { "value": "creative", "label": "Creativo y Cautivador" },
+          { "value": "neutral", "label": "Neutral y Equilibrado" }
+        ],
+        "help": "Selecciona el estilo apropiado para tu caso"
+      },
+      {
+        "id": "format",
+        "title": "¿Qué formato prefieres?",
+        "type": "select",
+        "options": [
+          { "value": "structured", "label": "Estructurado (listas, secciones)" },
+          { "value": "narrative", "label": "Narrativo (texto fluido)" },
+          { "value": "bullet", "label": "Puntos Clave" },
+          { "value": "code", "label": "Código/Formato Técnico" },
+          { "value": "mixed", "label": "Formato Mixto" }
+        ],
+        "help": "Esto determina la estructura del resultado"
+      },
+      {
+        "id": "constraints",
+        "title": "¿Alguna restricción o requisito específico?",
+        "type": "text",
+        "placeholder": "Ej: Máx 500 palabras, Sin jerga, Incluir ejemplos, Enfoque en ROI...",
+        "help": "Opcional: especifica extensión, estilo u otras limitaciones"
+      }
+    ]
+  }
+]

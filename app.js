@@ -1,9 +1,6 @@
-fetch("prompts.json")
+fetch("/prompts.json")
   .then((res) => res.json())
   .then((data) => {
-    console.log("JS OK. Rows:", data.length);
-    console.log("Keys:", Object.keys(data[0] || {}));
-    
     const teamSelect = document.getElementById("teamSelect");
     const cards = document.getElementById("cards");
     const searchInput = document.getElementById("searchInput");
@@ -25,6 +22,7 @@ fetch("prompts.json")
     const teamKey = findKey(sample, ["equipo", "team"]);
     const valueKey = findKey(sample, ["valor", "beneficio", "value"]);
     const dpcKey = findKey(sample, ["dpc", "nivel de datos"]);
+    const saveUpKey = findKey(sample, ["save up", "saveup", "eficiencia"]);
 
     const prompt1Key = findKey(sample, ["prompt 1", "prompt1"]);
     const prompt2Key = findKey(sample, ["prompt 2", "prompt2"]);
@@ -66,6 +64,7 @@ fetch("prompts.json")
           const situation = (situationKey ? r[situationKey] : "") || "";
           const value = (valueKey ? r[valueKey] : "") || "";
           const dpc = (dpcKey ? r[dpcKey] : "") || "";
+          const saveUp = (saveUpKey ? r[saveUpKey] : "") || "";
 
           const p1 = (prompt1Key ? r[prompt1Key] : "") || "";
           const p2 = (prompt2Key ? r[prompt2Key] : "") || "";
@@ -92,6 +91,11 @@ fetch("prompts.json")
             <div class="valueBox">
               <div class="label">Beneficio</div>
               <div class="text">${String(value)}</div>
+            </div>
+
+            <div class="valueBox saveUpBox">
+              <div class="label">⏱️ Save up</div>
+              <div class="text">${String(saveUp)}</div>
             </div>
 
             <div class="pills">
@@ -156,6 +160,4 @@ fetch("prompts.json")
     render();
   })
   .catch((e) => console.error("Error:", e));
-
-
 
