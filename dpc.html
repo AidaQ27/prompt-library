@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DPC Check</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="dpc.css">
+</head>
+<body>
+    <header class="header">
+        <div class="headerContent">
+            <h1 class="logo">🔍 DPC Check</h1>
+            <nav class="headerNav">
+                <a href="index.html" class="navLink">📚 Prompts</a>
+                <a href="agents.html" class="navLink">🤖 Agentes</a>
+                <a href="framework.html" class="navLink">⚡ Plantillas Ejecutivas</a>
+                <a href="dpc.html" class="navLink navLink--active">🔍 DPC Check</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="dpcContainer">
+        <section class="dpcHero">
+            <h1 class="dpcHeroTitle">DPC Check</h1>
+            <p class="dpcHeroSubtitle">Herramienta para clasificar datos antes de usar ChatGPT Enterprise</p>
+            <p class="dpcHeroDescription">Responde el cuestionario para determinar la categoría de sensibilidad de tus datos según la política interna DPC.</p>
+        </section>
+
+        <div class="dpcContent">
+            <form id="dpcForm" class="dpcForm">
+                <!-- Section 1: Datos Personales -->
+                <section class="dpcSection">
+                    <h2 class="dpcSectionTitle">Sección 1: Datos Personales</h2>
+                    <p class="dpcSectionDescription">Responde las siguientes preguntas sobre datos personales</p>
+
+                    <div class="dpcQuestion">
+                        <label class="dpcQuestionLabel">
+                            <span class="dpcQuestionText">1. ¿Contiene datos personales?</span>
+                            <div class="dpcOptions">
+                                <label class="dpcRadio">
+                                    <input type="radio" name="q1" value="yes" required>
+                                    <span>Sí</span>
+                                </label>
+                                <label class="dpcRadio">
+                                    <input type="radio" name="q1" value="no" required>
+                                    <span>No</span>
+                                </label>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="dpcQuestion">
+                        <label class="dpcQuestionLabel">
+                            <span class="dpcQuestionText">2. ¿Son datos profesionales?</span>
+                            <div class="dpcOptions">
+                                <label class="dpcRadio">
+                                    <input type="radio" name="q2" value="yes" required>
+                                    <span>Sí</span>
+                                </label>
+                                <label class="dpcRadio">
+                                    <input type="radio" name="q2" value="no" required>
+                                    <span>No</span>
+                                </label>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="dpcQuestion">
+                        <label class="dpcQuestionLabel">
+                            <span class="dpcQuestionText">3. ¿Incluye datos sensibles de clientes o privados?</span>
+                            <div class="dpcOptions">
+                                <label class="dpcRadio">
+                                    <input type="radio" name="q3" value="yes" required>
+                                    <span>Sí</span>
+                                </label>
+                                <label class="dpcRadio">
+                                    <input type="radio" name="q3" value="no" required>
+                                    <span>No</span>
+                                </label>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="dpcQuestion">
+                        <label class="dpcQuestionLabel">
+                            <span class="dpcQuestionText">4. ¿Incluye datos de salud, religión o biométricos?</span>
+                            <div class="dpcOptions">
+                                <label class="dpcRadio">
+                                    <input type="radio" name="q4" value="yes" required>
+                                    <span>Sí</span>
+                                </label>
+                                <label class="dpcRadio">
+                                    <input type="radio" name="q4" value="no" required>
+                                    <span>No</span>
+                                </label>
+                            </div>
+                        </label>
+                    </div>
+                </section>
+
+                <!-- Section 2: Clasificación de Información Corporativa -->
+                <section class="dpcSection">
+                    <h2 class="dpcSectionTitle">Sección 2: Clasificación de Información Corporativa</h2>
+                    <p class="dpcSectionDescription">Define el nivel de confidencialidad de la información</p>
+
+                    <!-- Classification Radio Options with Descriptions -->
+                    <div class="dpcClassificationGroup">
+                        <p class="dpcClassificationLabel">5. ¿Cuál es el tipo de información corporativa?</p>
+                        
+                        <div class="dpcClassificationOption">
+                            <label class="dpcClassificationRadio">
+                                <input type="radio" name="confidentialityType" value="interna" required>
+                                <div class="dpcClassificationContent">
+                                    <span class="dpcClassificationTitle">Interna</span>
+                                    <span class="dpcClassificationDescription">Información compartida entre equipos internos. Accesible solo a empleados.</span>
+                                    <span class="dpcClassificationExample">Ej: Planificación interna, reportes de equipo, procesos internos</span>
+                                </div>
+                            </label>
+                        </div>
+
+                        <div class="dpcClassificationOption">
+                            <label class="dpcClassificationRadio">
+                                <input type="radio" name="confidentialityType" value="privada" required>
+                                <div class="dpcClassificationContent">
+                                    <span class="dpcClassificationTitle">Privada / Restringida</span>
+                                    <span class="dpcClassificationDescription">Información con acceso limitado a ciertos roles o departamentos. Divulgación no autorizada causa daño.</span>
+                                    <span class="dpcClassificationExample">Ej: Datos financieros, información de clientes, estrategia comercial</span>
+                                </div>
+                            </label>
+                        </div>
+
+                        <div class="dpcClassificationOption">
+                            <label class="dpcClassificationRadio">
+                                <input type="radio" name="confidentialityType" value="confidencial" required>
+                                <div class="dpcClassificationContent">
+                                    <span class="dpcClassificationTitle">Confidencial</span>
+                                    <span class="dpcClassificationDescription">Información altamente sensible. Acceso solo a personal autorizado. Divulgación causa daño severo.</span>
+                                    <span class="dpcClassificationExample">Ej: Credenciales, tokens, acuerdos legales, información de fusiones, secretos comerciales</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Helper Questions -->
+                    <div class="dpcQuestion">
+                        <label class="dpcQuestionLabel">
+                            <span class="dpcQuestionText">6. ¿Es información ya disponible públicamente?</span>
+                            <div class="dpcOptions">
+                                <label class="dpcRadio">
+                                    <input type="radio" name="q6" value="yes" required>
+                                    <span>Sí</span>
+                                </label>
+                                <label class="dpcRadio">
+                                    <input type="radio" name="q6" value="no" required>
+                                    <span>No</span>
+                                </label>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="dpcQuestion">
+                        <label class="dpcQuestionLabel">
+                            <span class="dpcQuestionText">7. Si se filtrara, ¿cuál sería el nivel de impacto?</span>
+                            <div class="dpcOptions">
+                                <label class="dpcRadio">
+                                    <input type="radio" name="q7" value="low" required>
+                                    <span>Bajo</span>
+                                </label>
+                                <label class="dpcRadio">
+                                    <input type="radio" name="q7" value="medium" required>
+                                    <span>Medio</span>
+                                </label>
+                                <label class="dpcRadio">
+                                    <input type="radio" name="q7" value="high" required>
+                                    <span>Alto</span>
+                                </label>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="dpcQuestion">
+                        <label class="dpcQuestionLabel">
+                            <span class="dpcQuestionText">8. ¿Contiene secretos (contraseñas, tokens, credenciales) o documentos completos críticos?</span>
+                            <div class="dpcOptions">
+                                <label class="dpcRadio">
+                                    <input type="radio" name="q8" value="yes" required>
+                                    <span>Sí</span>
+                                </label>
+                                <label class="dpcRadio">
+                                    <input type="radio" name="q8" value="no" required>
+                                    <span>No</span>
+                                </label>
+                            </div>
+                        </label>
+                    </div>
+                </section>
+
+                <!-- Submit Button -->
+                <button type="submit" class="dpcSubmitBtn">Calcular Clasificación DPC</button>
+            </form>
+
+            <!-- Result Container -->
+            <div id="dpcResult" class="dpcResult--hidden">
+                <div class="dpcResultCard" id="dpcResultCard">
+                    <!-- Populated by JS -->
+                </div>
+                <button type="button" id="dpcResetBtn" class="dpcResetBtn">Hacer Nueva Consulta</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="sanitize.js"></script>
+    <script src="dpc.js"></script>
+    <script src="dpc.test.js"></script>
+</body>
+</html>

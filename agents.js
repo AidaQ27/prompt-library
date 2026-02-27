@@ -14,21 +14,32 @@ fetch("/agents.json")
       wizardContainer.style.display = "block";
     }
 
-    // Render agents list
+    // Render agents list (safe - no innerHTML with user data)
     function renderAgentsList() {
       agentsList.innerHTML = "";
       agents.forEach((agent) => {
         const card = document.createElement("div");
         card.className = "agentCard";
-        card.innerHTML = `
-          <div class="agentIcon">${agent.icon}</div>
-          <h2>${agent.name}</h2>
-          <p>${agent.description}</p>
-          <button class="startWizardBtn">Iniciar Wizard →</button>
-        `;
-        card.querySelector(".startWizardBtn").onclick = () => {
+        
+        // Icon (safe - emojis/symbols only)
+        const iconDiv = createSafeElement("div", agent.icon, {}, "agentIcon");
+        
+        // Title (escaped text)
+        const title = createSafeElement("h2", agent.name);
+        
+        // Description (escaped text)
+        const desc = createSafeElement("p", agent.description);
+        
+        // Button (text is safe literal)
+        const btn = createSafeElement("button", "Iniciar Wizard →", {}, "startWizardBtn");
+        btn.addEventListener("click", () => {
           startWizard(agent);
-        };
+        });
+        
+        card.appendChild(iconDiv);
+        card.appendChild(title);
+        card.appendChild(desc);
+        card.appendChild(btn);
         agentsList.appendChild(card);
       });
     }
@@ -67,10 +78,16 @@ fetch("/agents.json")
         const progress = ((this.currentStep + 1) / this.agent.questions.length) * 100;
         const backButtonText = this.currentStep === 0 ? "← Volver a Agentes" : "← Atrás";
 
+        // Escape dangerous content
+        const agentName = escapeHtml(this.agent.name);
+        const questionTitle = escapeHtml(question.title);
+        const questionHelp = escapeHtml(question.help);
+        const placeholderText = escapeHtml(question.placeholder || "");
+
         const html = `
           <div class="wizardBox">
             <div class="wizardHeader">
-              <h2>${this.agent.name}</h2>
+              <h2>${agentName}</h2>
               <div class="wizardProgress">
                 <div class="progressBar" style="width:${progress}%"></div>
               </div>
@@ -79,15 +96,15 @@ fetch("/agents.json")
 
             <div class="wizardContent">
               <div class="questionBox">
-                <label class="questionTitle">${question.title}</label>
-                <p class="questionHelp">${question.help}</p>
+                <label class="questionTitle">${questionTitle}</label>
+                <p class="questionHelp">${questionHelp}</p>
 
                 ${
                   question.type === "text"
-                    ? `<input type="text" id="answer" placeholder="${question.placeholder}" class="wizardInput" />`
+                    ? `<input type="text" id="answer" placeholder="${placeholderText}" class="wizardInput" />`
                     : `<select id="answer" class="wizardSelect">
                         <option value="">Selecciona una opción...</option>
-                        ${question.options.map((opt) => `<option value="${opt.value}">${opt.label}</option>`).join("")}
+                        ${question.options.map((opt) => `<option value="${escapeHtml(opt.value)}">${escapeHtml(opt.label)}</option>`).join("")}
                       </select>`
                 }
               </div>
@@ -144,6 +161,8 @@ fetch("/agents.json")
 
       renderResult(container) {
         const generatedPrompt = this.generatePrompt();
+        // Escape the generated prompt for safe display
+        const safePrompt = escapeHtml(generatedPrompt);
 
         const html = `
           <div class="wizardBox">
@@ -154,7 +173,7 @@ fetch("/agents.json")
             <div class="wizardContent">
               <div class="resultBox">
                 <h3>Prompt Generado:</h3>
-                <pre class="generatedPrompt">${generatedPrompt}</pre>
+                <pre class="generatedPrompt">${safePrompt}</pre>
                 
                 <div class="resultButtons">
                   <button class="copyResultBtn">📋 Copiar Prompt</button>

@@ -1,13 +1,12 @@
-// Framework Ejecutivo - Main Logic
+// Plantillas Ejecutivas - Main Logic
 let frameworks = [];
 let selectedFramework = null;
 let formValues = {}; // Store user input values
 
-// Load frameworks from JSON
+// Load frameworks from JSON with security validation
 async function loadFrameworks() {
   try {
-    const response = await fetch('executive_frameworks.json');
-    frameworks = await response.json();
+    frameworks = await secureFetch('executive_frameworks.json');
     renderFrameworkTabs();
     // Auto-select first framework
     if (frameworks.length > 0) {
@@ -15,28 +14,42 @@ async function loadFrameworks() {
     }
   } catch (error) {
     console.error('Error loading frameworks:', error);
-    document.getElementById('frameworkTabs').innerHTML = '<div class="error">Error al cargar plantillas</div>';
+    document.getElementById('frameworkTabs').innerHTML = '<div class="error">Error al cargar plantillas: ' + escapeHtml(error.message) + '</div>';
   }
 }
 
-// Render the list of framework tabs
+// Render the list of framework tabs (safe from XSS)
 function renderFrameworkTabs() {
   const tabsContainer = document.getElementById('frameworkTabs');
-  tabsContainer.innerHTML = frameworks.map(fw => {
+  tabsContainer.innerHTML = ''; // Clear
+  
+  frameworks.forEach(fw => {
     const isDisabled = fw.status === 'proximamente';
-    const badgeHTML = fw.status ? `<span class="statusBadge statusBadge--${fw.status}">${fw.status === 'nuevo' ? 'Nuevo' : 'Próximamente'}</span>` : '';
+    const button = document.createElement('button');
+    button.className = isDisabled ? 'frameworkTab frameworkTab--disabled' : 'frameworkTab';
+    button.setAttribute('data-id', fw.id);
+    button.disabled = isDisabled;
     
-    return `
-      <button 
-        class="frameworkTab ${isDisabled ? 'frameworkTab--disabled' : ''}" 
-        data-id="${fw.id}"
-        ${isDisabled ? 'disabled' : `onclick="selectFramework('${fw.id}')"`}
-      >
-        <span class="frameworkTab__title">${fw.title}</span>
-        ${badgeHTML}
-      </button>
-    `;
-  }).join('');
+    if (!isDisabled) {
+      button.addEventListener('click', () => selectFramework(fw.id));
+    }
+    
+    // Title span
+    const titleSpan = document.createElement('span');
+    titleSpan.className = 'frameworkTab__title';
+    titleSpan.textContent = fw.title;
+    button.appendChild(titleSpan);
+    
+    // Status badge
+    if (fw.status) {
+      const badge = document.createElement('span');
+      badge.className = `statusBadge statusBadge--${fw.status}`;
+      badge.textContent = fw.status === 'nuevo' ? 'Nuevo' : 'Próximamente';
+      button.appendChild(badge);
+    }
+    
+    tabsContainer.appendChild(button);
+  });
 }
 
 // Select and display a framework
@@ -76,38 +89,109 @@ function renderFrameworkDetail() {
     return;
   }
 
-  detailContainer.innerHTML = `
-    <div class="frameworkHeader">
-      <h2>${selectedFramework.title}</h2>
-      <p class="frameworkDescription">${selectedFramework.description}</p>
-    </div>
-    
-    <div class="promptBuilder">
-      <h3>✏️ Rellena tu prompt</h3>
-      <div class="formGrid" id="dynamicForm"></div>
-      
-      <div class="formActions">
-        <button class="actionButton secondary" onclick="resetForm()">
-          🔄 Reset
-        </button>
-        <button class="actionButton primary" onclick="copyTemplateToClipboard()">
-          📋 Copiar plantilla
-        </button>
-        <button class="actionButton primary" id="copyFinalBtn" onclick="copyFinalPromptToClipboard()" disabled>
-          ✅ Copiar prompt final
-        </button>
-      </div>
-    </div>
-
-    <div class="promptPreview">
-      <div class="previewHeader">
-        <span class="previewLabel">👁️ Vista previa del prompt final</span>
-      </div>
-      <div class="previewText" id="promptPreview"></div>
-    </div>
-  `;
-
+  // Clear and build safely
+  detailContainer.innerHTML = '';
+  
+  // Header
+  const header = document.createElement('div');
+  header.className = 'frameworkHeader';
+  
+  const title = document.createElement('h2');
+  title.textContent = selectedFramework.title;
+  
+  const desc = document.createElement('p');
+  desc.className = 'frameworkDescription';
+  desc.textContent = selectedFramework.description;
+  
+  header.appendChild(title);
+  header.appendChild(desc);
+  detailContainer.appendChild(header);
+  
+  // Prompt Builder
+  const builder = document.createElement('div');
+  builder.className = 'promptBuilder';
+  
+  const builderTitle = document.createElement('h3');
+  builderTitle.textContent = '✏️ Rellena tu prompt';
+  builder.appendChild(builderTitle);
+  
+  const formGrid = document.createElement('div');
+  formGrid.className = 'formGrid';
+  formGrid.id = 'dynamicForm';
+  builder.appendChild(formGrid);
+  
+  // Form Actions
+  const actions = document.createElement('div');
+  actions.className = 'formActions';
+  
+  const resetBtn = document.createElement('button');
+  resetBtn.className = 'actionButton secondary';
+  resetBtn.textContent = '🔄 Reset';
+  resetBtn.addEventListener('click', resetForm);
+  
+  const copyTemplateBtn = document.createElement('button');
+  copyTemplateBtn.className = 'actionButton primary';
+  copyTemplateBtn.textContent = '📋 Copiar plantilla';
+  copyTemplateBtn.addEventListener('click', copyTemplateToClipboard);
+  
+  const copyFinalBtn = document.createElement('button');
+  copyFinalBtn.className = 'actionButton primary';
+  copyFinalBtn.id = 'copyFinalBtn';
+  copyFinalBtn.textContent = '✅ Copiar prompt final';
+  copyFinalBtn.disabled = true;
+  copyFinalBtn.addEventListener('click', copyFinalPromptToClipboard);
+  
+  actions.appendChild(resetBtn);
+  actions.appendChild(copyTemplateBtn);
+  actions.appendChild(copyFinalBtn);
+  builder.appendChild(actions);
+  detailContainer.appendChild(builder);
+  
+  // Preview
+  const preview = document.createElement('div');
+  preview.className = 'promptPreview';
+  
+  const previewHeader = document.createElement('div');
+  previewHeader.className = 'previewHeader';
+  const previewLabel = document.createElement('span');
+  previewLabel.className = 'previewLabel';
+  previewLabel.textContent = '👁️ Vista previa del prompt final';
+  previewHeader.appendChild(previewLabel);
+  preview.appendChild(previewHeader);
+  
+  const previewText = document.createElement('div');
+  previewText.className = 'previewText';
+  previewText.id = 'promptPreview';
+  preview.appendChild(previewText);
+  
+  detailContainer.appendChild(preview);
+  
   renderDynamicForm();
+  
+  // Setup event delegation for form inputs (security: avoid inline handlers)
+  const formContainer = document.getElementById('dynamicForm');
+  if (formContainer) {
+    formContainer.addEventListener('input', (e) => {
+      if (e.target.classList.contains('formInput') || 
+          e.target.classList.contains('formTextarea') ||
+          e.target.classList.contains('formSelect')) {
+        const fieldName = e.target.closest('.formField')?.getAttribute('data-field');
+        if (fieldName) {
+          handleInputChange(fieldName, e.target.value);
+        }
+      }
+    });
+
+    formContainer.addEventListener('change', (e) => {
+      if (e.target.classList.contains('formCheckbox')) {
+        const fieldName = e.target.closest('.formField')?.getAttribute('data-field');
+        if (fieldName) {
+          handleInputChange(fieldName, e.target.checked);
+        }
+      }
+    });
+  }
+  
   updatePreview();
 }
 
@@ -133,12 +217,21 @@ function renderDynamicForm() {
   if (contextoFields.length > 0 || okrsFields.length > 0 || governanceFields.length > 0) {
     html += `
       <div class="advancedSectionCard">
-        <div class="advancedSectionToggle" onclick="toggleAdvancedSection()">
+        <div class="advancedSectionToggle" data-toggle="advanced">
           <span class="toggleIcon" id="advancedToggleIcon">▶</span>
           <span class="toggleLabel">Opciones Avanzadas (Contexto Operativo, OKRs, Governance)</span>
         </div>
         <div class="advancedSection" id="advancedSection">
     `;
+    
+    // Setup toggle delegation after rendering
+    setTimeout(() => {
+      const toggle = document.querySelector('[data-toggle="advanced"]');
+      if (toggle && !toggle.hasEventListener) {
+        toggle.hasEventListener = true;
+        toggle.addEventListener('click', toggleAdvancedSection);
+      }
+    }, 0);
 
     // Contexto Operativo
     if (contextoFields.length > 0) {
@@ -182,7 +275,7 @@ function renderDynamicForm() {
   formContainer.innerHTML = html;
 }
 
-// Render individual field
+// Render individual field (safe from inline XSS via data attributes)
 function renderField(field) {
   const fieldId = `field_${field.name}`;
   const isRequired = field.required ? '<span class="required">*</span>' : '';
@@ -195,7 +288,6 @@ function renderField(field) {
         id="${fieldId}" 
         class="formTextarea" 
         placeholder="Escribe aquí..."
-        oninput="handleInputChange('${field.name}', this.value)"
       >${formValues[field.name] || ''}</textarea>`;
       break;
       
@@ -204,7 +296,6 @@ function renderField(field) {
       inputHTML = `<select 
         id="${fieldId}" 
         class="formSelect"
-        onchange="handleInputChange('${field.name}', this.value)"
       >
         <option value="">Selecciona...</option>
         ${options.map(opt => `
@@ -224,7 +315,6 @@ function renderField(field) {
             id="${fieldId}" 
             class="formCheckbox"
             ${checked}
-            onchange="handleInputChange('${field.name}', this.checked)"
           />
           <label class="checkboxLabel" for="${fieldId}">${field.hint}</label>
         </div>
@@ -239,7 +329,6 @@ function renderField(field) {
         class="formInput" 
         placeholder="Escribe..."
         value="${formValues[field.name] || ''}"
-        oninput="handleInputChange('${field.name}', this.value)"
       />`;
       break;
   }

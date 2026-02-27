@@ -1,6 +1,20 @@
 fetch("prompts.json")
-  .then((res) => res.json())
+  .then((res) => {
+    // Validate JSON response
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const ct = res.headers.get('content-type');
+    if (!ct || !ct.includes('application/json')) {
+      throw new Error('Invalid content type: expected application/json');
+    }
+    return res.json();
+  })
   .then((data) => {
+    // Fallback escape function if sanitize.js not loaded
+    const esc = (str) => {
+      if (!str) return '';
+      const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
+      return String(str).replace(/[&<>"']/g, (m) => map[m]);
+    };
     const teamSelect = document.getElementById("teamSelect");
     const cards = document.getElementById("cards");
     const searchInput = document.getElementById("searchInput");
@@ -65,6 +79,7 @@ fetch("prompts.json")
           const value = (valueKey ? r[valueKey] : "") || "";
           const dpc = (dpcKey ? r[dpcKey] : "") || "";
           const saveUp = (saveUpKey ? r[saveUpKey] : "") || "";
+          const team = (teamKey ? r[teamKey] : "") || "";
 
           const p1 = (prompt1Key ? r[prompt1Key] : "") || "";
           const p2 = (prompt2Key ? r[prompt2Key] : "") || "";
@@ -73,29 +88,29 @@ fetch("prompts.json")
           const card = document.createElement("div");
           card.className = "card";
 
-          // HTML SOLO (nada de JS dentro)
+          // Escape all user data to prevent XSS
           card.innerHTML = `
             <div class="cardTop">
-              <div class="badge">${(teamKey ? r[teamKey] : "") || ""}</div>
-              <div class="dpc">${dpc}</div>
+              <div class="badge">${esc(team)}</div>
+              <div class="dpc">${esc(dpc)}</div>
             </div>
 
-            <h3>${useCase}</h3>
+            <h3>${esc(useCase)}</h3>
 
             <p class="desc">
               <b>Situación / problema:</b>
-              <span class="descText collapsed">${String(situation)}</span>
+              <span class="descText collapsed">${esc(String(situation))}</span>
               <button class="moreBtn" type="button">Ver más</button>
             </p>
 
             <div class="valueBox">
               <div class="label">Beneficio</div>
-              <div class="text">${String(value)}</div>
+              <div class="text">${esc(String(value))}</div>
             </div>
 
             <div class="valueBox saveUpBox">
               <div class="label">⏱️ Save up</div>
-              <div class="text">${String(saveUp)}</div>
+              <div class="text">${esc(String(saveUp))}</div>
             </div>
 
             <div class="pills">
