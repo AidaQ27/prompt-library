@@ -392,12 +392,14 @@ input#searchInput{
   text-align:center;
   transition:all .3s;
   cursor:pointer;
+  text-align: left;
 }
 
 .agentCard:hover{
   border-color:var(--magenta);
   box-shadow:0 15px 40px rgba(226,0,116,.15);
   transform:translateY(-4px);
+  text-align: left;
 }
 
 .agentIcon{

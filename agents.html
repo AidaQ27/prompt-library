@@ -2,10 +2,11 @@
 <html lang="es">
 <head>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="assets/agents-simple.css">
   <meta charset="UTF-8">
   <title>ChatGPT Enterprise – Agentes</title>
 </head>
-<body>
+<body class="agents-page">
   <header>
     <div class="headerContent">
       <h1>ChatGPT Enterprise – Agentes</h1>
@@ -19,11 +20,45 @@
   </header>
 
   <div class="container">
-    <div id="agentsList"></div>
-    <div id="wizardContainer" style="display:none;"></div>
+    <div class="agentsToolbar">
+      <div class="filtersRow">
+        <input type="text" id="searchInput" placeholder="Buscar agentes..." class="agentsSearch" />
+
+        <div class="filterGroup">
+          <label for="teamFilter">Equipo</label>
+          <select id="teamFilter">
+            <option value="">Todos</option>
+          </select>
+        </div>
+
+        <div class="filterGroup">
+          <label for="dpcFilter">Nivel DPC</label>
+          <select id="dpcFilter">
+            <option value="">Todos</option>
+            <option value="DPC 0">DPC 0</option>
+            <option value="DPC 1">DPC 1</option>
+            <option value="DPC 2">DPC 2</option>
+          </select>
+        </div>
+
+        <button id="resetFilters" class="resetBtn">Reset</button>
+      </div>
+
+      <div class="resultsRow">
+        <div id="resultsCount" class="resultsCount">Mostrando 0 de 0</div>
+      </div>
+    </div>
+
+    <div id="emptyState" class="emptyState" style="display:none;">
+      <p>No se encontraron agentes con esos criterios.</p>
+    </div>
+
+    <div id="agentsList" class="agentsGrid"></div>
+
+    <div id="agentsToast" class="agentsToast"></div>
   </div>
 
-  <script src="sanitize.js"></script>
-  <script src="agents.js"></script>
+  <script src="sanitize.js" defer></script>
+  <script src="agents.js" defer></script>
 </body>
 </html>

@@ -1,242 +1,309 @@
-fetch("/agents.json")
-  .then((res) => res.json())
-  .then((agents) => {
-    const agentsList = document.getElementById("agentsList");
-    const wizardContainer = document.getElementById("wizardContainer");
+function createSafeElement(tag, className, text) {
+  const el = document.createElement(tag);
+  if (className) el.className = className;
+  if (text !== undefined && text !== null) el.textContent = String(text);
+  return el;
+}
 
-    function showListView() {
-      agentsList.style.display = "";
-      wizardContainer.style.display = "none";
+const agentsData = [
+  {
+    id: "convenio",
+    title: "Agente IA – Convenio Colectivo",
+    team: "Chapter Leads",
+    type: "Agente",
+    dpcLevel: "DPC 0",
+    before: "Búsqueda manual en PDF del convenio + consulta a HR + interpretación normativa",
+    timeBefore: "20 min por consulta",
+    timeNow: "2-3 min",
+    timeSavings: "-17 min por consulta",
+    impact: "Mejora la fiabilidad de las respuestas al basarse directamente en el documento oficial del convenio y reduce la necesidad de consultas recurrentes a HR.",
+    notes: "El knowledge del agente se basa en el documento oficial del convenio"
+  },
+  {
+    id: "formacion-planes",
+    title: "Creación de planes de formación",
+    team: "Area leads / BO",
+    type: "Proyecto",
+    dpcLevel: "DPC 1",
+    before: "Era necesario recopilar información de programas similares y analizar qué nuevos contenidos o enfoques se podían proponer.",
+    timeBefore: "4h (mínimo)",
+    timeNow: "1h",
+    timeSavings: "3h (mínimo)",
+    impact: "Acelera la definición de nuevos programas formativos y aporta consistencia en la estructura y contenidos entre equipos",
+    notes: "Nos pidieron una propuesta y se crearon 2."
+  },
+  {
+    id: "local-apps",
+    title: "Generador de apps locales para uso personal",
+    team: "Chapter Leads",
+    type: "Agente",
+    dpcLevel: "DPC 0",
+    before: "Era necesario crear un excel o un script",
+    timeBefore: "1h - 4h",
+    timeNow: "5 minutos",
+    timeSavings: "1 - 4h",
+    impact: "Permite crear pequeñas aplicaciones internas para estructurar información o prototipar soluciones sin necesidad de desarrollo formal.",
+  },
+  {
+    id: "email-drafter",
+    title: "Corporate Email Drafter",
+    team: "Area leads / BO",
+    type: "Agente",
+    dpcLevel: "DPC 0",
+    before: "Se redacta correo a mano",
+    timeBefore: "5 min - 20min",
+    timeNow: "2 minutos",
+    timeSavings: "3 - 17 min por correo",
+    impact: "El agente es capaz de generar un mail a partir de unas pocas palabras y generar un archivo .eml listo para ser descargado, abierto y enviado"
+    },
+  {
+    id: "prompt-refiner",
+    title: "Refinado de prompt",
+    team: "Chapter Leads",
+    type: "Agente",
+    dpcLevel: "DPC 0",
+    before: "Este agente permite refinar prompts para evitar tener que hacerlo a mano, el refinamiento tiene en cuenta que el usuario tiene un rol específico dentro de la compañía",
+    timeBefore: "7 min",
+    timeNow: "2 min",
+    timeSavings: "5 min",
+    impact: "La realización de un buen prompt puede ahorrar mucho tiempo y mejorar la eficiencia de una tarea. Hacer un prompt premium a mano es susceptible a errores y descuidos"
+  }
+];
+
+const elements = {
+  searchInput: document.getElementById("searchInput"),
+  teamFilter: document.getElementById("teamFilter"),
+  dpcFilter: document.getElementById("dpcFilter"),
+  resetButton: document.getElementById("resetFilters"),
+  resultsCount: document.getElementById("resultsCount"),
+  agentsList: document.getElementById("agentsList"),
+  emptyState: document.getElementById("emptyState")
+};
+
+
+
+function createElement(tag, className, text) {
+  const el = document.createElement(tag);
+  if (className) {
+    el.className = className;
+  }
+  if (text !== undefined) {
+    el.textContent = text;
+  }
+  return el;
+}
+
+function renderAgents(list) {
+  elements.agentsList.innerHTML = "";
+
+  list.forEach((agent) => {
+    const card = createElement("article", "agentCard");
+
+    // Header: Title + DPC badge
+    const header = createElement("div", "agentCardHeader");
+    const titleRow = createElement("div", "agentHeader");
+    titleRow.appendChild(createElement("h2", "agentTitle", agent.title));
+    titleRow.appendChild(createElement("span", "dpcBadge", agent.dpcLevel));
+    header.appendChild(titleRow);
+
+    // Meta: Team + Type
+    const meta = createElement("div", "agentMeta");
+    meta.appendChild(createElement("span", "agentMeta-item", `Equipo: ${agent.team}`));
+    meta.appendChild(createElement("span", "agentMeta-item", `Tipo: ${agent.type}`));
+    header.appendChild(meta);
+    card.appendChild(header);
+
+    // Body: Columns from Excel
+    const body = createElement("div", "agentCardBody");
+    
+    body.appendChild(buildRow("Antes (cómo se hacía)", agent.before));
+    
+    // Merge time rows
+    body.appendChild(buildTimeRow(agent.timeBefore, agent.timeNow));
+    
+    // Ahorro estimado - highlighted
+    body.appendChild(buildRow("Ahorro estimado", agent.timeSavings, true));
+    
+    // Impacto - expandable
+    body.appendChild(buildExpandableRow("Impacto cualitativo", agent.impact));
+    
+    // Notas - expandable if exists
+    if (agent.notes) {
+      body.appendChild(buildExpandableRow("Notas", agent.notes));
     }
 
-    function showWizardView() {
-      agentsList.style.display = "none";
-      wizardContainer.style.display = "block";
+    card.appendChild(body);
+    elements.agentsList.appendChild(card);
+  });
+}
+
+function buildRow(label, text, highlight = false) {
+  const row = createElement("div", highlight ? "agentRow highlight" : "agentRow");
+  const labelEl = createElement("div", "agentRowLabel", label);
+  const textEl = createElement("div", "agentRowText", text);
+  row.appendChild(labelEl);
+  row.appendChild(textEl);
+  return row;
+}
+
+function buildTimeRow(timeBefore, timeNow) {
+  const row = createElement("div", "agentRow");
+  const labelEl = createElement("div", "agentRowLabel", "Tiempo");
+  const textEl = createElement("div", "agentRowText");
+
+  const beforeItalic = document.createElement("em");
+  beforeItalic.textContent = "Antes:";
+  textEl.appendChild(beforeItalic);
+  textEl.appendChild(document.createTextNode(` ${timeBefore}  ·  `));
+
+  const nowItalic = document.createElement("em");
+  nowItalic.textContent = "Ahora:";
+  textEl.appendChild(nowItalic);
+  textEl.appendChild(document.createTextNode(` ${timeNow}`));
+
+  row.appendChild(labelEl);
+  row.appendChild(textEl);
+  return row;
+}
+
+function buildExpandableRow(label, text) {
+  const MAX_CHARS = 120;
+  const isLong = text.length > MAX_CHARS;
+  const displayText = isLong ? text.substring(0, MAX_CHARS) + "..." : text;
+
+  const row = createElement("div", "agentRow expandable");
+  const labelEl = createElement("div", "agentRowLabel", label);
+  row.appendChild(labelEl);
+
+  const textContainer = createElement("div", "agentRowExpandContainer");
+  const textEl = createElement("div", "agentRowText", displayText);
+  textEl.dataset.fullText = text;
+  textEl.dataset.displayText = displayText;
+  textEl.classList.add("expandable-text");
+  textContainer.appendChild(textEl);
+
+  if (isLong) {
+    const toggleBtn = createElement("button", "expandToggleBtn", "Ver más");
+    toggleBtn.type = "button";
+    toggleBtn.dataset.expanded = "false";
+    toggleBtn.addEventListener("click", () => {
+      const isExpanded = toggleBtn.dataset.expanded === "true";
+      if (isExpanded) {
+        textEl.textContent = textEl.dataset.displayText;
+        toggleBtn.textContent = "Ver más";
+        toggleBtn.dataset.expanded = "false";
+      } else {
+        textEl.textContent = textEl.dataset.fullText;
+        toggleBtn.textContent = "Ver menos";
+        toggleBtn.dataset.expanded = "true";
+      }
+    });
+    textContainer.appendChild(toggleBtn);
+  }
+
+  row.appendChild(textContainer);
+  return row;
+}
+
+function toggleCardExpand(card, ...blocks) {
+  // Placeholder for future functionality
+}
+
+function buildBlock(label, text) {
+  const block = createElement("div", "agentBlock");
+  block.appendChild(createElement("div", "agentLabel", label));
+  const p = createElement("p", "agentText", text);
+  block.appendChild(p);
+  return block;
+}
+
+function buildPromptBlock(prompt) {
+  const block = createElement("div", "agentBlock");
+  block.appendChild(createElement("div", "agentLabel", "Ejemplo de prompt"));
+  const box = createElement("div", "promptBox");
+  box.classList.add("visible");
+  box.appendChild(createElement("pre", "promptText", prompt));
+  block.appendChild(box);
+  return block;
+}
+
+function buildImpactBlock(impact, metric) {
+  const block = createElement("div", "agentBlock");
+  block.appendChild(createElement("div", "agentLabel", "Impacto"));
+  const list = createElement("ul", "impactList");
+  (impact || []).forEach((item) => {
+    list.appendChild(createElement("li", "", item));
+  });
+  if (metric) {
+    const metricItem = createElement("li");
+    metricItem.appendChild(createElement("span", "impactMetric", metric));
+    list.appendChild(metricItem);
+  }
+  block.appendChild(list);
+  return block;
+}
+
+function renderTeamOptions() {
+  const teams = Array.from(new Set(agentsData.map((agent) => agent.team))).sort();
+  teams.forEach((team) => {
+    const option = createElement("option", "", team);
+    option.value = team;
+    elements.teamFilter.appendChild(option);
+  });
+}
+
+function applyFilters() {
+  const query = elements.searchInput.value.trim().toLowerCase();
+  const team = elements.teamFilter.value;
+  const dpc = elements.dpcFilter.value;
+
+  const filtered = agentsData.filter((agent) => {
+    if (team && agent.team !== team) {
+      return false;
     }
-
-    // Render agents list (safe - no innerHTML with user data)
-    function renderAgentsList() {
-      agentsList.innerHTML = "";
-      agents.forEach((agent) => {
-        const card = document.createElement("div");
-        card.className = "agentCard";
-        
-        // Icon (safe - emojis/symbols only)
-        const iconDiv = createSafeElement("div", agent.icon, {}, "agentIcon");
-        
-        // Title (escaped text)
-        const title = createSafeElement("h2", agent.name);
-        
-        // Description (escaped text)
-        const desc = createSafeElement("p", agent.description);
-        
-        // Button (text is safe literal)
-        const btn = createSafeElement("button", "Iniciar Wizard →", {}, "startWizardBtn");
-        btn.addEventListener("click", () => {
-          startWizard(agent);
-        });
-        
-        card.appendChild(iconDiv);
-        card.appendChild(title);
-        card.appendChild(desc);
-        card.appendChild(btn);
-        agentsList.appendChild(card);
-      });
+    if (dpc && agent.dpcLevel !== dpc) {
+      return false;
     }
-
-    // Start wizard
-    function startWizard(agent) {
-      showWizardView();
-      wizardContainer.innerHTML = "";
-
-      const wizard = new PromptWizard(agent, () => {
-        showListView();
-      });
-
-      wizard.render(wizardContainer);
-    }
-
-    // Wizard logic
-    class PromptWizard {
-      constructor(agent, onBack) {
-        this.agent = agent;
-        this.onBack = onBack;
-        this.currentStep = 0;
-        this.answers = {};
-      }
-
-      render(container) {
-        if (this.currentStep < this.agent.questions.length) {
-          this.renderQuestion(container);
-        } else {
-          this.renderResult(container);
-        }
-      }
-
-      renderQuestion(container) {
-        const question = this.agent.questions[this.currentStep];
-        const progress = ((this.currentStep + 1) / this.agent.questions.length) * 100;
-        const backButtonText = this.currentStep === 0 ? "← Volver a Agentes" : "← Atrás";
-
-        // Escape dangerous content
-        const agentName = escapeHtml(this.agent.name);
-        const questionTitle = escapeHtml(question.title);
-        const questionHelp = escapeHtml(question.help);
-        const placeholderText = escapeHtml(question.placeholder || "");
-
-        const html = `
-          <div class="wizardBox">
-            <div class="wizardHeader">
-              <h2>${agentName}</h2>
-              <div class="wizardProgress">
-                <div class="progressBar" style="width:${progress}%"></div>
-              </div>
-              <div class="stepCounter">Paso ${this.currentStep + 1} de ${this.agent.questions.length}</div>
-            </div>
-
-            <div class="wizardContent">
-              <div class="questionBox">
-                <label class="questionTitle">${questionTitle}</label>
-                <p class="questionHelp">${questionHelp}</p>
-
-                ${
-                  question.type === "text"
-                    ? `<input type="text" id="answer" placeholder="${placeholderText}" class="wizardInput" />`
-                    : `<select id="answer" class="wizardSelect">
-                        <option value="">Selecciona una opción...</option>
-                        ${question.options.map((opt) => `<option value="${escapeHtml(opt.value)}">${escapeHtml(opt.label)}</option>`).join("")}
-                      </select>`
-                }
-              </div>
-
-              <div class="wizardButtons">
-                <button class="backBtn">${backButtonText}</button>
-                <button class="nextBtn">Siguiente →</button>
-              </div>
-            </div>
-          </div>
-        `;
-
-        container.innerHTML = html;
-
-        const input = container.querySelector("#answer");
-        const nextBtn = container.querySelector(".nextBtn");
-        const backBtn = container.querySelector(".backBtn");
-
-        input.focus();
-
-        input.addEventListener("keypress", (e) => {
-          if (e.key === "Enter") {
-            this.saveAnswer(input.value);
-          }
-        });
-
-        nextBtn.onclick = () => {
-          this.saveAnswer(input.value);
-        };
-
-        backBtn.onclick = () => {
-          if (this.currentStep === 0) {
-            // On first step, return to Agents menu
-            this.onBack();
-          } else {
-            // On other steps, go back one step
-            this.currentStep--;
-            this.render(container);
-          }
-        };
-      }
-
-      saveAnswer(value) {
-        if (!value.trim()) {
-          alert("Por favor completa este campo");
-          return;
-        }
-
-        const question = this.agent.questions[this.currentStep];
-        this.answers[question.id] = value;
-        this.currentStep++;
-        this.render(document.getElementById("wizardContainer"));
-      }
-
-      renderResult(container) {
-        const generatedPrompt = this.generatePrompt();
-        // Escape the generated prompt for safe display
-        const safePrompt = escapeHtml(generatedPrompt);
-
-        const html = `
-          <div class="wizardBox">
-            <div class="wizardHeader">
-              <h2>✨ Tu Prompt Gold</h2>
-            </div>
-
-            <div class="wizardContent">
-              <div class="resultBox">
-                <h3>Prompt Generado:</h3>
-                <pre class="generatedPrompt">${safePrompt}</pre>
-                
-                <div class="resultButtons">
-                  <button class="copyResultBtn">📋 Copiar Prompt</button>
-                  <button class="editBtn">✏️ Editar y Generar de Nuevo</button>
-                  <button class="backToAgentsBtn">← Volver a Agentes</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        `;
-
-        container.innerHTML = html;
-
-        const copyBtn = container.querySelector(".copyResultBtn");
-        const editBtn = container.querySelector(".editBtn");
-        const backBtn = container.querySelector(".backToAgentsBtn");
-
-        copyBtn.onclick = () => {
-          navigator.clipboard.writeText(generatedPrompt).then(() => {
-            copyBtn.textContent = "✅ ¡Copiado!";
-            setTimeout(() => {
-              copyBtn.textContent = "📋 Copiar Prompt";
-            }, 2000);
-          });
-        };
-
-        editBtn.onclick = () => {
-          this.currentStep = 0;
-          this.answers = {};
-          this.render(container);
-        };
-
-        backBtn.onclick = () => {
-          this.onBack();
-        };
-      }
-
-      generatePrompt() {
-        const obj = this.answers;
-
-        return `Eres un asistente experto especializado en ${obj.objective ? obj.objective.toLowerCase() : "tu solicitud"}.
-
-Contexto:
-- Objetivo Principal: ${obj.objective || "No especificado"}
-- Audiencia Objetivo: ${obj.audience || "General"}
-- Tono Esperado: ${obj.tone || "Profesional"}
-- Formato: ${obj.format || "Estructurado"}
-- Restricciones: ${obj.constraints || "Ninguna"}
-
-Tarea:
-${obj.objective || "Ayúdame a lograr mi objetivo"}
-
-Requisitos:
-1. Adapta tu respuesta a la audiencia ${obj.audience || "objetivo"}
-2. Usa un tono ${obj.tone || "profesional"}
-3. Estructura tu respuesta como: ${obj.format || "contenido estructurado"}
-4. Ten en cuenta lo siguiente: ${obj.constraints || "Sin restricciones específicas"}
-
-Proporciona una respuesta clara, accionable y de alta calidad.`;
+    if (query) {
+      const haystack = [
+        agent.title,
+        agent.before,
+        agent.impact,
+        agent.team
+      ]
+        .join(" ")
+        .toLowerCase();
+      if (!haystack.includes(query)) {
+        return false;
       }
     }
+    return true;
+  });
 
-    // Initial render
-    renderAgentsList();
-  })
-  .catch((e) => console.error("Error:", e));
+  elements.resultsCount.textContent = `Mostrando ${filtered.length} de ${agentsData.length}`;
+  elements.emptyState.style.display = filtered.length ? "none" : "block";
+  renderAgents(filtered);
+}
+
+function resetFilters() {
+  elements.searchInput.value = "";
+  elements.teamFilter.value = "";
+  elements.dpcFilter.value = "";
+  applyFilters();
+}
+
+function setupReadMore() {
+  // Placeholder for future functionality
+}
+
+function handlePromptAction(event) {
+  // Placeholder for future functionality
+}
+
+renderTeamOptions();
+applyFilters();
+
+elements.searchInput.addEventListener("input", applyFilters);
+elements.teamFilter.addEventListener("change", applyFilters);
+elements.dpcFilter.addEventListener("change", applyFilters);
+elements.resetButton.addEventListener("click", resetFilters);
