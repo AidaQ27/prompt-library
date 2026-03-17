@@ -3,17 +3,18 @@
 <head>
   <link rel="stylesheet" href="styles.css">
   <meta charset="UTF-8">
-  <title>ChatGPT Enterprise – Librería de Prompts</title>
+  <title>Librería de Prompts</title>
 </head>
 <body>
   <header>
     <div class="headerContent">
-      <h1>ChatGPT Enterprise – Prompt Library</h1>
+      <h1>Prompt Library</h1>
       <nav class="headerNav">
         <a href="index.html" class="navLink active">📚 Prompts</a>
         <a href="agents.html" class="navLink">🤖 Agentes</a>
         <a href="framework.html" class="navLink">⚡ Plantillas Ejecutivas</a>
         <a href="dpc.html" class="navLink">🔍 DPC Check</a>
+        <a href="decision-tree.html" class="navLink">🎯 Decision Tree</a>
       </nav>
     </div>
   </header>
@@ -49,3 +50,12 @@
   <script src="app.js"></script>
 </body>
 </html>
+
+<div id="decisionTreeBox"></div>
+
+<script type="module">
+  import { initDecisionTree } from "./components/decision-tree/decision-tree-module.js";
+  initDecisionTree("decisionTreeBox", {
+    dataUrl: "./components/decision-tree/decision-tree.json"
+  });
+</script>
