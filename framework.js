@@ -203,6 +203,7 @@ function renderDynamicForm() {
   // Group fields by section
   const basicFields = selectedFramework.fields.filter(f => f.section === 'basic');
   const contextoFields = selectedFramework.fields.filter(f => f.section === 'contexto_operativo');
+  const capitulFields = selectedFramework.fields.filter(f => f.section === 'contexto_capitulo');
   const okrsFields = selectedFramework.fields.filter(f => f.section === 'okrs');
   const governanceFields = selectedFramework.fields.filter(f => f.section === 'governance');
 
@@ -214,15 +215,14 @@ function renderDynamicForm() {
   html += `</div>`;
 
   // Advanced sections (collapsible)
-  if (contextoFields.length > 0 || okrsFields.length > 0 || governanceFields.length > 0) {
+  if (contextoFields.length > 0 || capitulFields.length > 0 || okrsFields.length > 0 || governanceFields.length > 0) {
     html += `
       <div class="advancedSectionCard">
         <div class="advancedSectionToggle" data-toggle="advanced">
           <span class="toggleIcon" id="advancedToggleIcon">▶</span>
-          <span class="toggleLabel">Opciones Avanzadas (Contexto Operativo, OKRs, Governance)</span>
+          <span class="toggleLabel">Opciones Avanzadas</span>
         </div>
-        <div class="advancedSection" id="advancedSection">
-    `;
+        <div class="advancedSection" id="advancedSection">`;
     
     // Setup toggle delegation after rendering
     setTimeout(() => {
@@ -232,6 +232,18 @@ function renderDynamicForm() {
         toggle.addEventListener('click', toggleAdvancedSection);
       }
     }, 0);
+
+    // Contexto del Chapter
+    if (capitulFields.length > 0) {
+      html += `
+        <div class="formSectionHeader">
+          <h4>👥 Contexto del Chapter</h4>
+        </div>
+        <div class="formSection">
+          ${capitulFields.map(field => renderField(field)).join('')}
+        </div>
+      `;
+    }
 
     // Contexto Operativo
     if (contextoFields.length > 0) {
@@ -411,6 +423,7 @@ function updatePreview() {
   });
 
   // Clean up any remaining empty sections
+  previewText = previewText.replace(/\[CONTEXTO_CAPITULO\]/g, '');
   previewText = previewText.replace(/\[CONTEXTO_OPERATIVO\]/g, '');
   previewText = previewText.replace(/\[OKRS\]/g, '');
   previewText = previewText.replace(/\[DECISION_FRAMEWORK\]/g, '');
@@ -418,6 +431,9 @@ function updatePreview() {
   previewText = previewText.replace(/\[GOVERNANCE_CADENCE\]/g, '');
   previewText = previewText.replace(/\[ANALYSIS_OPTIONS\]/g, '');
   previewText = previewText.replace(/\[RISKS_MITIGATION\]/g, '');
+  previewText = previewText.replace(/\[INCLUDE_KPIS\]/g, '');
+  previewText = previewText.replace(/\[INCLUDE_RISKS\]/g, '');
+  previewText = previewText.replace(/\[INCLUDE_ACTION_PLAN\]/g, '');
   
   // Clean up multiple consecutive line breaks
   previewText = previewText.replace(/\n{3,}/g, '\n\n');
@@ -431,6 +447,22 @@ function updatePreview() {
 function processInjectables(promptText) {
   if (!selectedFramework.injectables) return promptText;
   
+  // Check if we should inject CONTEXTO_CAPITULO (Chapter Lead context)
+  const hasCapitul = selectedFramework.fields
+    .filter(f => f.section === 'contexto_capitulo')
+    .some(f => formValues[f.name] && formValues[f.name].trim() !== '');
+
+  if (hasCapitul && selectedFramework.injectables.CONTEXTO_CAPITULO) {
+    let capitulText = selectedFramework.injectables.CONTEXTO_CAPITULO;
+    selectedFramework.fields.filter(f => f.section === 'contexto_capitulo').forEach(field => {
+      const value = formValues[field.name] || '';
+      capitulText = capitulText.replace(new RegExp(`\\[${field.name}\\]`, 'g'), value);
+    });
+    promptText = promptText.replace('[CONTEXTO_CAPITULO]', capitulText);
+  } else {
+    promptText = promptText.replace('[CONTEXTO_CAPITULO]', '');
+  }
+
   // Check if we should inject CONTEXTO_OPERATIVO
   const hasContexto = selectedFramework.fields
     .filter(f => f.section === 'contexto_operativo')
@@ -495,6 +527,25 @@ function processInjectables(promptText) {
   } else {
     promptText = promptText.replace('[RISKS_MITIGATION]', '');
   }
+
+  // Process Chapter Lead toggles
+  if (formValues['TOGGLE_INCLUDE_KPIS'] === true && selectedFramework.injectables && selectedFramework.injectables.INCLUDE_KPIS) {
+    promptText = promptText.replace('[INCLUDE_KPIS]', selectedFramework.injectables.INCLUDE_KPIS);
+  } else {
+    promptText = promptText.replace('[INCLUDE_KPIS]', '');
+  }
+
+  if (formValues['TOGGLE_INCLUDE_RISKS'] === true && selectedFramework.injectables && selectedFramework.injectables.INCLUDE_RISKS) {
+    promptText = promptText.replace('[INCLUDE_RISKS]', selectedFramework.injectables.INCLUDE_RISKS);
+  } else {
+    promptText = promptText.replace('[INCLUDE_RISKS]', '');
+  }
+
+  if (formValues['TOGGLE_INCLUDE_ACTION_PLAN'] === true && selectedFramework.injectables && selectedFramework.injectables.INCLUDE_ACTION_PLAN) {
+    promptText = promptText.replace('[INCLUDE_ACTION_PLAN]', selectedFramework.injectables.INCLUDE_ACTION_PLAN);
+  } else {
+    promptText = promptText.replace('[INCLUDE_ACTION_PLAN]', '');
+  }
   
   return promptText;
 }
@@ -503,6 +554,22 @@ function processInjectables(promptText) {
 function processInjectablesForCopy(promptText) {
   if (!selectedFramework.injectables) return promptText;
   
+  // Check if we should inject CONTEXTO_CAPITULO (Chapter Lead context)
+  const hasCapitul = selectedFramework.fields
+    .filter(f => f.section === 'contexto_capitulo')
+    .some(f => formValues[f.name] && formValues[f.name].trim() !== '');
+
+  if (hasCapitul && selectedFramework.injectables.CONTEXTO_CAPITULO) {
+    let capitulText = selectedFramework.injectables.CONTEXTO_CAPITULO;
+    selectedFramework.fields.filter(f => f.section === 'contexto_capitulo').forEach(field => {
+      const value = formValues[field.name] || '';
+      capitulText = capitulText.replace(new RegExp(`\\[${field.name}\\]`, 'g'), value);
+    });
+    promptText = promptText.replace('[CONTEXTO_CAPITULO]', capitulText);
+  } else {
+    promptText = promptText.replace('[CONTEXTO_CAPITULO]', '');
+  }
+
   // Check if we should inject CONTEXTO_OPERATIVO
   const hasContexto = selectedFramework.fields
     .filter(f => f.section === 'contexto_operativo')
@@ -565,6 +632,25 @@ function processInjectablesForCopy(promptText) {
     promptText = promptText.replace('[RISKS_MITIGATION]', selectedFramework.injectables.RISKS_MITIGATION);
   } else {
     promptText = promptText.replace('[RISKS_MITIGATION]', '');
+  }
+
+  // Process Chapter Lead toggles
+  if (formValues['TOGGLE_INCLUDE_KPIS'] === true && selectedFramework.injectables && selectedFramework.injectables.INCLUDE_KPIS) {
+    promptText = promptText.replace('[INCLUDE_KPIS]', selectedFramework.injectables.INCLUDE_KPIS);
+  } else {
+    promptText = promptText.replace('[INCLUDE_KPIS]', '');
+  }
+
+  if (formValues['TOGGLE_INCLUDE_RISKS'] === true && selectedFramework.injectables && selectedFramework.injectables.INCLUDE_RISKS) {
+    promptText = promptText.replace('[INCLUDE_RISKS]', selectedFramework.injectables.INCLUDE_RISKS);
+  } else {
+    promptText = promptText.replace('[INCLUDE_RISKS]', '');
+  }
+
+  if (formValues['TOGGLE_INCLUDE_ACTION_PLAN'] === true && selectedFramework.injectables && selectedFramework.injectables.INCLUDE_ACTION_PLAN) {
+    promptText = promptText.replace('[INCLUDE_ACTION_PLAN]', selectedFramework.injectables.INCLUDE_ACTION_PLAN);
+  } else {
+    promptText = promptText.replace('[INCLUDE_ACTION_PLAN]', '');
   }
   
   return promptText;

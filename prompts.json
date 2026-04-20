@@ -3,168 +3,230 @@
     "Equipo": "Operaciones Empresariales Adopcion IA",
     "Use Case": "Preparar workshop de adopcion IA",
     "Situacion / Problema": "Tengo que preparar una sesion para explicar que es ChatGPT Enterprise a negocio, con ejemplos claros y sin tecnicismos.",
-    "Prompt 1": "Explica que es ChatGPT Enterprise y para que sirve en una empresa.",
-    "Prompt 2": "Explica ChatGPT Enterprise para un publico de negocio, usando ejemplos practicos y un lenguaje no tecnico.",
-    "Prompt 3": "Act as an AI adoption lead.\nExplain ChatGPT Enterprise to a non-technical business audience.\nInclude:\n What it is (in simple terms)\no 3 concrete daily work examples\n Benefits and limitations\n One short elevator pitch\nKeep the tone clear, practical and reassuring.",
     "Valor / Beneficio": "Facilita la adopcion, reduce resistencia y acelera el entendimiento del valor de la IA.",
     "Nivel de datos (DPC / DSK)": "DPC 0",
-    "Save up":"4–6 horas por workshop" ,
-    "Notas": ""
+    "Save up": "4–6 horas por workshop",
+    "Notas": "",
+    "Prompt": "CONTEXTO:\nNecesito preparar una sesión para explicar ChatGPT Enterprise a un público de negocio, con ejemplos claros y sin tecnicismos.\n\nOBJETIVO:\nActúa como responsable de adopción de IA. Prepara contenido para explicar qué es ChatGPT Enterprise a una audiencia no técnica de negocio.\n\nDATOS:\n[Proporciona: audiencia objetivo, sector empresarial, ejemplos de uso relevantes para el negocio]\n\nFORMATO:\nIncluye:\n- Qué es ChatGPT Enterprise en términos simples\n- 3 ejemplos concretos de uso diario en el trabajo\n- Principales beneficios y limitaciones\n- Un elevator pitch breve\nTono claro, práctico y tranquilizador."
   },
   {
     "Equipo": "Arquitectura",
     "Use Case": "Explicar una decision de Arquitectura",
     "Situacion / Problema": "He tomado una decision de Arquitectura (por ejemplo, uso de una plataforma o integracion) y necesito explicarla a management de forma clara y no tecnica.",
-    "Prompt 1": "Explica esta decision de Arquitectura.",
-    "Prompt 2": "Explica esta decision de Arquitectura para un publico no tecnico, destacando beneficios y riesgos.",
-    "Prompt 3": "Act as an enterprise architect. Explain the following architecture decision to a management audience. Include: context, the chosen option, alternatives considered, key benefits, main risks and long-term impact. Keep it concise and business-oriented.",
     "Valor / Beneficio": "Facilita la alineacion con management y reduce malentendidos sobre decisiones tecnicas.",
     "Nivel de datos (DPC / DSK)": "DPC 0",
-    "Save up":"2–3 horas por decisión" ,
-    "Notas": ""
+    "Save up": "2–3 horas por decisión",
+    "Notas": "",
+    "Prompt": "CONTEXTO:\nHe tomado una decisión de arquitectura y necesito explicarla a management de forma clara y sin tecnicismos.\n\nOBJETIVO:\nActúa como arquitecto empresarial. Explica la siguiente decisión de arquitectura a una audiencia de management.\n\nDATOS:\n[Proporciona: la decisión tomada, alternativas consideradas, contexto del sistema o proyecto]\n\nFORMATO:\nIncluye: contexto, opción elegida, alternativas consideradas, beneficios clave, riesgos principales e impacto a largo plazo. Conciso y orientado al negocio."
   },
   {
     "Equipo": "Arquitectura",
     "Use Case": "Comparar opciones de Arquitectura",
     "Situacion / Problema": "Debemos elegir entre varias opciones tecnicas y necesito una comparacion estructurada para apoyar la decision.",
-    "Prompt 1": "Compara estas opciones de Arquitectura.",
-    "Prompt 2": "Compara estas opciones de Arquitectura indicando pros y contras.",
-    "Prompt 3": "Act as an enterprise architect. Compare the following architecture options. Provide a structured comparison including scalability, security, cost, complexity and long-term sustainability. End with a clear recommendation and rationale.",
     "Valor / Beneficio": "Mejora la calidad de las decisiones y aporta una base clara para justificar la opcion elegida.",
     "Nivel de datos (DPC / DSK)": "DPC 0",
-    "Save up":"3–5 horas por análisis" ,
-    "Notas": "Arquitectura"
+    "Save up": "3–5 horas por análisis",
+    "Notas": "Arquitectura",
+    "Prompt": "CONTEXTO:\nDebemos elegir entre varias opciones técnicas y necesito una comparación estructurada para apoyar la decisión.\n\nOBJETIVO:\nActúa como arquitecto empresarial. Compara las siguientes opciones de arquitectura y proporciona una recomendación justificada.\n\nDATOS:\n[Proporciona: las opciones a comparar, criterios relevantes, restricciones del proyecto]\n\nFORMATO:\nComparación estructurada incluyendo: escalabilidad, seguridad, coste, complejidad y sostenibilidad a largo plazo. Termina con una recomendación clara y su justificación."
   },
   {
     "Equipo": "Arquitectura",
     "Use Case": "Documentar Arquitectura y estandares",
     "Situacion / Problema": "Necesito documentar una Arquitectura o estandar tecnico de forma clara y reutilizable para otros Equipos.",
-    "Prompt 1": "Documenta esta Arquitectura.",
-    "Prompt 2": "Documenta esta Arquitectura de forma clara para otros Equipos tecnicos.",
-    "Prompt 3": "Act as an enterprise architect. Create clear and structured documentation for the following architecture or standard. Include purpose, scope, key components, dependencies, does and doents, and a short summary for non-architects.",
     "Valor / Beneficio": "Reduce dependencia de conocimiento individual y mejora la reutilizacion y coherencia arqueitectonica.",
     "Nivel de datos (DPC / DSK)": "DPC 0",
-    "Save up":"5–8 horas por documento" ,
-    "Notas": "Arquitectura"
+    "Save up": "5–8 horas por documento",
+    "Notas": "Arquitectura",
+    "Prompt": "CONTEXTO:\nNecesito documentar una arquitectura o estándar técnico de forma clara y reutilizable para otros equipos.\n\nOBJETIVO:\nActúa como arquitecto empresarial. Crea documentación clara y estructurada para la siguiente arquitectura o estándar.\n\nDATOS:\n[Proporciona: descripción de la arquitectura o estándar, componentes clave, audiencia objetivo]\n\nFORMATO:\nIncluye: propósito, alcance, componentes principales, dependencias, reglas de uso (qué sí / qué no) y un resumen breve para no arquitectos."
   },
   {
     "Equipo": "Product Management",
     "Use Case": "Definir y estructurar requisitos de producto",
     "Situacion / Problema": "Tengo ideas, feedback o requisitos poco claros y necesito estructurarlos para avanzar en el desarrollo.",
-    "Prompt 1": "Define estos requisitos de producto.",
-    "Prompt 2": "Estructura estos requisitos de producto de forma clara y ordenada.",
-    "Prompt 3": "Act as a senior product manager. Help me structure the following product requeirements. Turn them into clear user needs, assumptions and constraints. Highlight open queestions and suggest next steps.",
     "Valor / Beneficio": "Aporta claridad, reduce ambiguedad y acelera la toma de decisiones en fases tempranas.",
     "Nivel de datos (DPC / DSK)": "DPC 1",
-    "Save up":"2–4 horas por iniciativa" ,
-    "Notas": "Product Management"
+    "Save up": "2–4 horas por iniciativa",
+    "Notas": "Product Management",
+    "Prompt": "CONTEXTO:\nTengo ideas, feedback o requisitos poco claros y necesito estructurarlos para avanzar en el desarrollo del producto.\n\nOBJETIVO:\nActúa como product manager senior. Ayúdame a estructurar los siguientes requisitos de producto en necesidades claras de usuario.\n\nDATOS:\n[Proporciona: ideas o requisitos en bruto, contexto del producto, tipo de usuario, restricciones conocidas]\n\nFORMATO:\nTransforma el input en: necesidades de usuario, suposiciones y restricciones. Destaca preguntas abiertas y sugiere próximos pasos."
   },
   {
     "Equipo": "Product Management",
     "Use Case": "Creacion de epicas y user stories",
     "Situacion / Problema": "Necesito transformar una idea o iniciativa en epicas y user stories claras para el Equipo de desarrollo.",
-    "Prompt 1": "Crea user stories a partir de esta idea.",
-    "Prompt 2": "Crea epicas y user stories con criterios de aceptacion.",
-    "Prompt 3": "Act as a senior product manager. Create well-structured epics and user stories based on the following input. Use the INVEST principle and include clear acceptance criteria.",
     "Valor / Beneficio": "Mejora la calidad del backlog y facilita la alineacion entre negocio y desarrollo.",
     "Nivel de datos (DPC / DSK)": "DPC 1",
-    "Save up":"3–5 horas por backlog item complejo" ,
-    "Notas": "Product Management"
+    "Save up": "3–5 horas por backlog item complejo",
+    "Notas": "Product Management",
+    "Prompt": "CONTEXTO:\nNecesito transformar una idea o iniciativa en épicas y user stories claras para el equipo de desarrollo.\n\nOBJETIVO:\nActúa como product manager senior. Crea épicas y user stories bien estructuradas a partir del siguiente input.\n\nDATOS:\n[Proporciona: descripción de la iniciativa o funcionalidad, tipo de usuario, restricciones técnicas o de negocio]\n\nFORMATO:\nAplica el principio INVEST e incluye criterios de aceptación claros para cada user story."
   },
   {
     "Equipo": "Product Management",
     "Use Case": "Preparar comunicacion de producto para stakeholders",
     "Situacion / Problema": "Tengo quee explicar el estado, decisiones o proximos pasos del producto a stakeholders no tecnicos.",
-    "Prompt 1": "Resume el estado del producto.",
-    "Prompt 2": "Explica el estado del producto para stakeholders no tecnicos.",
-    "Prompt 3": "Act as a product manager. Prepare a concise stakeholder update about the product. Include current status, key decisions, risks, next milestones and clear takeaways. Use business-oriented language.",
     "Valor / Beneficio": "Facilita la comunicacion con stakeholders y mejora la confianza y alineacion.",
     "Nivel de datos (DPC / DSK)": "DPC 1",
-    "Save up":"1–2 horas por comunicación",
-    "Notas": "Product Management"
+    "Save up": "1–2 horas por comunicación",
+    "Notas": "Product Management",
+    "Prompt": "CONTEXTO:\nNecesito explicar el estado, decisiones o próximos pasos del producto a stakeholders no técnicos.\n\nOBJETIVO:\nActúa como product manager. Prepara una actualización concisa del estado del producto para stakeholders.\n\nDATOS:\n[Proporciona: estado actual del producto, decisiones tomadas recientemente, riesgos activos, próximos hitos]\n\nFORMATO:\nIncluye: estado actual, decisiones clave, riesgos, próximos hitos y conclusiones claras. Lenguaje orientado al negocio."
   },
   {
     "Equipo": "Project Management",
     "Use Case": "Planificacion de proyecto",
     "Situacion / Problema": "Necesito estructurar un proyecto desde cero o revisar un plan existente para asegurar tiempos, dependencias y entregables claros.",
-    "Prompt 1": "Crea un plan de proyecto.",
-    "Prompt 2": "Crea un plan de proyecto con fases y hitos.",
-    "Prompt 3": "Act as a senior project manager. Create a structured project plan based on the following input. Include phases, key milestones, dependencies, risks and a high-level timeline. Keep it clear and actionable.",
     "Valor / Beneficio": "Mejora la claridad del proyecto y reduce riesgos desde fases tempranas.",
     "Nivel de datos (DPC / DSK)": "DPC 1",
-    "Save up":"3–5 horas por plan" ,
-    "Notas": "Project Management"
+    "Save up": "3–5 horas por plan",
+    "Notas": "Project Management",
+    "Prompt": "CONTEXTO:\nNecesito estructurar un proyecto desde cero o revisar un plan existente para asegurar tiempos, dependencias y entregables claros.\n\nOBJETIVO:\nActúa como project manager senior. Crea un plan de proyecto estructurado basado en el siguiente input.\n\nDATOS:\n[Proporciona: objetivo del proyecto, equipo disponible, plazos, principales restricciones y entregables esperados]\n\nFORMATO:\nIncluye: fases, hitos clave, dependencias, riesgos y cronograma de alto nivel. Claro y accionable."
   },
   {
     "Equipo": "Project Management",
     "Use Case": "Seguimiento y reporte de estado",
     "Situacion / Problema": "Debo informar regularmente sobre el estado del proyecto a stakeholders y necesito un resumen claro y coherente.",
-    "Prompt 1": "Resume el estado del proyecto.",
-    "Prompt 2": "Prepara un informe de estado del proyecto.",
-    "Prompt 3": "Act as a project manager. Prepare a concise project status report for stakeholders. Include current status, progress vs plan, key risks, blockers and next steps. Use a clear and neutral tone.",
     "Valor / Beneficio": "Ahorra tiempo en reporting y mejora la transparencia con stakeholders.",
     "Nivel de datos (DPC / DSK)": "DPC 1",
-    "Save up":"1–2 horas por reporte" ,
-    "Notas": "Project Management"
+    "Save up": "1–2 horas por reporte",
+    "Notas": "Project Management",
+    "Prompt": "CONTEXTO:\nDebo informar regularmente sobre el estado del proyecto a stakeholders y necesito un resumen claro y coherente.\n\nOBJETIVO:\nActúa como project manager. Prepara un informe de estado conciso del proyecto para stakeholders.\n\nDATOS:\n[Proporciona: estado actual, avance vs plan, riesgos activos, bloqueos identificados y próximos pasos]\n\nFORMATO:\nInforme con: estado general, progreso vs plan, riesgos y bloqueos, próximos pasos con responsables. Tono claro y neutro."
   },
   {
     "Equipo": "Project Management",
     "Use Case": "Gestion de riesgos del proyecto",
     "Situacion / Problema": "Necesito identificar y estructurar riesgos del proyecto y posibles medidas de mitigacion.",
-    "Prompt 1": "Identifica riesgos del proyecto.",
-    "Prompt 2": "Identifica riesgos y propone medidas de mitigacion.",
-    "Prompt 3": "Act as a senior project manager. Identify potential risks based on the following project context. Assess their impact and likelihood, and propose concrete mitigation actions.",
     "Valor / Beneficio": "Endereza problemas antes de quee escalen y mejora la gestion proactiva del proyecto.",
     "Nivel de datos (DPC / DSK)": "DPC 1",
-    "Save up":"2–3 horas por revisión de riesgos" ,
-    "Notas": "Project Management"
+    "Save up": "2–3 horas por revisión de riesgos",
+    "Notas": "Project Management",
+    "Prompt": "CONTEXTO:\nNecesito identificar y estructurar los riesgos del proyecto y proponer medidas de mitigación concretas.\n\nOBJETIVO:\nActúa como project manager senior. Identifica los riesgos potenciales del proyecto y propone un plan de mitigación.\n\nDATOS:\n[Proporciona: descripción del proyecto, equipo, tecnologías implicadas, plazos y dependencias externas clave]\n\nFORMATO:\nPara cada riesgo: evalúa impacto y probabilidad, propón acciones de mitigación concretas. Ordena los riesgos por nivel de criticidad."
   },
   {
     "Equipo": "Data Science",
     "Use Case": "Explicar resultados de un analisis",
     "Situacion / Problema": "Tengo resultados de un analisis o modelo y necesito explicarlos a stakeholders no tecnicos.",
-    "Prompt 1": "Explica estos resultados.",
-    "Prompt 2": "Explica estos resultados de forma sencilla.",
-    "Prompt 3": "Act as a senior data scientist. Explain the following analysis results to a non-technical audience. Focus on key insights, business implications, limitations and recommended actions. Avoid technical jargon.",
     "Valor / Beneficio": "Mejora la comprension de los resultados y facilita la toma de decisiones basada en datos.",
     "Nivel de datos (DPC / DSK)": "DPC 1",
-    "Save up":"1–2 horas por análisis" ,
-    "Notas": "Data Science"
+    "Save up": "1–2 horas por análisis",
+    "Notas": "Data Science",
+    "Prompt": "CONTEXTO:\nTengo resultados de un análisis o modelo y necesito explicarlos a stakeholders no técnicos de forma clara y útil.\n\nOBJETIVO:\nActúa como data scientist senior. Explica los siguientes resultados del análisis a una audiencia no técnica.\n\nDATOS:\n[Proporciona: resultados del análisis, contexto del negocio, pregunta o hipótesis que se quería validar]\n\nFORMATO:\nEnfoca en: insights clave, implicaciones para el negocio, limitaciones del análisis y acciones recomendadas. Sin jerga técnica."
   },
   {
     "Equipo": "Data Science",
     "Use Case": "Soporte para analisis y SQL",
     "Situacion / Problema": "Necesito ayuda para crear o mejorar queeries SQL y acelerar el analisis de datos.",
-    "Prompt 1": "Ayudame con esta query SQL.",
-    "Prompt 2": "Optimiza esta queery SQL y explica los cambios.",
-    "Prompt 3": "Act as a senior data analyst. Review the following SQL queery. Optimize it for performance and readability, explain the changes made, and highlight any assumptions or risks.",
     "Valor / Beneficio": "Ahorra tiempo en analisis y mejora la calidad y eficiencia de las consultas.",
     "Nivel de datos (DPC / DSK)": "DPC 1",
-    "Save up":"2–4 horas por análisis/query" ,
-    "Notas": "Data Science"
+    "Save up": "2–4 horas por análisis/query",
+    "Notas": "Data Science",
+    "Prompt": "CONTEXTO:\nNecesito ayuda para crear o mejorar queries SQL y acelerar el análisis de datos.\n\nOBJETIVO:\nActúa como analista de datos senior. Revisa y optimiza la siguiente query SQL.\n\nDATOS:\n[Proporciona: la query SQL actual, descripción del objetivo de la consulta, motor de base de datos utilizado]\n\nFORMATO:\nOptimiza para rendimiento y legibilidad, explica cada cambio realizado y señala suposiciones o riesgos identificados."
   },
   {
     "Equipo": "Data Science",
     "Use Case": "Seleccion de modelos y enfoquees",
     "Situacion / Problema": "Debo elegir entre distintos modelos o enfoquees analaticos y necesito apoyo para tomar una decision informada.",
-    "Prompt 1": "Recomienda un modelo para este problema.",
-    "Prompt 2": "Compara modelos adecuados para este caso.",
-    "Prompt 3": "Act as a senior data scientist. Evaluate the following problem and compare suitable modeling approaches. Discuss pros and cons, assumptions, data requeirements and risks. Conclude with a clear recommendation.",
     "Valor / Beneficio": "Mejora la calidad de las decisiones tecnicas y reduce sesgos en la eleccion del modelo.",
     "Nivel de datos (DPC / DSK)": "DPC 1",
-    "Save up":"2–3 horas por iniciativa" ,
-    "Notas": "Data Science"
+    "Save up": "2–3 horas por iniciativa",
+    "Notas": "Data Science",
+    "Prompt": "CONTEXTO:\nDebo elegir entre distintos modelos o enfoques analíticos y necesito apoyo para tomar una decisión informada.\n\nOBJETIVO:\nActúa como data scientist senior. Evalúa el problema y compara los enfoques de modelado más adecuados.\n\nDATOS:\n[Proporciona: descripción del problema, datos disponibles, restricciones técnicas o de negocio, criterios de éxito]\n\nFORMATO:\nPara cada enfoque: pros y contras, suposiciones, requisitos de datos y riesgos. Concluye con una recomendación clara y justificada."
   },
   {
     "Equipo": "Data Science",
     "Use Case": "Documentacion de modelos y analisis",
     "Situacion / Problema": "Necesito documentar un modelo o analisis para quee sea comprensible y reutilizable por otros Equipos.",
-    "Prompt 1": "Documenta este modelo.",
-    "Prompt 2": "Documenta este modelo de forma clara y estructurada.",
-    "Prompt 3": "Act as a senior data scientist. Create clear documentation for the following model or analysis. Include purpose, data used, methodology, assumptions, limitations, and guidance for reuse.",
     "Valor / Beneficio": "Reduce dependencia de conocimiento individual y mejora la reutilizacion y gobernanza de modelos.",
     "Nivel de datos (DPC / DSK)": "DPC 1",
-    "Save up":"1,5–2 horas por modelo documentado" ,
-    "Notas": "Data Science"
+    "Save up": "1,5–2 horas por modelo documentado",
+    "Notas": "Data Science",
+    "Prompt": "CONTEXTO:\nNecesito documentar un modelo o análisis para que sea comprensible y reutilizable por otros equipos.\n\nOBJETIVO:\nActúa como data scientist senior. Crea documentación clara para el siguiente modelo o análisis.\n\nDATOS:\n[Proporciona: descripción del modelo, datos utilizados, metodología aplicada, resultados principales y casos de uso]\n\nFORMATO:\nIncluye: propósito, datos usados, metodología, suposiciones, limitaciones y guía de reutilización para otros equipos."
+  },
+  {
+    "Equipo": "Chapter Leads",
+    "Use Case": "Master Prompt - Chapter Leads",
+    "Situacion / Problema": "Necesito un prompt maestro versátil y reutilizable para apoyar cualquier tarea de liderazgo como Chapter Lead en T-Systems Iberia: comunicación, gestión de equipo, análisis, checklists, reporting, desarrollo de personas, etc.",
+    "Valor / Beneficio": "Permite a cualquier Chapter Lead iniciar tareas de liderazgo de forma estructurada sin construir el prompt desde cero. Reutilizable para comunicación, planificación, análisis de equipo y desarrollo de personas.",
+    "Nivel de datos (DPC / DSK)": "DPC 1",
+    "Save up": "2–4 horas por tarea de gestión",
+    "Notas": "Chapter Leads",
+    "Prompt": "Actúa como un asistente de IA especializado en apoyar a roles de liderazgo, gestión de equipos y coordinación operativa dentro de T-Systems Iberia.\n\nTU ROL COMO ASISTENTE:\n- Ayudarme a mejorar eficiencia, claridad y calidad en mis tareas de gestión.\n- Apoyar en actividades operativas, organizativas, comunicativas y de desarrollo de personas.\n- Producir respuestas basadas en la información proporcionada, evitando inventar datos.\n- Ser profesional, preciso y orientado a la acción.\n\nCONTEXTO ORGANIZATIVO:\nT-Systems Iberia forma parte del ecosistema internacional de T-Systems. Sus unidades pueden incluir áreas técnicas, operativas, comerciales, de servicio o de soporte corporativo. Las responsabilidades suelen involucrar coordinación de equipos, interacción con clientes internos/externos, cumplimiento de procesos corporativos y alineación con estándares operativos y de calidad.\n\nOBJETIVO DE LA TAREA:\n[Describe aquí lo que necesitas: análisis, checklist, comunicación, plantilla, resumen, estructura, evaluación, recomendación, etc.]\n\nINFORMACIÓN RELEVANTE (rellenar según el caso):\n- Rol implicado: [Team Lead / Chapter Lead / Service Manager / Responsable de Área / otro]\n- Equipo o unidad: [área o departamento]\n- Personas o perfiles incluidos: [si aplica]\n- Contexto o problema: [describe la situación]\n- Datos disponibles: [información objetiva, evidencias]\n- Restricciones: [plazos, reglas corporativas, sensibilidad]\n- Nivel de detalle deseado: [alto / medio / breve]\n- Formato deseado: [tabla, viñetas, email, informe, plantilla, pasos estructurados]\n\nREQUISITOS DE LA RESPUESTA:\n- Producir un resultado claro, estructurado y ejecutable.\n- Indicar pasos concretos, riesgos, dependencias o recomendaciones cuando sea necesario.\n- Mantener tono profesional y alineado con el entorno corporativo de T-Systems Iberia.\n- No incluir información sensible, datos personales o reales que incumplan compliance.\n- No asumir información que no haya sido proporcionada.\n- Solicitar datos adicionales si detectas huecos críticos.\n\nFORMATO DE SALIDA SOLICITADO:\n[Indica el formato final que necesitas: checklist, agenda, email, plantilla, reporte, análisis, propuesta, plan de acción, etc.]\n\n¿Necesitas más información antes de construir el resultado?"
+  },
+  {
+    "Equipo": "Chapter Leads",
+    "Use Case": "Gestionar equipo y prioridades del Chapter",
+    "Situacion / Problema": "Necesito organizar prioridades del equipo, equilibrar carga de trabajo y asegurar alineación con objetivos del Chapter.",
+    "Valor / Beneficio": "Mejora la eficiencia del equipo, evita sobrecarga y alinea el trabajo con objetivos estratégicos.",
+    "Nivel de datos (DPC / DSK)": "DPC 1",
+    "Save up": "2–4 horas por semana",
+    "Notas": "Chapter Leads",
+    "Prompt": "Necesito una plantilla completa para la gestión operativa y el cumplimiento mensual del equipo.\n\nObjetivo:\nQuiero asegurar que las personas cumplen con las obligaciones corporativas de T-Systems Iberia.\n\nIncluye:\n- Checklist mensual (formación obligatoria, registro de horas, vacaciones, políticas internas).\n- Estado por empleado (cumple / no cumple / en riesgo).\n- Responsable del seguimiento.\n- Acciones correctivas sugeridas.\n- Indicadores de cumplimiento (KPI).\n- Alertas y recomendaciones basadas en buenas prácticas operativas.\n\nFormato:\nTabla + breve resumen ejecutivo.\n\nSi falta algún dato para personalizar la plantilla, pídemelo."
+  },
+  {
+    "Equipo": "Chapter Leads",
+    "Use Case": "Seguimiento individual (1on1)",
+    "Situacion / Problema": "Necesito preparar y estructurar reuniones 1on1 con los miembros del equipo para detectar bloqueos, hacer seguimiento de compromisos y promover el desarrollo profesional.",
+    "Valor / Beneficio": "Mejora el acompañamiento individual, detecta riesgos a tiempo y fortalece el vínculo entre el Chapter Lead y cada miembro del equipo.",
+    "Nivel de datos (DPC / DSK)": "DPC 1",
+    "Save up": "2–3 horas por ciclo de 1on1",
+    "Notas": "Chapter Leads",
+    "Prompt": "Necesito una plantilla completa para realizar el seguimiento individual mediante reuniones 1on1 con los miembros del equipo.\n\nObjetivo:\nAsegurar un acompañamiento continuo, detectar bloqueos a tiempo y promover el desarrollo profesional dentro de T-Systems Iberia.\n\nIncluye:\n- Agenda estructurada para sesiones de 45 minutos.\n- Preguntas abiertas para explorar: estado emocional, bloqueos, carga de trabajo, relación con el proyecto, comunicación y clima.\n- Espacio para revisar compromisos acordados previamente.\n- Sección para identificar riesgos operativos o personales que puedan impactar al servicio.\n- Registro de acuerdos, acciones necesarias y responsables.\n- Indicadores clave (engagement, carga, riesgos percibidos).\n- Recomendaciones para mejorar el bienestar y la productividad del empleado.\n\nFormato:\nPlantilla editable + tabla de seguimiento de compromisos.\n\nSi falta algún dato para personalizar la plantilla, pídemelo antes de generarla."
+  },
+  {
+    "Equipo": "Chapter Leads",
+    "Use Case": "Desarrollo profesional y carrera",
+    "Situacion / Problema": "Necesito diseñar planes de crecimiento individual, mapear competencias actuales vs objetivo y preparar conversaciones de orientación de carrera para los miembros del equipo.",
+    "Valor / Beneficio": "Alinea el crecimiento del empleado con las necesidades del servicio y la organización, reduce la rotación y fortalece el talento interno del Chapter.",
+    "Nivel de datos (DPC / DSK)": "DPC 1",
+    "Save up": "3–5 horas por plan de desarrollo",
+    "Notas": "Chapter Leads",
+    "Prompt": "Necesito una plantilla completa para gestionar el desarrollo profesional y la evolución de carrera de un empleado dentro de T-Systems Iberia.\n\nObjetivo:\nAlinear el crecimiento del empleado con las necesidades del servicio, las competencias requeridas por la organización y su propio plan de carrera.\n\nIncluye:\n- Matriz de competencias: nivel actual vs nivel objetivo.\n- Identificación de gaps profesionales (técnicos, funcionales y soft skills).\n- Roadmap de desarrollo profesional a 12 meses.\n- Acciones recomendadas: formación, mentoring, exposición a proyectos, rotaciones.\n- Indicadores clave de progreso (KPI de desarrollo).\n- Preguntas guía para una conversación de orientación de carrera.\n- Riesgos o bloqueos potenciales que puedan afectar al desarrollo.\n- Recomendaciones para el siguiente trimestre.\n\nFormato:\nTabla estructurada + plan narrativo por fases.\n\nSi necesitas información adicional para personalizar el plan (rol, seniority, nivel objetivo, skills clave), solicítala antes de generar la versión final."
+  },
+  {
+    "Equipo": "Chapter Leads",
+    "Use Case": "Evaluación de desempeño",
+    "Situacion / Problema": "Necesito estructurar evaluaciones anuales de desempeño, redactar feedback equilibrado e identificar fortalezas, áreas de mejora y planes de acción para cada miembro del equipo.",
+    "Valor / Beneficio": "Sistematiza el proceso de evaluación, garantiza feedback justo y basado en evidencias, y genera planes de mejora accionables alineados con los objetivos corporativos.",
+    "Nivel de datos (DPC / DSK)": "DPC 1",
+    "Save up": "3–5 horas por evaluación",
+    "Notas": "Chapter Leads",
+    "Prompt": "Necesito una plantilla completa para realizar una evaluación anual del desempeño de un empleado dentro de T-Systems Iberia.\n\nObjetivo:\nValorar de manera estructurada el rendimiento del empleado, identificar fortalezas y áreas de mejora, y definir un plan de acción claro y realista para el siguiente periodo.\n\nIncluye:\n- Estructura basada en los tres ejes corporativos: Resultados (WHAT), Actitud y Conducta (HOW), Contribución Organizativa.\n- Identificación de fortalezas con ejemplos o evidencias observables.\n- Áreas de mejora específicas y relacionadas con el impacto en el servicio.\n- Feedback equilibrado siguiendo un modelo profesional (p. ej., SBI: Situación–Comportamiento–Impacto).\n- Valoración cuantitativa o cualitativa según cada eje.\n- Riesgos potenciales o alertas de desempeño.\n- Plan de acción detallado para 3 meses y 12 meses (objetivos SMART).\n- Recomendaciones para el desarrollo continuo.\n\nFormato:\nTabla estructurada + resumen narrativo final.\n\nSi falta información relevante para completar la evaluación (rol, seniority, evidencias, objetivos, contexto del proyecto), solicítala antes de generar el resultado final."
+  },
+  {
+    "Equipo": "Chapter Leads",
+    "Use Case": "Salary review y compensación",
+    "Situacion / Problema": "Necesito preparar un argumentario estructurado para revisiones salariales, analizar coherencia interna entre perfiles y justificar decisiones de compensación de forma objetiva.",
+    "Valor / Beneficio": "Facilita decisiones de compensación justas, coherentes y bien documentadas, reduciendo el riesgo de retención y apoyando conversaciones difíciles con evidencias sólidas.",
+    "Nivel de datos (DPC / DSK)": "DPC 1",
+    "Save up": "2–4 horas por propuesta salarial",
+    "Notas": "Chapter Leads",
+    "Prompt": "Necesito una plantilla completa y profesional para preparar una revisión salarial (salary review) dentro de T-Systems Iberia.\n\nObjetivo:\nPresentar un argumentario estructurado, objetivo y coherente para justificar una propuesta salarial, garantizando equidad interna y alineación con el rendimiento y las responsabilidades del empleado.\n\nIncluye:\n- Resumen del perfil del empleado (rol, seniority, responsabilidades clave).\n- Evidencias de desempeño: resultados, impacto en proyectos y contribuciones destacadas.\n- Evolución profesional en los últimos 12 meses.\n- Comparativa interna: análisis de coherencia con rangos salariales, niveles similares y equidad entre perfiles.\n- Factores adicionales: carga asumida, criticidad del rol, skills especiales, riesgo de rotación.\n- Propuesta salarial detallada (sin cifras si no se proporcionan).\n- Justificación argumentada basada en hechos y criterios objetivos.\n- Riesgos asociados si no se realiza el ajuste (riesgo operativo, retención, impacto en servicio).\n- Recomendaciones para la comunicación con el empleado.\n\nFormato:\nInforme breve profesional + tabla de criterios de evaluación salarial.\n\nSi faltan datos críticos para completar el argumentario (nivel actual, comparativa, evidencias, responsabilidades), solicítalos antes de generar la propuesta final."
+  },
+  {
+    "Equipo": "Chapter Leads",
+    "Use Case": "Onboarding y offboarding",
+    "Situacion / Problema": "Necesito crear un plan estructurado de onboarding para nuevas incorporaciones y gestionar el offboarding de forma ordenada, asegurando transferencia de conocimiento y continuidad del servicio.",
+    "Valor / Beneficio": "Acelera la integración de nuevos empleados, reduce el tiempo de productividad inicial y garantiza que la salida de un miembro no genere pérdida de conocimiento crítico.",
+    "Nivel de datos (DPC / DSK)": "DPC 1",
+    "Save up": "4–6 horas por proceso",
+    "Notas": "Chapter Leads",
+    "Prompt": "Necesito una plantilla completa para gestionar el proceso de onboarding y offboarding de un empleado dentro de T-Systems Iberia.\n\nObjetivo:\nAsegurar la correcta integración de nuevas incorporaciones y garantizar una salida ordenada, profesional y sin pérdida de conocimiento cuando un empleado finaliza su etapa en la organización.\n\nIncluye:\n\n1) Onboarding (primeros 90 días):\n- Plan estructurado por hitos: días 0, 7, 30, 60 y 90.\n- Reuniones clave: manager, proyecto, stakeholders, HR.\n- Checklist de integración: accesos, herramientas, formaciones obligatorias, presentación al equipo.\n- Objetivos claros para cada fase.\n- Indicadores de éxito en la integración.\n- Espacio para seguimiento del manager.\n\n2) Offboarding:\n- Checklist operativo (accesos, documentación, traspaso de tareas).\n- Guion de entrevista de salida (feedback, motivos, riesgos detectados).\n- Plantilla de transferencia de conocimiento (KT — Knowledge Transfer).\n- Lista de validaciones finales para asegurar continuidad del servicio.\n\nFormato:\nDos plantillas separadas (Onboarding 90 días + Offboarding) en formato tabla + un breve resumen narrativo.\n\nSi falta información específica (rol, tipo de servicio, seniority, riesgos existentes), pídemela antes de generar la versión final."
+  },
+  {
+    "Equipo": "Chapter Leads",
+    "Use Case": "Coordinación con Customer Delivery",
+    "Situacion / Problema": "Necesito consolidar necesidades de proyecto, analizar la asignación de perfiles, evaluar riesgos de capacidad y preparar una comunicación bidireccional clara con Customer Delivery.",
+    "Valor / Beneficio": "Mejora la alineación entre el equipo operativo y Customer Delivery, anticipa cuellos de botella de capacidad y reduce los riesgos de asignación y sobrecarga.",
+    "Nivel de datos (DPC / DSK)": "DPC 1",
+    "Save up": "2–3 horas por ciclo de coordinación",
+    "Notas": "Chapter Leads",
+    "Prompt": "Necesito una plantilla completa para coordinar las necesidades de proyecto con Customer Delivery dentro de T-Systems Iberia.\n\nObjetivo:\nAsegurar una comunicación eficaz entre la unidad operativa y Customer Delivery, anticipar necesidades de proyecto y mitigar riesgos relacionados con la capacidad del equipo.\n\nIncluye:\n- Consolidación de necesidades actuales y futuras del proyecto (próximas semanas/meses).\n- Estado de la capacidad del equipo: perfiles disponibles, ocupación, rotación prevista e incorporaciones.\n- Riesgos relacionados con la asignación (sobrecarga, infrautilización, gaps de skills, dependencias).\n- Propuestas de acciones correctivas o preventivas.\n- Requerimientos de formación o refuerzo detectados para cubrir necesidades del servicio.\n- Información clave para que Customer Delivery comunique expectativas hacia el equipo.\n- Mensaje bidireccional claro para mantener alineación y transparencia.\n\nFormato:\nInforme operativo + tabla con:\n- Capacidad actual\n- Necesidades del proyecto\n- Riesgos\n- Mitigaciones propuestas\n\nSi falta información específica del proyecto o de los perfiles, solicítala antes de generar la versión final."
+  },
+  {
+    "Equipo": "Chapter Leads",
+    "Use Case": "Procesos de selección",
+    "Situacion / Problema": "Necesito definir criterios de evaluación, preparar preguntas de entrevista conductuales y técnicas, y estructurar la valoración final de candidatos para procesos de selección.",
+    "Valor / Beneficio": "Estandariza la evaluación de candidatos, reduce sesgos en la selección y proporciona una recomendación final argumentada y coherente con los estándares corporativos.",
+    "Nivel de datos (DPC / DSK)": "DPC 1",
+    "Save up": "2–4 horas por proceso de selección",
+    "Notas": "Chapter Leads",
+    "Prompt": "Necesito una plantilla completa para gestionar un proceso de selección dentro de T-Systems Iberia.\n\nObjetivo:\nEvaluar candidatos de forma estructurada, objetiva y alineada con los estándares corporativos, permitiendo comparar perfiles y emitir una recomendación final clara.\n\nIncluye:\n\n1) Antes de la entrevista:\n- Criterios de evaluación del puesto (técnicos y/o funcionales).\n- Competencias conductuales clave (comunicación, colaboración, proactividad, autonomía).\n- Skills imprescindibles, valorables y no requeridos.\n- Niveles esperados para cada competencia.\n\n2) Durante la entrevista:\n- Preguntas conductuales basadas en metodología STAR.\n- Preguntas técnicas específicas (si aplica).\n- Indicadores para valorar la claridad, profundidad y consistencia de las respuestas.\n- Observaciones sobre encaje cultural.\n\n3) Después de la entrevista:\n- Valoración técnica (si corresponde).\n- Valoración de soft skills.\n- Nivel estimado dentro de la estructura organizativa.\n- Rango salarial orientativo o coste/hora esperado (solo si se proporcionan datos).\n- Riesgos detectados (técnicos, actitudinales o de encaje).\n- Recomendación final argumentada (contratar / descartar / seguir evaluando).\n\nFormato:\nPlantilla en tabla + resumen narrativo final.\n\nSi faltan datos sobre el rol, seniority, necesidades del servicio o contexto del puesto, pídemelos antes de generar la plantilla final."
   }
 ]

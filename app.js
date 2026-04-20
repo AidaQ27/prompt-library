@@ -38,9 +38,7 @@ fetch("prompts.json")
     const dpcKey = findKey(sample, ["dpc", "nivel de datos"]);
     const saveUpKey = findKey(sample, ["save up", "saveup", "eficiencia"]);
 
-    const prompt1Key = findKey(sample, ["prompt 1", "prompt1"]);
-    const prompt2Key = findKey(sample, ["prompt 2", "prompt2"]);
-    const prompt3Key = findKey(sample, ["prompt 3", "prompt3"]);
+    const promptKey = Object.keys(sample).find(k => k.toLowerCase() === 'prompt') || null;
 
     // 1) Rellenar selector
     const teams = [
@@ -81,9 +79,7 @@ fetch("prompts.json")
           const saveUp = (saveUpKey ? r[saveUpKey] : "") || "";
           const team = (teamKey ? r[teamKey] : "") || "";
 
-          const p1 = (prompt1Key ? r[prompt1Key] : "") || "";
-          const p2 = (prompt2Key ? r[prompt2Key] : "") || "";
-          const p3 = (prompt3Key ? r[prompt3Key] : "") || "";
+          const prompt = (promptKey ? r[promptKey] : "") || "";
 
           const card = document.createElement("div");
           card.className = "card";
@@ -114,14 +110,13 @@ fetch("prompts.json")
             </div>
 
             <div class="pills">
-              <button class="pillBtn p1">💡 Prompt 1</button>
-              <button class="pillBtn p2">💡 Prompt 2</button>
-              <button class="pillBtn gold p3">💡 Prompt 3</button>
+              <button class="pillBtn gold pUnified">💡 Prompt</button>
             </div>
 
-            <pre class="promptBox"></pre>
-            <div class="copyRow">
-              <button class="copyBtn">Copy</button>
+            <div class="promptBox">
+              <div class="copyRow">
+                <button class="copyBtn">Copy</button>
+              </div>
             </div>
           `;
 
@@ -148,13 +143,19 @@ fetch("prompts.json")
           function show(text) {
             box.style.display = "block";
             copyRow.style.display = "flex";
-            box.textContent = text || "(vacío)";
+            // Set prompt text as a text node before the copyRow
+            let textNode = box.querySelector(".promptText");
+            if (!textNode) {
+              textNode = document.createElement("pre");
+              textNode.className = "promptText";
+              textNode.style.cssText = "margin:0 0 10px 0;white-space:pre-wrap;font-size:13px;line-height:1.45;";
+              box.insertBefore(textNode, copyRow);
+            }
+            textNode.textContent = text || "(vacío)";
             copyBtn.onclick = () => navigator.clipboard.writeText(text || "");
           }
 
-          card.querySelector(".p1").onclick = () => show(p1);
-          card.querySelector(".p2").onclick = () => show(p2);
-          card.querySelector(".p3").onclick = () => show(p3);
+          card.querySelector(".pUnified").onclick = () => show(prompt);
 
           cards.appendChild(card);
         });
