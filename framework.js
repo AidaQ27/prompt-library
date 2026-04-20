@@ -44,7 +44,7 @@ function renderFrameworkTabs() {
     if (fw.status) {
       const badge = document.createElement('span');
       badge.className = `statusBadge statusBadge--${fw.status}`;
-      badge.textContent = fw.status === 'nuevo' ? 'Nuevo' : 'Próximamente';
+      badge.textContent = fw.status === 'nuevo' ? t('status.nuevo') : t('status.proximamente');
       button.appendChild(badge);
     }
     
@@ -76,7 +76,7 @@ function selectFramework(id) {
 function updatePlantillaBadge() {
   const badgeContainer = document.getElementById('currentPlantillaBadge');
   if (badgeContainer && selectedFramework) {
-    badgeContainer.innerHTML = `<span class="badge">Plantilla actual: ${selectedFramework.title}</span>`;
+    badgeContainer.innerHTML = `<span class="badge">${t('builder.badge.current')} ${selectedFramework.title}</span>`;
   }
 }
 
@@ -112,7 +112,7 @@ function renderFrameworkDetail() {
   builder.className = 'promptBuilder';
   
   const builderTitle = document.createElement('h3');
-  builderTitle.textContent = '✏️ Rellena tu prompt';
+  builderTitle.textContent = t('builder.title');
   builder.appendChild(builderTitle);
   
   const formGrid = document.createElement('div');
@@ -126,18 +126,18 @@ function renderFrameworkDetail() {
   
   const resetBtn = document.createElement('button');
   resetBtn.className = 'actionButton secondary';
-  resetBtn.textContent = '🔄 Reset';
+  resetBtn.textContent = t('builder.reset');
   resetBtn.addEventListener('click', resetForm);
   
   const copyTemplateBtn = document.createElement('button');
   copyTemplateBtn.className = 'actionButton primary';
-  copyTemplateBtn.textContent = '📋 Copiar plantilla';
+  copyTemplateBtn.textContent = t('builder.copyTemplate');
   copyTemplateBtn.addEventListener('click', copyTemplateToClipboard);
   
   const copyFinalBtn = document.createElement('button');
   copyFinalBtn.className = 'actionButton primary';
   copyFinalBtn.id = 'copyFinalBtn';
-  copyFinalBtn.textContent = '✅ Copiar prompt final';
+  copyFinalBtn.textContent = t('builder.copyFinal');
   copyFinalBtn.disabled = true;
   copyFinalBtn.addEventListener('click', copyFinalPromptToClipboard);
   
@@ -155,7 +155,7 @@ function renderFrameworkDetail() {
   previewHeader.className = 'previewHeader';
   const previewLabel = document.createElement('span');
   previewLabel.className = 'previewLabel';
-  previewLabel.textContent = '👁️ Vista previa del prompt final';
+  previewLabel.textContent = t('builder.preview');
   previewHeader.appendChild(previewLabel);
   preview.appendChild(previewHeader);
   
@@ -206,6 +206,7 @@ function renderDynamicForm() {
   const capitulFields = selectedFramework.fields.filter(f => f.section === 'contexto_capitulo');
   const okrsFields = selectedFramework.fields.filter(f => f.section === 'okrs');
   const governanceFields = selectedFramework.fields.filter(f => f.section === 'governance');
+  const tecnicoFields = selectedFramework.fields.filter(f => f.section === 'contexto_tecnico');
 
   let html = '';
 
@@ -215,12 +216,12 @@ function renderDynamicForm() {
   html += `</div>`;
 
   // Advanced sections (collapsible)
-  if (contextoFields.length > 0 || capitulFields.length > 0 || okrsFields.length > 0 || governanceFields.length > 0) {
+  if (contextoFields.length > 0 || capitulFields.length > 0 || okrsFields.length > 0 || governanceFields.length > 0 || tecnicoFields.length > 0) {
     html += `
       <div class="advancedSectionCard">
         <div class="advancedSectionToggle" data-toggle="advanced">
           <span class="toggleIcon" id="advancedToggleIcon">▶</span>
-          <span class="toggleLabel">Opciones Avanzadas</span>
+          <span class="toggleLabel">${t('builder.advanced')}</span>
         </div>
         <div class="advancedSection" id="advancedSection">`;
     
@@ -237,7 +238,7 @@ function renderDynamicForm() {
     if (capitulFields.length > 0) {
       html += `
         <div class="formSectionHeader">
-          <h4>👥 Contexto del Chapter</h4>
+          <h4>${t('section.contexto_capitulo')}</h4>
         </div>
         <div class="formSection">
           ${capitulFields.map(field => renderField(field)).join('')}
@@ -249,7 +250,7 @@ function renderDynamicForm() {
     if (contextoFields.length > 0) {
       html += `
         <div class="formSectionHeader">
-          <h4>📊 Contexto Operativo</h4>
+          <h4>${t('section.contexto_operativo')}</h4>
         </div>
         <div class="formSection">
           ${contextoFields.map(field => renderField(field)).join('')}
@@ -261,10 +262,22 @@ function renderDynamicForm() {
     if (okrsFields.length > 0) {
       html += `
         <div class="formSectionHeader">
-          <h4>🎯 OKRs</h4>
+          <h4>${t('section.okrs')}</h4>
         </div>
         <div class="formSection">
           ${okrsFields.map(field => renderField(field)).join('')}
+        </div>
+      `;
+    }
+
+    // Stack Técnico (Java Engineer y futuros perfiles técnicos)
+    if (tecnicoFields.length > 0) {
+      html += `
+        <div class="formSectionHeader">
+          <h4>${t('section.contexto_tecnico')}</h4>
+        </div>
+        <div class="formSection">
+          ${tecnicoFields.map(field => renderField(field)).join('')}
         </div>
       `;
     }
@@ -273,7 +286,7 @@ function renderDynamicForm() {
     if (governanceFields.length > 0) {
       html += `
         <div class="formSectionHeader">
-          <h4>⚙️ Governance</h4>
+          <h4>${t('section.governance')}</h4>
         </div>
         <div class="formSection formSectionGovernance">
           ${governanceFields.map(field => renderField(field)).join('')}
@@ -434,6 +447,9 @@ function updatePreview() {
   previewText = previewText.replace(/\[INCLUDE_KPIS\]/g, '');
   previewText = previewText.replace(/\[INCLUDE_RISKS\]/g, '');
   previewText = previewText.replace(/\[INCLUDE_ACTION_PLAN\]/g, '');
+  previewText = previewText.replace(/\[CONTEXTO_TECNICO\]/g, '');
+  previewText = previewText.replace(/\[CRITERIOS_JAVA\]/g, '');
+  previewText = previewText.replace(/\[RESTRICCIONES_JAVA\]/g, '');
   
   // Clean up multiple consecutive line breaks
   previewText = previewText.replace(/\n{3,}/g, '\n\n');
@@ -546,7 +562,23 @@ function processInjectables(promptText) {
   } else {
     promptText = promptText.replace('[INCLUDE_ACTION_PLAN]', '');
   }
-  
+
+  // Check if we should inject CONTEXTO_TECNICO (Java Engineer stack)
+  const hasTecnico = selectedFramework.fields
+    .filter(f => f.section === 'contexto_tecnico')
+    .some(f => formValues[f.name] && formValues[f.name].trim() !== '');
+
+  if (hasTecnico && selectedFramework.injectables && selectedFramework.injectables.CONTEXTO_TECNICO) {
+    let tecnicoText = selectedFramework.injectables.CONTEXTO_TECNICO;
+    selectedFramework.fields.filter(f => f.section === 'contexto_tecnico').forEach(field => {
+      const value = formValues[field.name] || '';
+      tecnicoText = tecnicoText.replace(new RegExp(`\\[${field.name}\\]`, 'g'), value);
+    });
+    promptText = promptText.replace('[CONTEXTO_TECNICO]', tecnicoText);
+  } else {
+    promptText = promptText.replace('[CONTEXTO_TECNICO]', '');
+  }
+
   return promptText;
 }
 
@@ -652,7 +684,23 @@ function processInjectablesForCopy(promptText) {
   } else {
     promptText = promptText.replace('[INCLUDE_ACTION_PLAN]', '');
   }
-  
+
+  // Check if we should inject CONTEXTO_TECNICO (Java Engineer stack)
+  const hasTecnicoCopy = selectedFramework.fields
+    .filter(f => f.section === 'contexto_tecnico')
+    .some(f => formValues[f.name] && formValues[f.name].trim() !== '');
+
+  if (hasTecnicoCopy && selectedFramework.injectables && selectedFramework.injectables.CONTEXTO_TECNICO) {
+    let tecnicoText = selectedFramework.injectables.CONTEXTO_TECNICO;
+    selectedFramework.fields.filter(f => f.section === 'contexto_tecnico').forEach(field => {
+      const value = formValues[field.name] || '';
+      tecnicoText = tecnicoText.replace(new RegExp(`\\[${field.name}\\]`, 'g'), value);
+    });
+    promptText = promptText.replace('[CONTEXTO_TECNICO]', tecnicoText);
+  } else {
+    promptText = promptText.replace('[CONTEXTO_TECNICO]', '');
+  }
+
   return promptText;
 }
 
@@ -702,10 +750,10 @@ async function copyTemplateToClipboard() {
   
   try {
     await navigator.clipboard.writeText(originalPrompt);
-    showCopyFeedback('Plantilla copiada al portapapeles');
+    showCopyFeedback(t('copy.template'));
   } catch (error) {
     console.error('Error copying to clipboard:', error);
-    alert('No se pudo copiar al portapapeles.');
+    alert(t('copy.error'));
   }
 }
 
@@ -736,15 +784,18 @@ async function copyFinalPromptToClipboard() {
   finalPrompt = finalPrompt.replace(/\[GOVERNANCE_CADENCE\]/g, '');
   finalPrompt = finalPrompt.replace(/\[ANALYSIS_OPTIONS\]/g, '');
   finalPrompt = finalPrompt.replace(/\[RISKS_MITIGATION\]/g, '');
+  finalPrompt = finalPrompt.replace(/\[CONTEXTO_TECNICO\]/g, '');
+  finalPrompt = finalPrompt.replace(/\[CRITERIOS_JAVA\]/g, '');
+  finalPrompt = finalPrompt.replace(/\[RESTRICCIONES_JAVA\]/g, '');
   finalPrompt = finalPrompt.replace(/\n{3,}/g, '\n\n');
   finalPrompt = finalPrompt.trim();
   
   try {
     await navigator.clipboard.writeText(finalPrompt);
-    showCopyFeedback('Prompt final copiado al portapapeles');
+    showCopyFeedback(t('copy.final'));
   } catch (error) {
     console.error('Error copying to clipboard:', error);
-    alert('No se pudo copiar al portapapeles.');
+    alert(t('copy.error'));
   }
 }
 
@@ -781,4 +832,10 @@ function escapeRegExp(string) {
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
   loadFrameworks();
+});
+
+// Re-render on language change
+window.addEventListener('languageChanged', () => {
+  if (frameworks.length > 0) renderFrameworkTabs();
+  if (selectedFramework) renderFrameworkDetail();
 });

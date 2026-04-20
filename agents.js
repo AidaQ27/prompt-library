@@ -108,28 +108,28 @@ function renderAgents(list) {
 
     // Meta: Team + Type
     const meta = createElement("div", "agentMeta");
-    meta.appendChild(createElement("span", "agentMeta-item", `Equipo: ${agent.team}`));
-    meta.appendChild(createElement("span", "agentMeta-item", `Tipo: ${agent.type}`));
+    meta.appendChild(createElement("span", "agentMeta-item", `${t('agents.row.team')} ${agent.team}`));
+    meta.appendChild(createElement("span", "agentMeta-item", `${t('agents.row.type')} ${agent.type}`));
     header.appendChild(meta);
     card.appendChild(header);
 
     // Body: Columns from Excel
     const body = createElement("div", "agentCardBody");
     
-    body.appendChild(buildRow("Antes (cómo se hacía)", agent.before));
+    body.appendChild(buildRow(t('agents.row.before'), agent.before));
     
     // Merge time rows
     body.appendChild(buildTimeRow(agent.timeBefore, agent.timeNow));
     
     // Ahorro estimado - highlighted
-    body.appendChild(buildRow("Ahorro estimado", agent.timeSavings, true));
+    body.appendChild(buildRow(t('agents.row.savings'), agent.timeSavings, true));
     
     // Impacto - expandable
-    body.appendChild(buildExpandableRow("Impacto cualitativo", agent.impact));
+    body.appendChild(buildExpandableRow(t('agents.row.impact'), agent.impact));
     
     // Notas - expandable if exists
     if (agent.notes) {
-      body.appendChild(buildExpandableRow("Notas", agent.notes));
+      body.appendChild(buildExpandableRow(t('agents.row.notes'), agent.notes));
     }
 
     card.appendChild(body);
@@ -148,16 +148,16 @@ function buildRow(label, text, highlight = false) {
 
 function buildTimeRow(timeBefore, timeNow) {
   const row = createElement("div", "agentRow");
-  const labelEl = createElement("div", "agentRowLabel", "Tiempo");
+  const labelEl = createElement("div", "agentRowLabel", t('agents.row.time'));
   const textEl = createElement("div", "agentRowText");
 
   const beforeItalic = document.createElement("em");
-  beforeItalic.textContent = "Antes:";
+  beforeItalic.textContent = t('agents.row.timeBefore');
   textEl.appendChild(beforeItalic);
   textEl.appendChild(document.createTextNode(` ${timeBefore}  ·  `));
 
   const nowItalic = document.createElement("em");
-  nowItalic.textContent = "Ahora:";
+  nowItalic.textContent = t('agents.row.timeNow');
   textEl.appendChild(nowItalic);
   textEl.appendChild(document.createTextNode(` ${timeNow}`));
 
@@ -183,18 +183,18 @@ function buildExpandableRow(label, text) {
   textContainer.appendChild(textEl);
 
   if (isLong) {
-    const toggleBtn = createElement("button", "expandToggleBtn", "Ver más");
+    const toggleBtn = createElement("button", "expandToggleBtn", t('agents.row.seeMore'));
     toggleBtn.type = "button";
     toggleBtn.dataset.expanded = "false";
     toggleBtn.addEventListener("click", () => {
       const isExpanded = toggleBtn.dataset.expanded === "true";
       if (isExpanded) {
         textEl.textContent = textEl.dataset.displayText;
-        toggleBtn.textContent = "Ver más";
+        toggleBtn.textContent = t('agents.row.seeMore');
         toggleBtn.dataset.expanded = "false";
       } else {
         textEl.textContent = textEl.dataset.fullText;
-        toggleBtn.textContent = "Ver menos";
+        toggleBtn.textContent = t('agents.row.seeLess');
         toggleBtn.dataset.expanded = "true";
       }
     });
@@ -280,7 +280,7 @@ function applyFilters() {
     return true;
   });
 
-  elements.resultsCount.textContent = `Mostrando ${filtered.length} de ${agentsData.length}`;
+  elements.resultsCount.textContent = t('agents.results', { shown: filtered.length, total: agentsData.length });
   elements.emptyState.style.display = filtered.length ? "none" : "block";
   renderAgents(filtered);
 }
@@ -307,3 +307,6 @@ elements.searchInput.addEventListener("input", applyFilters);
 elements.teamFilter.addEventListener("change", applyFilters);
 elements.dpcFilter.addEventListener("change", applyFilters);
 elements.resetButton.addEventListener("click", resetFilters);
+
+// Re-render on language change
+window.addEventListener('languageChanged', applyFilters);

@@ -15,6 +15,9 @@ fetch("prompts.json")
       const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
       return String(str).replace(/[&<>"']/g, (m) => map[m]);
     };
+    // Safe i18n fallback in case i18n.js is not yet loaded
+    const tr = (key) => (typeof t === 'function' ? t(key) : key);
+
     const teamSelect = document.getElementById("teamSelect");
     const cards = document.getElementById("cards");
     const searchInput = document.getElementById("searchInput");
@@ -94,28 +97,28 @@ fetch("prompts.json")
             <h3>${esc(useCase)}</h3>
 
             <p class="desc">
-              <b>Situación / problema:</b>
+              <b>${esc(tr('card.situation'))}</b>
               <span class="descText collapsed">${esc(String(situation))}</span>
-              <button class="moreBtn" type="button">Ver más</button>
+              <button class="moreBtn" type="button">${esc(tr('card.seeMore'))}</button>
             </p>
 
             <div class="valueBox">
-              <div class="label">Beneficio</div>
+              <div class="label">${esc(tr('card.benefit'))}</div>
               <div class="text">${esc(String(value))}</div>
             </div>
 
             <div class="valueBox saveUpBox">
-              <div class="label">⏱️ Save up</div>
+              <div class="label">${esc(tr('card.saveUp'))}</div>
               <div class="text">${esc(String(saveUp))}</div>
             </div>
 
             <div class="pills">
-              <button class="pillBtn gold pUnified">💡 Prompt</button>
+              <button class="pillBtn gold pUnified">${esc(tr('card.prompt'))}</button>
             </div>
 
             <div class="promptBox">
               <div class="copyRow">
-                <button class="copyBtn">Copy</button>
+                <button class="copyBtn">${esc(tr('card.copy'))}</button>
               </div>
             </div>
           `;
@@ -131,7 +134,7 @@ fetch("prompts.json")
           } else {
             moreBtn.onclick = () => {
               const collapsed = descSpan.classList.toggle("collapsed");
-              moreBtn.textContent = collapsed ? "Ver más" : "Ver menos";
+              moreBtn.textContent = collapsed ? tr('card.seeMore') : tr('card.seeLess');
             };
           }
 
@@ -151,7 +154,7 @@ fetch("prompts.json")
               textNode.style.cssText = "margin:0 0 10px 0;white-space:pre-wrap;font-size:13px;line-height:1.45;";
               box.insertBefore(textNode, copyRow);
             }
-            textNode.textContent = text || "(vacío)";
+            textNode.textContent = text || tr('card.empty');
             copyBtn.onclick = () => navigator.clipboard.writeText(text || "");
           }
 
@@ -174,6 +177,14 @@ fetch("prompts.json")
 
     // 4) Primera renderización
     render();
+
+    // 5) Re-render on language change
+    window.addEventListener('languageChanged', () => {
+      // Update the default option text of teamSelect
+      const defaultOpt = teamSelect.querySelector('option[value=""]');
+      if (defaultOpt) defaultOpt.textContent = tr('index.profile.option');
+      render();
+    });
   })
   .catch((e) => console.error("Error:", e));
 

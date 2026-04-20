@@ -9,31 +9,31 @@
 <body>
   <header>
     <div class="headerContent">
-      <h1>ChatGPT Enterprise – Plantillas Ejecutivas</h1>
+      <h1 data-i18n="framework.title">ChatGPT Enterprise – Plantillas Ejecutivas</h1>
       <nav class="headerNav">
-        <a href="index.html" class="navLink">📚 Prompts</a>
-        <a href="agents.html" class="navLink">🤖 Agentes</a>
-        <a href="framework.html" class="navLink active">⚡ Plantillas Ejecutivas</a>
-        <a href="dpc.html" class="navLink">🔍 DPC Check</a>
+        <a href="index.html" class="navLink" data-i18n="nav.prompts">📚 Prompts</a>
+        <a href="agents.html" class="navLink" data-i18n="nav.agents">🤖 Agentes</a>
+        <a href="framework.html" class="navLink active" data-i18n="nav.frameworks">⚡ Plantillas Ejecutivas</a>
+        <a href="dpc.html" class="navLink" data-i18n="nav.dpc">🔍 DPC Check</a>
       </nav>
     </div>
   </header>
 
   <div class="container">
     <div class="frameworkIntro">
-      <h2>Plantillas Ejecutivas para generar prompts estratégicos</h2>
-      <p class="heroSubtitle">Completa los campos y genera un prompt adaptado a tu rol y contexto.</p>
+      <h2 data-i18n="framework.intro.title">Plantillas Ejecutivas para generar prompts estratégicos</h2>
+      <p class="heroSubtitle" data-i18n="framework.intro.subtitle">Completa los campos y genera un prompt adaptado a tu rol y contexto.</p>
     </div>
 
     <div class="frameworkLayout">
       <aside class="frameworkSidebar">
-        <h3>Plantillas Disponibles</h3>
+        <h3 data-i18n="framework.sidebar.title">Plantillas Disponibles</h3>
         <div id="frameworkTabs"></div>
       </aside>
 
       <main class="frameworkContent">
         <div id="frameworkDetail">
-          <div class="emptyState">
+          <div class="emptyState" data-i18n="framework.empty">
             Selecciona una plantilla de la lista
           </div>
         </div>
@@ -42,6 +42,7 @@
   </div>
 
   <script src="sanitize.js"></script>
+  <script src="i18n.js"></script>
   <script src="framework.js"></script>
 </body>
 </html>

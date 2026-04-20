@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Validate all fields are answered
         if (!q1 || !q2 || !q3 || !q4 || !confidentialityType || !q6 || !q7 || !q8) {
-            alert('Por favor, responde todas las preguntas antes de enviar.');
+            alert(t('dpc.validate'));
             return;
         }
 
@@ -152,11 +152,11 @@ document.addEventListener('DOMContentLoaded', () => {
         let status = {};
 
         // Map Q5 (confidentialityType) to display subtitle - MUST reflect Q5 directly
-        let q5DisplayLabel = 'Interna';  // default for 'interna'
+        let q5DisplayLabel = t('dpc.q5.interna');  // default for 'interna'
         if (confidentialityType === 'privada') {
-            q5DisplayLabel = 'Privada / Restringida';
+            q5DisplayLabel = t('dpc.q5.privada');
         } else if (confidentialityType === 'confidencial') {
-            q5DisplayLabel = 'Confidencial';
+            q5DisplayLabel = t('dpc.q5.confidencial');
         }
 
         // Determine the appropriate label based on DPC level and source
@@ -164,10 +164,10 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if (isDrivenByPersonalData && dpc === 3) {
             // Personal data-driven DPC-3: show personal data label instead of corporate classification
-            resultLabel = 'DPC 3 • Categoría especial';
+            resultLabel = t('dpc.result.label.personal3');
         } else if (isDrivenByPersonalData && dpc === 2) {
             // Personal data-driven DPC-2: show personal data label
-            resultLabel = 'DPC 2 • Datos sensibles';
+            resultLabel = t('dpc.result.label.personal2');
         } else {
             // Corporate-driven or standard cases: show Q5-based classification
             resultLabel = `DPC ${dpc} • ${q5DisplayLabel}`;
@@ -176,38 +176,38 @@ document.addEventListener('DOMContentLoaded', () => {
         if (dpc === 0 || dpc === 1) {
             status.class = 'dpcResultCard--permitido';
             status.icon = '✅';
-            status.title = 'Permitido';
+            status.title = t('dpc.result.permitido');
             status.label = resultLabel;
-            status.recommendation = 'Puedes usar esta información en ChatGPT Enterprise sin restricciones.';
+            status.recommendation = t('dpc.result.rec.ok');
         } else if (dpc === 2) {
             status.class = 'dpcResultCard--limitado';
             status.icon = '⚠️';
-            status.title = 'Uso Limitado';
+            status.title = t('dpc.result.limitado');
             status.label = resultLabel;
-            status.recommendation = 'Usa esta información con precaución. Sigue las políticas internas de tu equipo.';
+            status.recommendation = t('dpc.result.rec.limited');
         } else if (dpc === 3) {
             status.class = 'dpcResultCard--prohibido';
             status.icon = '❌';
-            status.title = 'Prohibido';
+            status.title = t('dpc.result.prohibido');
             status.label = resultLabel;
-            status.recommendation = 'No uses esta información en ChatGPT Enterprise. Datos altamente sensibles.';
+            status.recommendation = t('dpc.result.rec.blocked');
         }
 
         // Build specific recommendations based on Q5 classification and personal data
         let detailedRecommendation = '';
         
         if (hasSecrets === 'yes') {
-            detailedRecommendation = '🔴 ALERTA CRÍTICA: No pegar credenciales, contraseñas, tokens o secretos. Sanitiza toda la información antes de usar.';
+            detailedRecommendation = t('dpc.result.detail.secrets');
         } else if (isDrivenByPersonalData && dpc === 3) {
-            detailedRecommendation = '🔴 Datos Personales Sensibles (Categoría Especial): No compartas información de salud, religión, origen étnico, datos biométricos o similar. Datos altamente protegidos.';
+            detailedRecommendation = t('dpc.result.detail.personal3');
         } else if (isDrivenByPersonalData && dpc === 2) {
-            detailedRecommendation = '🟡 Datos Personales Sensibles: Limita el contexto compartido. Anonimiza nombres, referencias personales y números específicos.';
+            detailedRecommendation = t('dpc.result.detail.personal2');
         } else if (confidentialityType === 'confidencial') {
-            detailedRecommendation = '🔴 Información Confidencial: Úsala solo con resúmenes u abstracciones. Nunca pases documentos completos o datos específicos.';
+            detailedRecommendation = t('dpc.result.detail.confidencial');
         } else if (confidentialityType === 'privada') {
-            detailedRecommendation = '🟡 Información Restringida (Privada): Limita el contexto compartido. Anonimiza nombres, referencias internas y números específicos.';
+            detailedRecommendation = t('dpc.result.detail.privada');
         } else if (confidentialityType === 'interna') {
-            detailedRecommendation = '🟢 Información Interna: Puedes usarla con precaución. Sigue siempre las políticas de seguridad de tu organización.';
+            detailedRecommendation = t('dpc.result.detail.interna');
         }
 
         // Build result HTML
@@ -253,4 +253,11 @@ document.addEventListener('DOMContentLoaded', () => {
         form.classList.remove('dpcForm--hidden');
         form.scrollIntoView({ behavior: 'smooth' });
     }
+
+    // On language change: reset to form (result text is re-generated on next submit)
+    window.addEventListener('languageChanged', () => {
+        if (!resultContainer.classList.contains('dpcResult--hidden')) {
+            resetForm();
+        }
+    });
 });

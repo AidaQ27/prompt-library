@@ -9,12 +9,12 @@
 <body class="agents-page">
   <header>
     <div class="headerContent">
-      <h1>ChatGPT Enterprise – Agentes</h1>
+      <h1 data-i18n="agents.title">ChatGPT Enterprise – Agentes</h1>
       <nav class="headerNav">
-        <a href="index.html" class="navLink">📚 Prompts</a>
-        <a href="agents.html" class="navLink active">🤖 Agentes</a>
-        <a href="framework.html" class="navLink">⚡ Plantillas Ejecutivas</a>
-        <a href="dpc.html" class="navLink">🔍 DPC Check</a>
+        <a href="index.html" class="navLink" data-i18n="nav.prompts">📚 Prompts</a>
+        <a href="agents.html" class="navLink active" data-i18n="nav.agents">🤖 Agentes</a>
+        <a href="framework.html" class="navLink" data-i18n="nav.frameworks">⚡ Plantillas Ejecutivas</a>
+        <a href="dpc.html" class="navLink" data-i18n="nav.dpc">🔍 DPC Check</a>
         <!-- <a href="decision-tree.html" class="navLink">🎯 Decision Tree</a> -->
       </nav>
     </div>
@@ -23,35 +23,35 @@
   <div class="container">
     <div class="agentsToolbar">
       <div class="filtersRow">
-        <input type="text" id="searchInput" placeholder="Buscar agentes..." class="agentsSearch" />
+        <input type="text" id="searchInput" data-i18n-ph="agents.search.placeholder" placeholder="Buscar agentes..." class="agentsSearch" />
 
         <div class="filterGroup">
-          <label for="teamFilter">Equipo</label>
+          <label for="teamFilter" data-i18n="agents.filter.team">Equipo</label>
           <select id="teamFilter">
-            <option value="">Todos</option>
+            <option value="" data-i18n="agents.filter.all">Todos</option>
           </select>
         </div>
 
         <div class="filterGroup">
-          <label for="dpcFilter">Nivel DPC</label>
+          <label for="dpcFilter" data-i18n="agents.filter.dpc">Nivel DPC</label>
           <select id="dpcFilter">
-            <option value="">Todos</option>
+            <option value="" data-i18n="agents.filter.all">Todos</option>
             <option value="DPC 0">DPC 0</option>
             <option value="DPC 1">DPC 1</option>
             <option value="DPC 2">DPC 2</option>
           </select>
         </div>
 
-        <button id="resetFilters" class="resetBtn">Reset</button>
+        <button id="resetFilters" class="resetBtn" data-i18n="agents.reset">Reset</button>
       </div>
 
       <div class="resultsRow">
-        <div id="resultsCount" class="resultsCount">Mostrando 0 de 0</div>
+        <div id="resultsCount" class="resultsCount" data-i18n="agents.results">Mostrando 0 de 0</div>
       </div>
     </div>
 
     <div id="emptyState" class="emptyState" style="display:none;">
-      <p>No se encontraron agentes con esos criterios.</p>
+      <p data-i18n="agents.empty">No se encontraron agentes con esos criterios.</p>
     </div>
 
     <div id="agentsList" class="agentsGrid"></div>
@@ -60,6 +60,7 @@
   </div>
 
   <script src="sanitize.js" defer></script>
+  <script src="i18n.js"></script>
   <script src="./agents.js" defer></script>
 </body>
 </html>

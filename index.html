@@ -8,12 +8,12 @@
 <body>
   <header>
     <div class="headerContent">
-      <h1>Prompt Library</h1>
+      <h1 data-i18n="index.title">Prompt Library</h1>
       <nav class="headerNav">
-        <a href="index.html" class="navLink active">📚 Prompts</a>
-        <a href="agents.html" class="navLink">🤖 Agentes</a>
-        <a href="framework.html" class="navLink">⚡ Plantillas Ejecutivas</a>
-        <a href="dpc.html" class="navLink">🔍 DPC Check</a>
+        <a href="index.html" class="navLink active" data-i18n="nav.prompts">📚 Prompts</a>
+        <a href="agents.html" class="navLink" data-i18n="nav.agents">🤖 Agentes</a>
+        <a href="framework.html" class="navLink" data-i18n="nav.frameworks">⚡ Plantillas Ejecutivas</a>
+        <a href="dpc.html" class="navLink" data-i18n="nav.dpc">🔍 DPC Check</a>
         <!-- <a href="decision-tree.html" class="navLink">🎯 Decision Tree</a> -->
       </nav>
     </div>
@@ -22,24 +22,24 @@
   <div class="container">
     <div class="topRow">
   <div class="legend">
-    <div class="legendTitle">DPC (guía rápida)</div>
-    <div class="legendRow"><span class="dot"></span><b>DPC 0</b> Público / anónimo</div>
-    <div class="legendRow"><span class="dot"></span><b>DPC 1</b> Profesional</div>
-    <div class="legendRow"><span class="dot"></span><b>DPC 2</b> Sensible (solo con normas)</div>
-    <div class="legendRow"><span class="dot"></span><b>DPC 3</b> Crítico (prohibido)</div>
+    <div class="legendTitle" data-i18n="index.dpc.guide">DPC (guía rápida)</div>
+    <div class="legendRow"><span class="dot"></span><b>DPC 0</b> <span data-i18n="index.dpc.0">Público / anónimo</span></div>
+    <div class="legendRow"><span class="dot"></span><b>DPC 1</b> <span data-i18n="index.dpc.1">Profesional</span></div>
+    <div class="legendRow"><span class="dot"></span><b>DPC 2</b> <span data-i18n="index.dpc.2">Sensible (solo con normas)</span></div>
+    <div class="legendRow"><span class="dot"></span><b>DPC 3</b> <span data-i18n="index.dpc.3">Crítico (prohibido)</span></div>
   </div>
 
   <div class="toolbar">
     <div>
-      <div class="labelTop">Escoge tu perfil</div>
+      <div class="labelTop" data-i18n="index.profile.label">Escoge tu perfil</div>
       <select id="teamSelect">
-        <option value="">Escoge tu perfil...</option>
+        <option value="" data-i18n="index.profile.option">Escoge tu perfil...</option>
       </select>
     </div>
 
     <div>
-      <div class="labelTop">Buscar</div>
-      <input id="searchInput" type="text" placeholder="Busca por título o descripción…" />
+      <div class="labelTop" data-i18n="index.search.label">Buscar</div>
+      <input id="searchInput" type="text" data-i18n-ph="index.search.placeholder" placeholder="Busca por título o descripción…" />
     </div>
   </div>
 </div>
@@ -47,6 +47,7 @@
 <div id="cards"></div>
   </div>
 
+  <script src="i18n.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
