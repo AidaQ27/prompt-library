@@ -288,8 +288,19 @@
 }
 
 .dpcResultIcon {
-    font-size: 4rem;
     margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.dpcResultIcon svg {
+    width: 64px;
+    height: 64px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
 
 .dpcResultTitle {
@@ -439,7 +450,12 @@
     }
 
     .dpcResultIcon {
-        font-size: 3rem;
+        /* svg sizing inherits from parent rule */
+    }
+
+    .dpcResultIcon svg {
+        width: 48px;
+        height: 48px;
     }
 
     .dpcResultTitle {

@@ -4,18 +4,30 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="assets/agents-simple.css">
   <meta charset="UTF-8">
-  <title>ChatGPT Enterprise – Agentes</title>
+  <title>Agentes IA</title>
+  <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
 </head>
 <body class="agents-page">
   <header>
     <div class="headerContent">
-      <h1 data-i18n="agents.title">ChatGPT Enterprise – Agentes</h1>
+      <h1 data-i18n="agents.title">Agentes IA</h1>
       <nav class="headerNav">
-        <a href="index.html" class="navLink" data-i18n="nav.prompts">📚 Prompts</a>
-        <a href="agents.html" class="navLink active" data-i18n="nav.agents">🤖 Agentes</a>
-        <a href="framework.html" class="navLink" data-i18n="nav.frameworks">⚡ Plantillas Ejecutivas</a>
-        <a href="dpc.html" class="navLink" data-i18n="nav.dpc">🔍 DPC Check</a>
-        <!-- <a href="decision-tree.html" class="navLink">🎯 Decision Tree</a> -->
+        <a href="index.html" class="navLink">
+          <i data-lucide="book-open" class="navIcon" aria-hidden="true"></i>
+          <span data-i18n="nav.prompts">Prompts</span>
+        </a>
+        <a href="agents.html" class="navLink active">
+          <i data-lucide="bot" class="navIcon" aria-hidden="true"></i>
+          <span data-i18n="nav.agents">Agentes</span>
+        </a>
+        <a href="framework.html" class="navLink">
+          <i data-lucide="layout-template" class="navIcon" aria-hidden="true"></i>
+          <span data-i18n="nav.frameworks">Plantillas Ejecutivas</span>
+        </a>
+        <a href="dpc.html" class="navLink">
+          <i data-lucide="shield-check" class="navIcon" aria-hidden="true"></i>
+          <span data-i18n="nav.dpc">DPC Check</span>
+        </a>
       </nav>
     </div>
   </header>
@@ -62,5 +74,6 @@
   <script src="sanitize.js" defer></script>
   <script src="i18n.js"></script>
   <script src="./agents.js" defer></script>
+  <script>if (window.lucide) lucide.createIcons();</script>
 </body>
 </html>

@@ -19,11 +19,10 @@
     // ════════════════════════════════════════════════════════════════
     es: {
       // Navigation
-      'nav.prompts'   : '📚 Prompts',
-      'nav.agents'    : '🤖 Agentes',
-      'nav.frameworks': '⚡ Plantillas Ejecutivas',
-      'nav.dpc'       : '🔍 DPC Check',
-
+      'nav.prompts'   : 'Prompts',
+      'nav.agents'    : 'Agentes',
+      'nav.frameworks': 'Plantillas Ejecutivas',
+      'nav.dpc'       : 'DPC Check',      'nav.demo'      : 'Demo',
       // ── index.html ──────────────────────────────────────────────
       'index.title'              : 'Prompt Library',
       'index.dpc.guide'          : 'DPC (guía rápida)',
@@ -34,44 +33,100 @@
       'index.profile.label'      : 'Escoge tu perfil',
       'index.profile.option'     : 'Escoge tu perfil...',
       'index.search.label'       : 'Buscar',
-      'index.search.placeholder' : 'Busca por título o descripción…',
+      'index.search.placeholder' : 'Busca por intención: ej. quiero resumir una reunión',
+      'index.search.hint'        : 'Puedes escribir lo que necesitas hacer, por ejemplo: resumir una reunión, redactar un email, comparar opciones o crear una API.',
+      'index.search.chips'       : 'resumir una reunión|redactar un email|comparar opciones|crear una API|gestionar riesgos',
+      'index.search.examplesLabel': 'Prueba con:',
+
+      // ── Quick guide ───────────────────────────────────────────────────────
+      'qg.toggle'         : 'Guía rápida',
+      'qg.toggle.tooltip'  : 'Descubre cómo usar la librería',
+      'qg.drawerTitle' : 'Ayúdame a encontrar un prompt',
+      'qg.q1.title' : '¿Qué necesitas hacer?',
+      'qg.q1.opts'  : 'resumir|analizar|escribir|organizar|comparar|programar',
+      'qg.q2.title' : '¿En qué contexto?',
+      'qg.q2.opts'  : 'reuniones|emails|arquitectura|Java|APIs|stakeholders|incidentes|reporting|backlog|documentación',
+      'qg.q3.title' : '¿Qué resultado quieres?',
+      'qg.q3.opts'  : 'resumen claro|plan de acción|comparativa|checklist|documento técnico|user stories|riesgos|decisión recomendada',
+      'qg.btn.show' : 'Mostrar prompts recomendados',
+      'qg.btn.clear': 'Limpiar selección',
+
+      'search.empty.title'   : 'No hemos encontrado prompts para:',
+      'search.empty.hint'    : 'Prueba con otros términos como:',
+      'search.empty.examples': 'arquitectura, documentación, APIs, reuniones, riesgos.',
+      'search.empty.clear'   : 'Limpiar búsqueda',
+
+      // ── Onboarding tour ─────────────────────────────────────────────────────
+      'tour.welcome.title' : 'Bienvenido a la Biblioteca de Prompts',
+      'tour.welcome.body'  : 'Te mostramos en 30 segundos cómo encontrar el prompt adecuado.',
+      'tour.welcome.start' : 'Empezar guía',
+      'tour.welcome.skip'  : 'Saltar',
+      'tour.step1.text' : 'Busca por intención. Por ejemplo: quiero resumir una reunión.',
+      'tour.step2.text' : 'También puedes usar ejemplos rápidos para descubrir prompts útiles.',
+      'tour.step3.text' : 'Filtra por perfil o equipo si ya sabes qué área necesitas.',
+      'tour.step4.text' : 'Cada card muestra el caso de uso, beneficio, ahorro estimado y nivel DPC.',
+      'tour.step5.text' : 'Pulsa Prompt para abrir el prompt completo y reutilizarlo.',
+      'tour.step6.text' : 'Si no sabes qué buscar, usa la Guía rápida.',
+      'tour.btn.next'   : 'Siguiente',
+      'tour.btn.prev'   : 'Atrás',
+      'tour.btn.finish' : 'Finalizar',
+      'tour.btn.skip'   : 'Saltar',
+      'tour.btn.replay' : 'Demo',
+
+      // ── Framework / Templates tour ──────────────────────────────────────────
+      'fw.tour.welcome.title': 'Plantillas Ejecutivas IA',
+      'fw.tour.welcome.body' : 'Te explicamos en 30 segundos cómo usar las plantillas ejecutivas.',
+      'fw.tour.step1.text'   : 'Selecciona una plantilla según tu rol o necesidad.',
+      'fw.tour.step2.text'   : 'Completa el contexto ejecutivo para generar un prompt más preciso.',
+      'fw.tour.step3.text'   : 'Añade governance, riesgos o análisis avanzados.',
+      'fw.tour.step4.text'   : 'La plantilla genera un prompt estratégico listo para usar.',
+      'fw.tour.step5.text'   : 'Copia o reutiliza el prompt en herramientas de IA.',
+
+      'index.results'            : 'Mostrando {shown} de {total} prompts',
+      'index.results.all'        : '{total} prompts cargados',
+      'index.results.warning'    : 'Faltan prompts: cargados {loaded} de {expected}',
 
       // ── Cards (app.js dynamic) ───────────────────────────────────
       'card.situation' : 'Situación / problema:',
       'card.benefit'   : 'Beneficio',
-      'card.saveUp'    : '⏱️ Save up',
-      'card.prompt'    : '💡 Prompt',
+      'card.saveUp'    : 'Save up',
+      'card.prompt'    : 'Prompt',
       'card.copy'      : 'Copy',
       'card.seeMore'   : 'Ver más',
       'card.seeLess'   : 'Ver menos',
       'card.empty'     : '(vacío)',
 
       // ── framework.html ───────────────────────────────────────────
-      'framework.title'         : 'ChatGPT Enterprise – Plantillas Ejecutivas',
+      'framework.title'         : 'Plantillas Ejecutivas IA',
       'framework.intro.title'   : 'Plantillas Ejecutivas para generar prompts estratégicos',
       'framework.intro.subtitle': 'Completa los campos y genera un prompt adaptado a tu rol y contexto.',
       'framework.sidebar.title' : 'Plantillas Disponibles',
       'framework.empty'         : 'Selecciona una plantilla de la lista',
 
       // ── Framework builder (framework.js dynamic) ─────────────────
-      'builder.title'        : '✏️ Rellena tu prompt',
-      'builder.reset'        : '🔄 Reset',
-      'builder.copyTemplate' : '📋 Copiar plantilla',
-      'builder.copyFinal'    : '✅ Copiar prompt final',
-      'builder.preview'      : '👁️ Vista previa del prompt final',
+      'builder.title'        : 'Rellena tu prompt',
+      'builder.reset'        : 'Reset',
+      'builder.copyTemplate' : 'Copiar plantilla',
+      'builder.copyFinal'    : 'Copiar prompt final',
+      'builder.preview'      : 'Vista previa del prompt final',
       'builder.advanced'     : 'Opciones Avanzadas',
       'builder.badge.current': 'Plantilla actual:',
+
+      // Field UI strings
+      'field.placeholder.text'    : 'Escribe...',
+      'field.placeholder.textarea': 'Escribe aquí...',
+      'field.select.default'      : 'Selecciona...',
 
       // Status badges
       'status.nuevo'      : 'Nuevo',
       'status.proximamente': 'Próximamente',
 
       // Section headers
-      'section.contexto_operativo': '📊 Contexto Operativo',
-      'section.contexto_capitulo' : '👥 Contexto del Chapter',
-      'section.okrs'              : '🎯 OKRs',
-      'section.contexto_tecnico'  : '🛠️ Stack Técnico',
-      'section.governance'        : '⚙️ Governance',
+      'section.contexto_operativo': 'Contexto Operativo',
+      'section.contexto_capitulo' : 'Contexto del Chapter',
+      'section.okrs'              : 'OKRs',
+      'section.contexto_tecnico'  : 'Stack Técnico',
+      'section.governance'        : 'Governance',
 
       // Copy feedback
       'copy.template': 'Plantilla copiada al portapapeles',
@@ -79,8 +134,7 @@
       'copy.error'   : 'No se pudo copiar al portapapeles.',
 
       // ── agents.html ──────────────────────────────────────────────
-      'agents.title'              : 'ChatGPT Enterprise – Agentes',
-      'agents.search.placeholder' : 'Buscar agentes...',
+      'agents.title'              : 'Agentes IA',      'agents.search.placeholder' : 'Buscar agentes...',
       'agents.filter.team'        : 'Equipo',
       'agents.filter.dpc'         : 'Nivel DPC',
       'agents.filter.all'         : 'Todos',
@@ -100,10 +154,10 @@
       'agents.row.seeLess'        : 'Ver menos',
 
       // ── dpc.html ─────────────────────────────────────────────────
-      'dpc.pagetitle'    : '🔍 DPC Check',
+      'dpc.pagetitle'    : 'DPC Check',
       'dpc.hero.title'   : 'DPC Check',
-      'dpc.hero.subtitle': 'Herramienta para clasificar datos antes de usar ChatGPT Enterprise',
-      'dpc.hero.desc'    : 'Responde el cuestionario para determinar la categoría de sensibilidad de tus datos según la política interna DPC.',
+      'dpc.hero.subtitle': 'Herramienta para clasificar la sensibilidad de los datos',
+      'dpc.hero.desc'    : 'Responde unas preguntas rápidas para identificar el nivel de sensibilidad de los datos y saber cómo deben tratarse.',
 
       'dpc.s1.title': 'Sección 1: Datos Personales',
       'dpc.s1.desc' : 'Responde las siguientes preguntas sobre datos personales',
@@ -144,15 +198,15 @@
       'dpc.result.permitido'   : 'Permitido',
       'dpc.result.limitado'    : 'Uso Limitado',
       'dpc.result.prohibido'   : 'Prohibido',
-      'dpc.result.rec.ok'      : 'Puedes usar esta información en ChatGPT Enterprise sin restricciones.',
+      'dpc.result.rec.ok'      : 'Puedes usar esta información con herramientas de IA sin restricciones.',
       'dpc.result.rec.limited' : 'Usa esta información con precaución. Sigue las políticas internas de tu equipo.',
-      'dpc.result.rec.blocked' : 'No uses esta información en ChatGPT Enterprise. Datos altamente sensibles.',
-      'dpc.result.detail.secrets'    : '🔴 ALERTA CRÍTICA: No pegar credenciales, contraseñas, tokens o secretos. Sanitiza toda la información antes de usar.',
-      'dpc.result.detail.personal3'  : '🔴 Datos Personales Sensibles (Categoría Especial): No compartas información de salud, religión, origen étnico, datos biométricos o similar. Datos altamente protegidos.',
-      'dpc.result.detail.personal2'  : '🟡 Datos Personales Sensibles: Limita el contexto compartido. Anonimiza nombres, referencias personales y números específicos.',
-      'dpc.result.detail.confidencial': '🔴 Información Confidencial: Úsala solo con resúmenes u abstracciones. Nunca pases documentos completos o datos específicos.',
-      'dpc.result.detail.privada'    : '🟡 Información Restringida (Privada): Limita el contexto compartido. Anonimiza nombres, referencias internas y números específicos.',
-      'dpc.result.detail.interna'    : '🟢 Información Interna: Puedes usarla con precaución. Sigue siempre las políticas de seguridad de tu organización.',
+      'dpc.result.rec.blocked' : 'No uses esta información con herramientas de IA generativa. Datos altamente sensibles.',
+      'dpc.result.detail.secrets'    : 'ALERTA CRÍTICA: No pegar credenciales, contraseñas, tokens o secretos. Sanitiza toda la información antes de usar.',
+      'dpc.result.detail.personal3'  : 'Datos Personales Sensibles (Categoría Especial): No compartas información de salud, religión, origen étnico, datos biométricos o similar. Datos altamente protegidos.',
+      'dpc.result.detail.personal2'  : 'Datos Personales Sensibles: Limita el contexto compartido. Anonimiza nombres, referencias personales y números específicos.',
+      'dpc.result.detail.confidencial': 'Información Confidencial: Úsala solo con resúmenes u abstracciones. Nunca pases documentos completos o datos específicos.',
+      'dpc.result.detail.privada'    : 'Información Restringida (Privada): Limita el contexto compartido. Anonimiza nombres, referencias internas y números específicos.',
+      'dpc.result.detail.interna'    : 'Información Interna: Puedes usarla con precaución. Sigue siempre las políticas de seguridad de tu organización.',
 
       // Q5 labels used in result
       'dpc.q5.interna'    : 'Interna',
@@ -169,11 +223,10 @@
     // ════════════════════════════════════════════════════════════════
     ca: {
       // Navigation
-      'nav.prompts'   : '📚 Prompts',
-      'nav.agents'    : '🤖 Agents',
-      'nav.frameworks': '⚡ Plantilles Executives',
-      'nav.dpc'       : '🔍 DPC Check',
-
+      'nav.prompts'   : 'Prompts',
+      'nav.agents'    : 'Agents',
+      'nav.frameworks': 'Plantilles Executives',
+      'nav.dpc'       : 'DPC Check',      'nav.demo'      : 'Demo',
       // ── index.html ──────────────────────────────────────────────
       'index.title'              : 'Biblioteca de Prompts',
       'index.dpc.guide'          : 'DPC (guia ràpida)',
@@ -184,49 +237,105 @@
       'index.profile.label'      : 'Escull el teu perfil',
       'index.profile.option'     : 'Escull el teu perfil...',
       'index.search.label'       : 'Cercar',
-      'index.search.placeholder' : 'Cerca per títol o descripció…',
+      'index.search.placeholder' : 'Cerca per intenció: ex. vull resumir una reunió',
+      'index.search.hint'        : 'Pots escriure què necessites fer, per exemple: resumir una reunió, redactar un email, comparar opcions o crear una API.',
+      'index.search.chips'       : 'resumir una reunió|redactar un email|comparar opcions|crear una API|gestionar riscos',
+      'index.search.examplesLabel': 'Prova amb:',
+
+      // ── Quick guide ───────────────────────────────────────────────────────
+      'qg.toggle'         : 'Guia ràpida',
+      'qg.toggle.tooltip'  : 'Descobreix com fer servir la biblioteca',
+      'qg.drawerTitle' : 'Ajuda\'m a trobar un prompt',
+      'qg.q1.title' : 'Què necessites fer?',
+      'qg.q1.opts'  : 'resumir|analitzar|escriure|organitzar|comparar|programar',
+      'qg.q2.title' : 'En quin context?',
+      'qg.q2.opts'  : 'reunions|emails|arquitectura|Java|APIs|stakeholders|incidents|reporting|backlog|documentació',
+      'qg.q3.title' : 'Quin resultat vols?',
+      'qg.q3.opts'  : 'resum clar|pla d\'acció|comparativa|checklist|document tècnic|user stories|riscos|decisió recomanada',
+      'qg.btn.show' : 'Mostrar prompts recomanats',
+      'qg.btn.clear': 'Netejar selecció',
+
+      'search.empty.title'   : 'No hem trobat prompts per a:',
+      'search.empty.hint'    : 'Prova altres termes com:',
+      'search.empty.examples': 'arquitectura, documentació, APIs, reunions, riscos.',
+      'search.empty.clear'   : 'Netejar cerca',
+
+      // ── Onboarding tour ─────────────────────────────────────────────────────
+      'tour.welcome.title' : 'Benvingut a la Biblioteca de Prompts',
+      'tour.welcome.body'  : 'Et mostrem en 30 segons com trobar el prompt adequat.',
+      'tour.welcome.start' : 'Començar guia',
+      'tour.welcome.skip'  : 'Saltar',
+      'tour.step1.text' : 'Cerca per intenció. Per exemple: vull resumir una reunió.',
+      'tour.step2.text' : 'També pots fer servir exemples ràpids per descobrir prompts útils.',
+      'tour.step3.text' : 'Filtra per perfil o equip si ja saps quina àrea necessites.',
+      'tour.step4.text' : "Cada card mostra el cas d'\u00fas, benefici, estalvi estimat i nivell DPC.",
+      'tour.step5.text' : 'Prem Prompt per obrir el prompt complet i reutilitzar-lo.',
+      'tour.step6.text' : 'Si no saps què cercar, fes servir la Guia ràpida.',
+      'tour.btn.next'   : 'Següent',
+      'tour.btn.prev'   : 'Enrere',
+      'tour.btn.finish' : 'Finalitzar',
+      'tour.btn.skip'   : 'Saltar',
+      'tour.btn.replay' : 'Demo',
+
+      // ── Framework / Templates tour ──────────────────────────────────────────
+      'fw.tour.welcome.title': 'Plantilles Executives IA',
+      'fw.tour.welcome.body' : "T'expliquem en 30 segons com fer servir les plantilles executives.",
+      'fw.tour.step1.text'   : 'Selecciona una plantilla segons el teu rol o necessitat.',
+      'fw.tour.step2.text'   : 'Completa el context executiu per generar un prompt més precís.',
+      'fw.tour.step3.text'   : 'Afegeix governance, riscos o anàlisi avançada.',
+      'fw.tour.step4.text'   : 'La plantilla genera un prompt estratègic llest per utilitzar.',
+      'fw.tour.step5.text'   : "Copia o reutilitza el prompt en eines d'IA.",
+
+      'index.results'            : 'Mostrant {shown} de {total} prompts',
+      'index.results.all'        : '{total} prompts carregats',
+      'index.results.warning'    : 'Falten prompts: carregats {loaded} de {expected}',
 
       // ── Cards ─────────────────────────────────────────────────────
       'card.situation' : 'Situació / problema:',
       'card.benefit'   : 'Benefici',
-      'card.saveUp'    : '⏱️ Estalvi',
-      'card.prompt'    : '💡 Prompt',
+      'card.saveUp'    : 'Estalvi',
+      'card.prompt'    : 'Prompt',
       'card.copy'      : 'Copiar',
       'card.seeMore'   : 'Veure més',
       'card.seeLess'   : 'Veure menys',
       'card.empty'     : '(buit)',
 
       // ── framework.html ───────────────────────────────────────────
-      'framework.title'         : 'ChatGPT Enterprise – Plantilles Executives',
+      'framework.title'         : 'Plantilles Executives IA',
       'framework.intro.title'   : 'Plantilles Executives per generar prompts estratègics',
       'framework.intro.subtitle': 'Omple els camps i genera un prompt adaptat al teu rol i context.',
       'framework.sidebar.title' : 'Plantilles Disponibles',
       'framework.empty'         : 'Selecciona una plantilla de la llista',
 
       // ── Framework builder ─────────────────────────────────────────
-      'builder.title'        : '✏️ Omple el teu prompt',
-      'builder.reset'        : '🔄 Reset',
-      'builder.copyTemplate' : '📋 Copiar plantilla',
-      'builder.copyFinal'    : '✅ Copiar prompt final',
-      'builder.preview'      : '👁️ Previsualització del prompt final',
+      'builder.title'        : 'Omple el teu prompt',
+      'builder.reset'        : 'Reset',
+      'builder.copyTemplate' : 'Copiar plantilla',
+      'builder.copyFinal'    : 'Copiar prompt final',
+      'builder.preview'      : 'Previsualització del prompt final',
       'builder.advanced'     : 'Opcions Avançades',
       'builder.badge.current': 'Plantilla actual:',
+
+      // Field UI strings
+      'field.placeholder.text'    : 'Escriu...',
+      'field.placeholder.textarea': 'Escriu aquí...',
+      'field.select.default'      : 'Selecciona...',
 
       'status.nuevo'      : 'Nou',
       'status.proximamente': 'Pròximament',
 
-      'section.contexto_operativo': '📊 Context Operatiu',
-      'section.contexto_capitulo' : '👥 Context del Chapter',
-      'section.okrs'              : '🎯 OKRs',
-      'section.contexto_tecnico'  : '🛠️ Stack Tècnic',
-      'section.governance'        : '⚙️ Governance',
+      'section.contexto_operativo': 'Context Operatiu',
+      'section.contexto_capitulo' : 'Context del Chapter',
+      'section.okrs'              : 'OKRs',
+      'section.contexto_tecnico'  : 'Stack Tècnic',
+      'section.governance'        : 'Governance',
 
       'copy.template': 'Plantilla copiada al porta-retalls',
       'copy.final'   : 'Prompt final copiat al porta-retalls',
       'copy.error'   : "No s'ha pogut copiar al porta-retalls.",
 
       // ── agents.html ──────────────────────────────────────────────
-      'agents.title'              : 'ChatGPT Enterprise – Agents',
+      'agents.title'              : 'Agents IA',
       'agents.search.placeholder' : 'Cercar agents...',
       'agents.filter.team'        : 'Equip',
       'agents.filter.dpc'         : 'Nivell DPC',
@@ -247,10 +356,10 @@
       'agents.row.seeLess'        : 'Veure menys',
 
       // ── dpc.html ─────────────────────────────────────────────────
-      'dpc.pagetitle'    : '🔍 DPC Check',
+      'dpc.pagetitle'    : 'DPC Check',
       'dpc.hero.title'   : 'DPC Check',
-      'dpc.hero.subtitle': "Eina per classificar dades abans d'usar ChatGPT Enterprise",
-      'dpc.hero.desc'    : 'Respon el qüestionari per determinar la categoria de sensibilitat de les teves dades segons la política interna DPC.',
+      'dpc.hero.subtitle': 'Eina per classificar la sensibilitat de les dades',
+      'dpc.hero.desc'    : 'Respon unes preguntes ràpides per identificar el nivell de sensibilitat de les dades i saber com s\'han de tractar.',
 
       'dpc.s1.title': 'Secció 1: Dades Personals',
       'dpc.s1.desc' : 'Respon les preguntes següents sobre dades personals',
@@ -290,15 +399,15 @@
       'dpc.result.permitido'   : 'Permès',
       'dpc.result.limitado'    : 'Ús Limitat',
       'dpc.result.prohibido'   : 'Prohibit',
-      'dpc.result.rec.ok'      : 'Pots usar aquesta informació a ChatGPT Enterprise sense restriccions.',
+      'dpc.result.rec.ok'      : 'Pots usar aquesta informació amb eines d\'IA sense restriccions.',
       'dpc.result.rec.limited' : 'Usa aquesta informació amb precaució. Segueix les polítiques internes del teu equip.',
-      'dpc.result.rec.blocked' : 'No uses aquesta informació a ChatGPT Enterprise. Dades altament sensibles.',
-      'dpc.result.detail.secrets'    : '🔴 ALERTA CRÍTICA: No enganxis credencials, contrasenyes, tokens o secrets. Sanititza tota la informació abans d\'usar.',
-      'dpc.result.detail.personal3'  : '🔴 Dades Personals Sensibles (Categoria Especial): No comparteixis informació de salut, religió, origen ètnic, dades biomètriques o similar. Dades altament protegides.',
-      'dpc.result.detail.personal2'  : '🟡 Dades Personals Sensibles: Limita el context compartit. Anonimitza noms, referències personals i números específics.',
-      'dpc.result.detail.confidencial': '🔴 Informació Confidencial: Usa-la només amb resums o abstraccions. Mai passis documents complets o dades específiques.',
-      'dpc.result.detail.privada'    : '🟡 Informació Restringida (Privada): Limita el context compartit. Anonimitza noms, referències internes i números específics.',
-      'dpc.result.detail.interna'    : '🟢 Informació Interna: Pots usar-la amb precaució. Segueix sempre les polítiques de seguretat de la teva organització.',
+      'dpc.result.rec.blocked' : 'No uses aquesta informació amb eines d\'IA generativa. Dades altament sensibles.',
+      'dpc.result.detail.secrets'    : 'ALERTA CRÍTICA: No enganxis credencials, contrasenyes, tokens o secrets. Sanititza tota la informació abans d\'usar.',
+      'dpc.result.detail.personal3'  : 'Dades Personals Sensibles (Categoria Especial): No comparteixis informació de salut, religió, origen ètnic, dades biomètriques o similar. Dades altament protegides.',
+      'dpc.result.detail.personal2'  : 'Dades Personals Sensibles: Limita el context compartit. Anonimitza noms, referències personals i números específics.',
+      'dpc.result.detail.confidencial': 'Informació Confidencial: Usa-la només amb resums o abstraccions. Mai passis documents complets o dades específiques.',
+      'dpc.result.detail.privada'    : 'Informació Restringida (Privada): Limita el context compartit. Anonimitza noms, referències internes i números específics.',
+      'dpc.result.detail.interna'    : 'Informació Interna: Pots usar-la amb precaució. Segueix sempre les polítiques de seguretat de la teva organització.',
 
       'dpc.q5.interna'    : 'Interna',
       'dpc.q5.privada'    : 'Privada / Restringida',
@@ -313,10 +422,10 @@
     // ════════════════════════════════════════════════════════════════
     en: {
       // Navigation
-      'nav.prompts'   : '📚 Prompts',
-      'nav.agents'    : '🤖 Agents',
-      'nav.frameworks': '⚡ Executive Templates',
-      'nav.dpc'       : '🔍 DPC Check',
+      'nav.prompts'   : 'Prompts',
+      'nav.agents'    : 'Agents',
+      'nav.frameworks': 'Executive Templates',
+      'nav.dpc'       : 'DPC Check',
 
       // ── index.html ──────────────────────────────────────────────
       'index.title'              : 'Prompt Library',
@@ -328,49 +437,105 @@
       'index.profile.label'      : 'Choose your profile',
       'index.profile.option'     : 'Choose your profile...',
       'index.search.label'       : 'Search',
-      'index.search.placeholder' : 'Search by title or description…',
+      'index.search.placeholder' : 'Search by intent: e.g. I want to summarize a meeting',
+      'index.search.hint'        : 'You can type what you need to do, for example: summarize a meeting, write an email, compare options, or create an API.',
+      'index.search.chips'       : 'summarize a meeting|write an email|compare options|create an API|manage risks',
+      'index.search.examplesLabel': 'Try:',
+
+      // ── Quick guide ───────────────────────────────────────────────────────
+      'qg.toggle'         : "Quick guide",
+      'qg.toggle.tooltip'  : 'Discover how to use the library',
+      'qg.drawerTitle' : 'Help me find a prompt',
+      'qg.q1.title' : 'What do you need to do?',
+      'qg.q1.opts'  : 'summarize|analyze|write|organize|compare|code',
+      'qg.q2.title' : 'In what context?',
+      'qg.q2.opts'  : 'meetings|emails|architecture|Java|APIs|stakeholders|incidents|reporting|backlog|documentation',
+      'qg.q3.title' : 'What result do you want?',
+      'qg.q3.opts'  : 'clear summary|action plan|comparison|checklist|technical document|user stories|risks|recommended decision',
+      'qg.btn.show' : 'Show recommended prompts',
+      'qg.btn.clear': 'Clear selection',
+
+      'search.empty.title'   : 'No prompts found for:',
+      'search.empty.hint'    : 'Try other terms such as:',
+      'search.empty.examples': 'architecture, documentation, APIs, meetings, risks.',
+      'search.empty.clear'   : 'Clear search',
+
+      // ── Onboarding tour ─────────────────────────────────────────────────────
+      'tour.welcome.title' : 'Welcome to Prompt Library',
+      'tour.welcome.body'  : "We'll show you in 30 seconds how to find the right prompt.",
+      'tour.welcome.start' : 'Start tour',
+      'tour.welcome.skip'  : 'Skip',
+      'tour.step1.text' : 'Search by intent. For example: I want to summarize a meeting.',
+      'tour.step2.text' : 'You can also use quick examples to discover useful prompts.',
+      'tour.step3.text' : 'Filter by profile or team if you already know the area you need.',
+      'tour.step4.text' : 'Each card shows the use case, benefit, estimated time saving and DPC level.',
+      'tour.step5.text' : 'Click Prompt to open the full prompt and reuse it.',
+      'tour.step6.text' : "If you don't know what to search, use the Quick guide.",
+      'tour.btn.next'   : 'Next',
+      'tour.btn.prev'   : 'Back',
+      'tour.btn.finish' : 'Finish',
+      'tour.btn.skip'   : 'Skip',
+      'tour.btn.replay' : 'Demo',
+
+      // ── Framework / Templates tour ──────────────────────────────────────────
+      'fw.tour.welcome.title': 'Executive Templates',
+      'fw.tour.welcome.body' : 'We will show you in 30 seconds how to use the executive templates.',
+      'fw.tour.step1.text'   : 'Select a template based on your role or need.',
+      'fw.tour.step2.text'   : 'Fill in the executive context to generate a more precise prompt.',
+      'fw.tour.step3.text'   : 'Add governance, risks or advanced analysis.',
+      'fw.tour.step4.text'   : 'The template generates a strategic prompt ready to use.',
+      'fw.tour.step5.text'   : 'Copy or reuse the prompt in AI tools.',
+
+      'index.results'            : 'Showing {shown} of {total} prompts',
+      'index.results.all'        : '{total} prompts loaded',
+      'index.results.warning'    : 'Missing prompts: loaded {loaded} of {expected}',
 
       // ── Cards ─────────────────────────────────────────────────────
       'card.situation' : 'Situation / problem:',
       'card.benefit'   : 'Benefit',
-      'card.saveUp'    : '⏱️ Save up',
-      'card.prompt'    : '💡 Prompt',
+      'card.saveUp'    : 'Save up',
+      'card.prompt'    : 'Prompt',
       'card.copy'      : 'Copy',
       'card.seeMore'   : 'See more',
       'card.seeLess'   : 'See less',
       'card.empty'     : '(empty)',
 
       // ── framework.html ───────────────────────────────────────────
-      'framework.title'         : 'ChatGPT Enterprise – Executive Templates',
+      'framework.title'         : 'AI Executive Templates',
       'framework.intro.title'   : 'Executive Templates to generate strategic prompts',
       'framework.intro.subtitle': 'Fill in the fields and generate a prompt adapted to your role and context.',
       'framework.sidebar.title' : 'Available Templates',
       'framework.empty'         : 'Select a template from the list',
 
       // ── Framework builder ─────────────────────────────────────────
-      'builder.title'        : '✏️ Fill in your prompt',
-      'builder.reset'        : '🔄 Reset',
-      'builder.copyTemplate' : '📋 Copy template',
-      'builder.copyFinal'    : '✅ Copy final prompt',
-      'builder.preview'      : '👁️ Final prompt preview',
+      'builder.title'        : 'Fill in your prompt',
+      'builder.reset'        : 'Reset',
+      'builder.copyTemplate' : 'Copy template',
+      'builder.copyFinal'    : 'Copy final prompt',
+      'builder.preview'      : 'Final prompt preview',
       'builder.advanced'     : 'Advanced Options',
       'builder.badge.current': 'Current template:',
+
+      // Field UI strings
+      'field.placeholder.text'    : 'Type...',
+      'field.placeholder.textarea': 'Type here...',
+      'field.select.default'      : 'Select...',
 
       'status.nuevo'      : 'New',
       'status.proximamente': 'Coming soon',
 
-      'section.contexto_operativo': '📊 Operational Context',
-      'section.contexto_capitulo' : '👥 Chapter Context',
-      'section.okrs'              : '🎯 OKRs',
-      'section.contexto_tecnico'  : '🛠️ Tech Stack',
-      'section.governance'        : '⚙️ Governance',
+      'section.contexto_operativo': 'Operational Context',
+      'section.contexto_capitulo' : 'Chapter Context',
+      'section.okrs'              : 'OKRs',
+      'section.contexto_tecnico'  : 'Tech Stack',
+      'section.governance'        : 'Governance',
 
       'copy.template': 'Template copied to clipboard',
       'copy.final'   : 'Final prompt copied to clipboard',
       'copy.error'   : 'Could not copy to clipboard.',
 
       // ── agents.html ──────────────────────────────────────────────
-      'agents.title'              : 'ChatGPT Enterprise – Agents',
+      'agents.title'              : 'AI Agents',
       'agents.search.placeholder' : 'Search agents...',
       'agents.filter.team'        : 'Team',
       'agents.filter.dpc'         : 'DPC Level',
@@ -391,10 +556,10 @@
       'agents.row.seeLess'        : 'See less',
 
       // ── dpc.html ─────────────────────────────────────────────────
-      'dpc.pagetitle'    : '🔍 DPC Check',
+      'dpc.pagetitle'    : 'DPC Check',
       'dpc.hero.title'   : 'DPC Check',
-      'dpc.hero.subtitle': 'Tool to classify data before using ChatGPT Enterprise',
-      'dpc.hero.desc'    : 'Answer the questionnaire to determine the sensitivity category of your data according to the internal DPC policy.',
+      'dpc.hero.subtitle': 'Tool to classify data sensitivity',
+      'dpc.hero.desc'    : 'Answer a few quick questions to identify the sensitivity level of the data and how it should be handled.',
 
       'dpc.s1.title': 'Section 1: Personal Data',
       'dpc.s1.desc' : 'Answer the following questions about personal data',
@@ -434,15 +599,15 @@
       'dpc.result.permitido'   : 'Allowed',
       'dpc.result.limitado'    : 'Limited Use',
       'dpc.result.prohibido'   : 'Forbidden',
-      'dpc.result.rec.ok'      : 'You can use this information in ChatGPT Enterprise without restrictions.',
+      'dpc.result.rec.ok'      : 'You can use this information with AI tools without restrictions.',
       'dpc.result.rec.limited' : 'Use this information with caution. Follow your team\'s internal policies.',
-      'dpc.result.rec.blocked' : 'Do not use this information in ChatGPT Enterprise. Highly sensitive data.',
-      'dpc.result.detail.secrets'    : '🔴 CRITICAL ALERT: Do not paste credentials, passwords, tokens or secrets. Sanitise all information before use.',
-      'dpc.result.detail.personal3'  : '🔴 Sensitive Personal Data (Special Category): Do not share health, religion, ethnicity, biometric data or similar. Highly protected data.',
-      'dpc.result.detail.personal2'  : '🟡 Sensitive Personal Data: Limit shared context. Anonymise names, personal references and specific numbers.',
-      'dpc.result.detail.confidencial': '🔴 Confidential Information: Use only with summaries or abstractions. Never pass complete documents or specific data.',
-      'dpc.result.detail.privada'    : '🟡 Restricted Information (Private): Limit shared context. Anonymise names, internal references and specific numbers.',
-      'dpc.result.detail.interna'    : '🟢 Internal Information: You can use it with caution. Always follow your organisation\'s security policies.',
+      'dpc.result.rec.blocked' : 'Do not use this information with generative AI tools. Highly sensitive data.',
+      'dpc.result.detail.secrets'    : 'CRITICAL ALERT: Do not paste credentials, passwords, tokens or secrets. Sanitise all information before use.',
+      'dpc.result.detail.personal3'  : 'Sensitive Personal Data (Special Category): Do not share health, religion, ethnicity, biometric data or similar. Highly protected data.',
+      'dpc.result.detail.personal2'  : 'Sensitive Personal Data: Limit shared context. Anonymise names, personal references and specific numbers.',
+      'dpc.result.detail.confidencial': 'Confidential Information: Use only with summaries or abstractions. Never pass complete documents or specific data.',
+      'dpc.result.detail.privada'    : 'Restricted Information (Private): Limit shared context. Anonymise names, internal references and specific numbers.',
+      'dpc.result.detail.interna'    : 'Internal Information: You can use it with caution. Always follow your organisation\'s security policies.',
 
       'dpc.q5.interna'    : 'Internal',
       'dpc.q5.privada'    : 'Private / Restricted',
@@ -489,6 +654,10 @@
     // placeholder attribute
     document.querySelectorAll('[data-i18n-ph]').forEach(function (el) {
       el.placeholder = t(el.getAttribute('data-i18n-ph'));
+    });
+    // title attribute
+    document.querySelectorAll('[data-i18n-title]').forEach(function (el) {
+      el.title = t(el.getAttribute('data-i18n-title'));
     });
     // Update html[lang]
     document.documentElement.lang = getLang();

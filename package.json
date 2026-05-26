@@ -1,0 +1,6 @@
+{
+  "devDependencies": {
+    "@vitalets/google-translate-api": "^8.0.0",
+    "https-proxy-agent": "^9.0.0"
+  }
+}

@@ -1,14 +1,15 @@
 [
   {
     "id": "general_lite",
-    "title": "Plantilla General",
+    "title": { "es": "Plantilla General", "ca": "Plantilla General", "en": "General Template" },
     "status": "nuevo",
-    "description": "Plantilla simplificada y ágil para decisiones ejecutivas rápidas. Ideal para cualquier rol de liderazgo que necesite análisis directo y recomendaciones claras.",
+    "description": { "es": "Plantilla simplificada y ágil para decisiones ejecutivas rápidas. Ideal para cualquier rol de liderazgo que necesite análisis directo y recomendaciones claras.", "ca": "Plantilla simplificada i àgil per a decisions executives ràpides. Ideal per a qualsevol rol de lideratge que necessiti anàlisi directa i recomanacions clares.", "en": "Streamlined agile template for fast executive decisions. Ideal for any leadership role that needs direct analysis and clear recommendations." },
     "prompt": "Eres un asistente ejecutivo experto para un [ROL_EJECUTIVO] de [UNIDAD].\n\nTu misión es proporcionar análisis estratégico, evaluación de opciones y recomendaciones accionables para apoyar la toma de decisiones.\n\nObjetivo de la decisión:\n[OBJETIVO_DECISION]\n\nContexto clave:\n[CONTEXTO_CLAVE]\n\nCriterios de éxito:\n[CRITERIOS_EXITO]\n\nRestricciones:\n[RESTRICCIONES]\n\nAudiencia: [AUDIENCIA]\n\n[ANALYSIS_OPTIONS]\n\n[RISKS_MITIGATION]\n\nFormato de entrega:\n[FORMATO]",
     "fields": [
       {
         "name": "ROL_EJECUTIVO",
-        "hint": "Ej: Director, VP, Head of, Team Lead, Manager",
+        "label": { "es": "Rol Ejecutivo", "ca": "Rol Executiu", "en": "Executive Role" },
+        "hint": { "es": "Ej: Director, VP, Head of, Team Lead, Manager", "ca": "Ex: Director, VP, Head of, Team Lead, Manager", "en": "E.g.: Director, VP, Head of, Team Lead, Manager" },
         "type": "text",
         "required": true,
         "default": "",
@@ -16,7 +17,8 @@
       },
       {
         "name": "UNIDAD",
-        "hint": "Ej: Marketing, Operations, IT, HR, Sales",
+        "label": { "es": "Unidad", "ca": "Unitat", "en": "Unit" },
+        "hint": { "es": "Ej: Marketing, Operations, IT, HR, Sales", "ca": "Ex: Marketing, Operations, IT, HR, Sales", "en": "E.g.: Marketing, Operations, IT, HR, Sales" },
         "type": "text",
         "required": true,
         "default": "",
@@ -24,7 +26,8 @@
       },
       {
         "name": "OBJETIVO_DECISION",
-        "hint": "Ej: Decidir si implementar nueva herramienta CRM, Evaluar priorización de proyectos Q2",
+        "label": { "es": "Objetivo de Decisión", "ca": "Objectiu de Decisió", "en": "Decision Objective" },
+        "hint": { "es": "Ej: Decidir si implementar nueva herramienta CRM, Evaluar priorización de proyectos Q2", "ca": "Ex: Decidir si implementar nova eina CRM, Avaluar priorització de projectes Q2", "en": "E.g.: Decide whether to implement a new CRM tool, Evaluate Q2 project prioritisation" },
         "type": "textarea",
         "required": true,
         "default": "",
@@ -32,7 +35,8 @@
       },
       {
         "name": "CONTEXTO_CLAVE",
-        "hint": "Ej: Presupuesto disponible, timeline ajustado, stakeholders críticos",
+        "label": { "es": "Contexto Clave", "ca": "Context Clau", "en": "Key Context" },
+        "hint": { "es": "Ej: Presupuesto disponible, timeline ajustado, stakeholders críticos", "ca": "Ex: Pressupost disponible, timeline ajustat, stakeholders crítics", "en": "E.g.: Available budget, tight timeline, critical stakeholders" },
         "type": "textarea",
         "required": false,
         "default": "",
@@ -40,7 +44,8 @@
       },
       {
         "name": "CRITERIOS_EXITO",
-        "hint": "Ej: ROI positivo en 12 meses, adoption rate >70%, mejora productividad 15%",
+        "label": { "es": "Criterios de Éxito", "ca": "Criteris d'Èxit", "en": "Success Criteria" },
+        "hint": { "es": "Ej: ROI positivo en 12 meses, adoption rate >70%, mejora productividad 15%", "ca": "Ex: ROI positiu en 12 mesos, adoption rate >70%, millora productivitat 15%", "en": "E.g.: Positive ROI in 12 months, adoption rate >70%, 15% productivity improvement" },
         "type": "textarea",
         "required": true,
         "default": "",
@@ -48,7 +53,8 @@
       },
       {
         "name": "RESTRICCIONES",
-        "hint": "Ej: Budget máximo 100k€, implementación antes de Q3, compliance GDPR",
+        "label": { "es": "Restricciones", "ca": "Restriccions", "en": "Constraints" },
+        "hint": { "es": "Ej: Budget máximo 100k€, implementación antes de Q3, compliance GDPR", "ca": "Ex: Budget màxim 100k€, implementació abans de Q3, compliance GDPR", "en": "E.g.: Max budget 100k€, implementation before Q3, GDPR compliance" },
         "type": "textarea",
         "required": false,
         "default": "",
@@ -56,7 +62,8 @@
       },
       {
         "name": "AUDIENCIA",
-        "hint": "Ej: Board, Comité ejecutivo, Equipo directo",
+        "label": { "es": "Audiencia", "ca": "Audiència", "en": "Audience" },
+        "hint": { "es": "Ej: Board, Comité ejecutivo, Equipo directo", "ca": "Ex: Board, Comitè executiu, Equip directe", "en": "E.g.: Board, Executive Committee, Direct team" },
         "type": "text",
         "required": false,
         "default": "",
@@ -64,21 +71,23 @@
       },
       {
         "name": "FORMATO",
-        "hint": "Formato de salida deseado",
+        "label": { "es": "Formato de Salida", "ca": "Format de Sortida", "en": "Output Format" },
+        "hint": { "es": "Formato de salida deseado", "ca": "Format de sortida desitjat", "en": "Desired output format" },
         "type": "select",
         "required": true,
         "default": "",
         "options": [
-          "Resumen ejecutivo",
-          "Tabla comparativa",
-          "Bullets",
-          "Documento estructurado"
+          { "value": "Resumen ejecutivo", "label": { "es": "Resumen ejecutivo", "ca": "Resum executiu", "en": "Executive summary" } },
+          { "value": "Tabla comparativa", "label": { "es": "Tabla comparativa", "ca": "Taula comparativa", "en": "Comparison table" } },
+          { "value": "Bullets", "label": { "es": "Bullets", "ca": "Bullets", "en": "Bullets" } },
+          { "value": "Documento estructurado", "label": { "es": "Documento estructurado", "ca": "Document estructurat", "en": "Structured document" } }
         ],
         "section": "basic"
       },
       {
         "name": "TOGGLE_ANALYSIS_OPTIONS",
-        "hint": "Incluir análisis de opciones con recomendación",
+        "label": { "es": "Incluir análisis de opciones", "ca": "Incloure anàlisi d'opcions", "en": "Include options analysis" },
+        "hint": { "es": "Incluir análisis de opciones con recomendación", "ca": "Incloure anàlisi d'opcions amb recomanació", "en": "Include options analysis with recommendation" },
         "type": "checkbox",
         "required": false,
         "default": false,
@@ -86,7 +95,8 @@
       },
       {
         "name": "TOGGLE_RISKS_MITIGATION",
-        "hint": "Incluir análisis de riesgos y plan de mitigación",
+        "label": { "es": "Incluir análisis de riesgos", "ca": "Incloure anàlisi de riscos", "en": "Include risk analysis" },
+        "hint": { "es": "Incluir análisis de riesgos y plan de mitigación", "ca": "Incloure anàlisi de riscos i pla de mitigació", "en": "Include risk analysis and mitigation plan" },
         "type": "checkbox",
         "required": false,
         "default": false,
@@ -100,14 +110,15 @@
   },
   {
     "id": "coo_operations",
-    "title": "Plantilla COO / Delivery & Operations",
+    "title": { "es": "Plantilla COO / Delivery & Operations", "ca": "Plantilla COO / Lliurament & Operacions", "en": "COO / Delivery & Operations Template" },
     "status": "nuevo",
-    "description": "Plantilla avanzada para COO y roles operacionales con contexto operativo, OKRs y opciones de governance completas.",
+    "description": { "es": "Plantilla avanzada para COO y roles operacionales con contexto operativo, OKRs y opciones de governance completas.", "ca": "Plantilla avançada per a COO i rols operacionals amb context operatiu, OKRs i opcions de governance completes.", "en": "Advanced template for COO and operational roles with operational context, OKRs and full governance options." },
     "prompt": "Eres un asistente experto diseñado para apoyar a un [ROL_EJECUTIVO] de [UNIDAD] en [EMPRESA].\n\nTu rol es proporcionar información estratégica, análisis crítico y recomendaciones accionables en [AREA_ENFOQUE].\n\nContexto:\n- Unidad de negocio: [UNIDAD]\n- Responsabilidades clave: [RESPONSABILIDADES]\n- Objetivos principales: [OBJETIVOS]\n- Restricciones o consideraciones: [RESTRICCIONES]\n\n[CONTEXTO_OPERATIVO]\n\n[OKRS]\n\nTu tarea:\n[TAREA_ESPECIFICA]\n\nFormato de respuesta esperado:\n[FORMATO]\n\n[DECISION_FRAMEWORK]\n\n[EXECUTIVE_OUTPUT]\n\n[GOVERNANCE_CADENCE]",
     "fields": [
       {
         "name": "ROL_EJECUTIVO",
-        "hint": "Ej: COO, CFO, Head of Delivery",
+        "label": { "es": "Rol Ejecutivo", "ca": "Rol Executiu", "en": "Executive Role" },
+        "hint": { "es": "Ej: COO, CFO, Head of Delivery", "ca": "Ex: COO, CFO, Head of Delivery", "en": "E.g.: COO, CFO, Head of Delivery" },
         "type": "text",
         "required": true,
         "default": "",
@@ -115,7 +126,8 @@
       },
       {
         "name": "UNIDAD",
-        "hint": "Ej: GDC Iberia, PA Cloud, Digital Solutions",
+        "label": { "es": "Unidad", "ca": "Unitat", "en": "Unit" },
+        "hint": { "es": "Ej: GDC Iberia, PA Cloud, Digital Solutions", "ca": "Ex: GDC Iberia, PA Cloud, Digital Solutions", "en": "E.g.: GDC Iberia, PA Cloud, Digital Solutions" },
         "type": "text",
         "required": true,
         "default": "",
@@ -123,20 +135,22 @@
       },
       {
         "name": "EMPRESA",
-        "hint": "Ej: Deutsche Telekom, T-Systems",
+        "label": { "es": "Empresa", "ca": "Empresa", "en": "Company" },
+        "hint": { "es": "Ej: Deutsche Telekom, T-Systems", "ca": "Ex: Deutsche Telekom, T-Systems", "en": "E.g.: Deutsche Telekom, T-Systems" },
         "type": "select",
         "required": true,
         "default": "",
         "options": [
           "Deutsche Telekom",
           "T-Systems",
-          "Otra"
+          { "value": "Otra", "label": { "es": "Otra", "ca": "Altra", "en": "Other" } }
         ],
         "section": "basic"
       },
       {
         "name": "AREA_ENFOQUE",
-        "hint": "Ej: transformación digital, optimización de costes",
+        "label": { "es": "Área de Enfoque", "ca": "Àrea d'Enfocament", "en": "Focus Area" },
+        "hint": { "es": "Ej: transformación digital, optimización de costes", "ca": "Ex: transformació digital, optimització de costos", "en": "E.g.: digital transformation, cost optimisation" },
         "type": "text",
         "required": true,
         "default": "",
@@ -144,7 +158,8 @@
       },
       {
         "name": "RESPONSABILIDADES",
-        "hint": "Ej: gestión P&L, entrega de proyectos, desarrollo de talento",
+        "label": { "es": "Responsabilidades", "ca": "Responsabilitats", "en": "Responsibilities" },
+        "hint": { "es": "Ej: gestión P&L, entrega de proyectos, desarrollo de talento", "ca": "Ex: gestió P&L, lliurament de projectes, desenvolupament de talent", "en": "E.g.: P&L management, project delivery, talent development" },
         "type": "textarea",
         "required": false,
         "default": "",
@@ -152,7 +167,8 @@
       },
       {
         "name": "OBJETIVOS",
-        "hint": "Ej: reducir costes 15%, mejorar NPS",
+        "label": { "es": "Objetivos", "ca": "Objectius", "en": "Objectives" },
+        "hint": { "es": "Ej: reducir costes 15%, mejorar NPS", "ca": "Ex: reduir costos 15%, millorar NPS", "en": "E.g.: reduce costs 15%, improve NPS" },
         "type": "textarea",
         "required": true,
         "default": "",
@@ -160,7 +176,8 @@
       },
       {
         "name": "RESTRICCIONES",
-        "hint": "Ej: presupuesto limitado, normativa GDPR",
+        "label": { "es": "Restricciones", "ca": "Restriccions", "en": "Constraints" },
+        "hint": { "es": "Ej: presupuesto limitado, normativa GDPR", "ca": "Ex: pressupost limitat, normativa GDPR", "en": "E.g.: limited budget, GDPR regulation" },
         "type": "textarea",
         "required": false,
         "default": "",
@@ -168,7 +185,8 @@
       },
       {
         "name": "TAREA_ESPECIFICA",
-        "hint": "Ej: analiza el impacto de IA en nuestros procesos actuales",
+        "label": { "es": "Tarea Específica", "ca": "Tasca Específica", "en": "Specific Task" },
+        "hint": { "es": "Ej: analiza el impacto de IA en nuestros procesos actuales", "ca": "Ex: analitza l'impacte de la IA en els nostres processos actuals", "en": "E.g.: analyse the impact of AI on our current processes" },
         "type": "textarea",
         "required": true,
         "default": "",
@@ -176,7 +194,8 @@
       },
       {
         "name": "FORMATO",
-        "hint": "Ej: tabla comparativa, resumen ejecutivo",
+        "label": { "es": "Formato de Salida", "ca": "Format de Sortida", "en": "Output Format" },
+        "hint": { "es": "Ej: tabla comparativa, resumen ejecutivo", "ca": "Ex: taula comparativa, resum executiu", "en": "E.g.: comparison table, executive summary" },
         "type": "text",
         "required": false,
         "default": "",
@@ -184,7 +203,8 @@
       },
       {
         "name": "MODELO_OPERATIVO",
-        "hint": "Ej: Modelo ágil escalado, Estructura matricial, Centro de servicios compartidos",
+        "label": { "es": "Modelo Operativo", "ca": "Model Operatiu", "en": "Operating Model" },
+        "hint": { "es": "Ej: Modelo ágil escalado, Estructura matricial, Centro de servicios compartidos", "ca": "Ex: Model àgil escalat, Estructura matricial, Centre de serveis compartits", "en": "E.g.: Scaled agile model, Matrix structure, Shared services centre" },
         "type": "textarea",
         "required": false,
         "default": "",
@@ -192,7 +212,8 @@
       },
       {
         "name": "AREAS_RESPONSABLES",
-        "hint": "Ej: IT Operations, Service Delivery, PMO, Quality & Process Excellence",
+        "label": { "es": "Áreas Responsables", "ca": "Àrees Responsables", "en": "Responsible Areas" },
+        "hint": { "es": "Ej: IT Operations, Service Delivery, PMO, Quality & Process Excellence", "ca": "Ex: IT Operations, Service Delivery, PMO, Quality & Process Excellence", "en": "E.g.: IT Operations, Service Delivery, PMO, Quality & Process Excellence" },
         "type": "textarea",
         "required": false,
         "default": "",
@@ -200,7 +221,8 @@
       },
       {
         "name": "STAKEHOLDERS_CLAVE",
-        "hint": "Ej: CEO, CFO, BU Heads, Client Directors, Works Council",
+        "label": { "es": "Stakeholders Clave", "ca": "Stakeholders Clau", "en": "Key Stakeholders" },
+        "hint": { "es": "Ej: CEO, CFO, BU Heads, Client Directors, Works Council", "ca": "Ex: CEO, CFO, BU Heads, Client Directors, Works Council", "en": "E.g.: CEO, CFO, BU Heads, Client Directors, Works Council" },
         "type": "textarea",
         "required": false,
         "default": "",
@@ -208,7 +230,8 @@
       },
       {
         "name": "PROGRAMAS_ESTRATEGICOS",
-        "hint": "Ej: Transformación digital, Automatización RPA, Cloud migration, Cost optimization",
+        "label": { "es": "Programas Estratégicos", "ca": "Programes Estratègics", "en": "Strategic Programs" },
+        "hint": { "es": "Ej: Transformación digital, Automatización RPA, Cloud migration, Cost optimization", "ca": "Ex: Transformació digital, Automatització RPA, Cloud migration, Cost optimization", "en": "E.g.: Digital transformation, RPA automation, Cloud migration, Cost optimisation" },
         "type": "textarea",
         "required": false,
         "default": "",
@@ -216,7 +239,8 @@
       },
       {
         "name": "OBJ_EFICIENCIA",
-        "hint": "Ej: Reducir OpEx 12%, Automatizar 30% de procesos manuales",
+        "label": { "es": "Objetivo Eficiencia", "ca": "Objectiu Eficiència", "en": "Efficiency Objective" },
+        "hint": { "es": "Ej: Reducir OpEx 12%, Automatizar 30% de procesos manuales", "ca": "Ex: Reduir OpEx 12%, Automatitzar 30% de processos manuals", "en": "E.g.: Reduce OpEx 12%, Automate 30% of manual processes" },
         "type": "textarea",
         "required": false,
         "default": "",
@@ -224,7 +248,8 @@
       },
       {
         "name": "OBJ_CALIDAD",
-        "hint": "Ej: Aumentar CSAT a 4.5/5, Reducir incidents críticos 25%",
+        "label": { "es": "Objetivo Calidad", "ca": "Objectiu Qualitat", "en": "Quality Objective" },
+        "hint": { "es": "Ej: Aumentar CSAT a 4.5/5, Reducir incidents críticos 25%", "ca": "Ex: Augmentar CSAT a 4.5/5, Reduir incidents crítics 25%", "en": "E.g.: Increase CSAT to 4.5/5, Reduce critical incidents 25%" },
         "type": "textarea",
         "required": false,
         "default": "",
@@ -232,7 +257,8 @@
       },
       {
         "name": "OBJ_PLANIFICACION",
-        "hint": "Ej: On-time delivery 95%, Forecast accuracy >90%",
+        "label": { "es": "Objetivo Planificación", "ca": "Objectiu Planificació", "en": "Planning Objective" },
+        "hint": { "es": "Ej: On-time delivery 95%, Forecast accuracy >90%", "ca": "Ex: On-time delivery 95%, Forecast accuracy >90%", "en": "E.g.: On-time delivery 95%, Forecast accuracy >90%" },
         "type": "textarea",
         "required": false,
         "default": "",
@@ -240,7 +266,8 @@
       },
       {
         "name": "OBJ_PEOPLE",
-        "hint": "Ej: Employee engagement >80%, Retención talento clave 95%",
+        "label": { "es": "Objetivo People", "ca": "Objectiu People", "en": "People Objective" },
+        "hint": { "es": "Ej: Employee engagement >80%, Retención talento clave 95%", "ca": "Ex: Employee engagement >80%, Retenció talent clau 95%", "en": "E.g.: Employee engagement >80%, Key talent retention 95%" },
         "type": "textarea",
         "required": false,
         "default": "",
@@ -248,7 +275,8 @@
       },
       {
         "name": "TOGGLE_DECISION_FRAMEWORK",
-        "hint": "Incluir framework de toma de decisiones (RACI, escalation paths)",
+        "label": { "es": "Incluir framework de decisiones", "ca": "Incloure framework de decisions", "en": "Include decision framework" },
+        "hint": { "es": "Incluir framework de toma de decisiones (RACI, escalation paths)", "ca": "Incloure framework de presa de decisions (RACI, escalation paths)", "en": "Include decision-making framework (RACI, escalation paths)" },
         "type": "checkbox",
         "required": false,
         "default": false,
@@ -256,7 +284,8 @@
       },
       {
         "name": "TOGGLE_EXECUTIVE_OUTPUT",
-        "hint": "Incluir formato ejecutivo estructurado (Executive Summary + Recommendations)",
+        "label": { "es": "Incluir formato ejecutivo", "ca": "Incloure format executiu", "en": "Include executive output" },
+        "hint": { "es": "Incluir formato ejecutivo estructurado (Executive Summary + Recommendations)", "ca": "Incloure format executiu estructurat (Executive Summary + Recommendations)", "en": "Include structured executive output (Executive Summary + Recommendations)" },
         "type": "checkbox",
         "required": false,
         "default": false,
@@ -264,7 +293,8 @@
       },
       {
         "name": "TOGGLE_GOVERNANCE_CADENCE",
-        "hint": "Incluir cadencia de governance (weekly syncs, monthly reviews, quarterly planning)",
+        "label": { "es": "Incluir cadencia de governance", "ca": "Incloure cadència de governance", "en": "Include governance cadence" },
+        "hint": { "es": "Incluir cadencia de governance (weekly syncs, monthly reviews, quarterly planning)", "ca": "Incloure cadència de governance (weekly syncs, monthly reviews, quarterly planning)", "en": "Include governance cadence (weekly syncs, monthly reviews, quarterly planning)" },
         "type": "checkbox",
         "required": false,
         "default": false,
@@ -281,14 +311,15 @@
   },
   {
     "id": "finanzas",
-    "title": "Plantilla Finanzas",
+    "title": { "es": "Plantilla Finanzas", "ca": "Plantilla Finances", "en": "Finance Template" },
     "status": "proximamente",
-    "description": "Especializada para roles financieros (CFO, Financial Controller, Business Partner). Enfocada en análisis financiero, forecasting y reporting.",
+    "description": { "es": "Especializada para roles financieros (CFO, Financial Controller, Business Partner). Enfocada en análisis financiero, forecasting y reporting.", "ca": "Especialitzada per a rols financers (CFO, Financial Controller, Business Partner). Enfocada en anàlisi financera, forecasting i reporting.", "en": "Specialised for financial roles (CFO, Financial Controller, Business Partner). Focused on financial analysis, forecasting and reporting." },
     "prompt": "Eres un asistente financiero experto para un [ROL_FINANCIERO] de [UNIDAD] en [EMPRESA].\n\nTu especialización incluye:\n- Análisis financiero y de rentabilidad\n- Forecasting y presupuestación\n- Control de gestión y KPIs financieros\n- Optimización de costes y eficiencia\n\nContexto financiero:\n- Unidad de negocio: [UNIDAD]\n- Período de análisis: [PERIODO]\n- Presupuesto anual: [PRESUPUESTO]\n- KPIs principales: [KPIS]\n- Drivers de coste críticos: [DRIVERS_COSTE]\n\nObjetivo actual:\n[OBJETIVO_FINANCIERO]\n\nAnálisis requerido:\n[ANALISIS_SOLICITADO]\n\nEntrega el resultado en formato:\n[FORMATO_ENTREGA]",
     "fields": [
       {
         "name": "ROL_FINANCIERO",
-        "hint": "Ej: CFO, Financial Controller, Business Partner",
+        "label": { "es": "Rol Financiero", "ca": "Rol Financer", "en": "Financial Role" },
+        "hint": { "es": "Ej: CFO, Financial Controller, Business Partner", "ca": "Ex: CFO, Financial Controller, Business Partner", "en": "E.g.: CFO, Financial Controller, Business Partner" },
         "type": "select",
         "required": true,
         "default": "",
@@ -297,31 +328,34 @@
           "Financial Controller",
           "Business Partner",
           "FP&A Manager",
-          "Otro"
+          { "value": "Otro", "label": { "es": "Otro", "ca": "Altre", "en": "Other" } }
         ]
       },
       {
         "name": "UNIDAD",
-        "hint": "Ej: GDC Iberia, Cloud Services, IT Operations",
+        "label": { "es": "Unidad", "ca": "Unitat", "en": "Unit" },
+        "hint": { "es": "Ej: GDC Iberia, Cloud Services, IT Operations", "ca": "Ex: GDC Iberia, Cloud Services, IT Operations", "en": "E.g.: GDC Iberia, Cloud Services, IT Operations" },
         "type": "text",
         "required": true,
         "default": ""
       },
       {
         "name": "EMPRESA",
-        "hint": "Ej: Deutsche Telekom, T-Systems",
+        "label": { "es": "Empresa", "ca": "Empresa", "en": "Company" },
+        "hint": { "es": "Ej: Deutsche Telekom, T-Systems", "ca": "Ex: Deutsche Telekom, T-Systems", "en": "E.g.: Deutsche Telekom, T-Systems" },
         "type": "select",
         "required": true,
         "default": "",
         "options": [
           "Deutsche Telekom",
           "T-Systems",
-          "Otra"
+          { "value": "Otra", "label": { "es": "Otra", "ca": "Altra", "en": "Other" } }
         ]
       },
       {
         "name": "PERIODO",
-        "hint": "Ej: Q1 2026, FY2025, último trimestre",
+        "label": { "es": "Período", "ca": "Període", "en": "Period" },
+        "hint": { "es": "Ej: Q1 2026, FY2025, último trimestre", "ca": "Ex: Q1 2026, FY2025, darrer trimestre", "en": "E.g.: Q1 2026, FY2025, last quarter" },
         "type": "select",
         "required": true,
         "default": "",
@@ -331,47 +365,53 @@
           "Q3 2026",
           "Q4 2026",
           "FY2026",
-          "Otro"
+          { "value": "Otro", "label": { "es": "Otro", "ca": "Altre", "en": "Other" } }
         ]
       },
       {
         "name": "PRESUPUESTO",
-        "hint": "Ej: 5M€, 12M€ anual",
+        "label": { "es": "Presupuesto", "ca": "Pressupost", "en": "Budget" },
+        "hint": { "es": "Ej: 5M€, 12M€ anual", "ca": "Ex: 5M€, 12M€ anual", "en": "E.g.: 5M€, 12M€ annual" },
         "type": "text",
         "required": false,
         "default": ""
       },
       {
         "name": "KPIS",
-        "hint": "Ej: EBITDA margin, Cost per FTE, Revenue growth %",
+        "label": { "es": "KPIs", "ca": "KPIs", "en": "KPIs" },
+        "hint": { "es": "Ej: EBITDA margin, Cost per FTE, Revenue growth %", "ca": "Ex: EBITDA margin, Cost per FTE, Revenue growth %", "en": "E.g.: EBITDA margin, Cost per FTE, Revenue growth %" },
         "type": "textarea",
         "required": true,
         "default": ""
       },
       {
         "name": "DRIVERS_COSTE",
-        "hint": "Ej: personal costs, cloud infrastructure, subcontracting",
+        "label": { "es": "Drivers de Coste", "ca": "Drivers de Cost", "en": "Cost Drivers" },
+        "hint": { "es": "Ej: personal costs, cloud infrastructure, subcontracting", "ca": "Ex: personal costs, cloud infrastructure, subcontracting", "en": "E.g.: personnel costs, cloud infrastructure, subcontracting" },
         "type": "textarea",
         "required": false,
         "default": ""
       },
       {
         "name": "OBJETIVO_FINANCIERO",
-        "hint": "Ej: reducir OpEx 10%, mejorar margen en 3pp",
+        "label": { "es": "Objetivo Financiero", "ca": "Objectiu Financer", "en": "Financial Objective" },
+        "hint": { "es": "Ej: reducir OpEx 10%, mejorar margen en 3pp", "ca": "Ex: reduir OpEx 10%, millorar marge en 3pp", "en": "E.g.: reduce OpEx 10%, improve margin by 3pp" },
         "type": "textarea",
         "required": true,
         "default": ""
       },
       {
         "name": "ANALISIS_SOLICITADO",
-        "hint": "Ej: variance analysis YTD, escenarios de ahorro",
+        "label": { "es": "Análisis Solicitado", "ca": "Anàlisi Sol·licitada", "en": "Requested Analysis" },
+        "hint": { "es": "Ej: variance analysis YTD, escenarios de ahorro", "ca": "Ex: variance analysis YTD, escenaris d'estalvi", "en": "E.g.: YTD variance analysis, savings scenarios" },
         "type": "textarea",
         "required": true,
         "default": ""
       },
       {
         "name": "FORMATO_ENTREGA",
-        "hint": "Ej: dashboard Excel, executive summary PPT",
+        "label": { "es": "Formato de Entrega", "ca": "Format d'Entrega", "en": "Delivery Format" },
+        "hint": { "es": "Ej: dashboard Excel, executive summary PPT", "ca": "Ex: dashboard Excel, executive summary PPT", "en": "E.g.: Excel dashboard, executive summary PPT" },
         "type": "text",
         "required": false,
         "default": ""
@@ -380,37 +420,39 @@
   },
   {
     "id": "chapter_leads",
-    "title": "Plantilla Chapter Leads",
+    "title": { "es": "Plantilla Chapter Leads", "ca": "Plantilla Chapter Leads", "en": "Chapter Leads Template" },
     "status": "nuevo",
-    "description": "Prompt maestro para Chapter Leads de T-Systems Iberia. Cubre los 9 ámbitos clave: gestión de equipo, 1on1, desarrollo profesional, evaluación, salary review, onboarding, coordinación con Customer Delivery, selección y reporting.",
+    "description": { "es": "Prompt maestro para Chapter Leads de T-Systems Iberia. Cubre los 9 ámbitos clave: gestión de equipo, 1on1, desarrollo profesional, evaluación, salary review, onboarding, coordinación con Customer Delivery, selección y reporting.", "ca": "Prompt mestre per a Chapter Leads de T-Systems Iberia. Cobreix els 9 àmbits clau: gestió d'equip, 1on1, desenvolupament professional, avaluació, salary review, onboarding, coordinació amb Customer Delivery, selecció i reporting.", "en": "Master prompt for T-Systems Iberia Chapter Leads. Covers the 9 key areas: team management, 1on1, professional development, performance review, salary review, onboarding, Customer Delivery coordination, recruitment and reporting." },
     "prompt": "Actúa como un asistente de IA especializado en apoyar a Chapter Leads y roles de liderazgo dentro de T-Systems Iberia.\n\nTU ROL COMO ASISTENTE:\n- Ayudarme a mejorar eficiencia, claridad y calidad en mis tareas de gestión.\n- Apoyar en actividades operativas, organizativas, comunicativas y de desarrollo de personas.\n- Producir respuestas basadas en la información proporcionada, evitando inventar datos.\n- Ser profesional, preciso y orientado a la acción.\n\nCONTEXTO ORGANIZATIVO:\nT-Systems Iberia forma parte del ecosistema internacional de T-Systems. Sus unidades pueden incluir áreas técnicas, operativas, comerciales, de servicio o de soporte corporativo. Las responsabilidades suelen involucrar coordinación de equipos, interacción con clientes internos/externos, cumplimiento de procesos corporativos y alineación con estándares operativos y de calidad.\n\nÁMBITO DE LA TAREA:\n[TIPO_TAREA]\n\nOBJETIVO DE LA TAREA:\n[OBJETIVO_TAREA]\n\nINFORMACIÓN RELEVANTE:\n- Rol implicado: [ROL_IMPLICADO]\n- Equipo o unidad: [EQUIPO_UNIDAD]\n- Personas o perfiles incluidos: [PERSONAS_PERFILES]\n- Contexto o problema: [CONTEXTO_PROBLEMA]\n- Datos disponibles: [DATOS_DISPONIBLES]\n- Restricciones: [RESTRICCIONES]\n- Nivel de detalle deseado: [NIVEL_DETALLE]\n- Formato deseado: [FORMATO_DESEADO]\n\n[CONTEXTO_CAPITULO]\n\nREQUISITOS DE LA RESPUESTA:\n- Producir un resultado claro, estructurado y ejecutable.\n- Indicar pasos concretos, riesgos, dependencias o recomendaciones cuando sea necesario.\n- Mantener tono profesional y alineado con el entorno corporativo de T-Systems Iberia.\n- No incluir información sensible o datos personales reales.\n- No asumir información no proporcionada.\n- Solicitar datos adicionales si hay huecos críticos.\n\n[INCLUDE_KPIS]\n\n[INCLUDE_RISKS]\n\n[INCLUDE_ACTION_PLAN]\n\nFORMATO DE SALIDA SOLICITADO:\n[FORMATO_SALIDA]\n\nNOTA: Este es un prompt maestro diseñado para Chapter Leads. Completa los campos entre corchetes antes de usar.",
     "fields": [
       {
         "name": "TIPO_TAREA",
-        "hint": "Selecciona el ámbito principal de la tarea",
+        "label": { "es": "Tipo de Tarea", "ca": "Tipus de Tasca", "en": "Task Type" },
+        "hint": { "es": "Selecciona el ámbito principal de la tarea", "ca": "Selecciona l'àmbit principal de la tasca", "en": "Select the main task scope" },
         "type": "select",
         "required": true,
         "default": "",
         "options": [
-          "Gestión de equipo y prioridades",
-          "Seguimiento individual (1on1)",
-          "Desarrollo profesional y carrera",
-          "Evaluación de desempeño",
-          "Salary review y compensación",
-          "Onboarding / Offboarding",
-          "Coordinación con Customer Delivery",
-          "Proceso de selección",
-          "Gestión de talento (alto potencial / bajo rendimiento)",
-          "Relación con HR",
-          "Comunicación organizativa",
-          "Reporting y seguimiento del Chapter",
-          "Otro"
+          { "value": "Gestión de equipo y prioridades", "label": { "es": "Gestión de equipo y prioridades", "ca": "Gestió d'equip i prioritats", "en": "Team management and priorities" } },
+          { "value": "Seguimiento individual (1on1)", "label": { "es": "Seguimiento individual (1on1)", "ca": "Seguiment individual (1on1)", "en": "Individual follow-up (1on1)" } },
+          { "value": "Desarrollo profesional y carrera", "label": { "es": "Desarrollo profesional y carrera", "ca": "Desenvolupament professional i carrera", "en": "Professional development and career" } },
+          { "value": "Evaluación de desempeño", "label": { "es": "Evaluación de desempeño", "ca": "Avaluació de rendiment", "en": "Performance review" } },
+          { "value": "Salary review y compensación", "label": { "es": "Salary review y compensación", "ca": "Salary review i compensació", "en": "Salary review and compensation" } },
+          { "value": "Onboarding / Offboarding", "label": { "es": "Onboarding / Offboarding", "ca": "Onboarding / Offboarding", "en": "Onboarding / Offboarding" } },
+          { "value": "Coordinación con Customer Delivery", "label": { "es": "Coordinación con Customer Delivery", "ca": "Coordinació amb Customer Delivery", "en": "Coordination with Customer Delivery" } },
+          { "value": "Proceso de selección", "label": { "es": "Proceso de selección", "ca": "Procés de selecció", "en": "Recruitment process" } },
+          { "value": "Gestión de talento (alto potencial / bajo rendimiento)", "label": { "es": "Gestión de talento (alto potencial / bajo rendimiento)", "ca": "Gestió de talent (alt potencial / baix rendiment)", "en": "Talent management (high potential / low performance)" } },
+          { "value": "Relación con HR", "label": { "es": "Relación con HR", "ca": "Relació amb HR", "en": "HR relationship" } },
+          { "value": "Comunicación organizativa", "label": { "es": "Comunicación organizativa", "ca": "Comunicació organitzativa", "en": "Organisational communication" } },
+          { "value": "Reporting y seguimiento del Chapter", "label": { "es": "Reporting y seguimiento del Chapter", "ca": "Reporting i seguiment del Chapter", "en": "Chapter reporting and tracking" } },
+          { "value": "Otro", "label": { "es": "Otro", "ca": "Altre", "en": "Other" } }
         ],
         "section": "basic"
       },
       {
         "name": "OBJETIVO_TAREA",
-        "hint": "Ej: preparar evaluación anual, diseñar plan de carrera, redactar comunicado de cambio organizativo",
+        "label": { "es": "Objetivo de la Tarea", "ca": "Objectiu de la Tasca", "en": "Task Objective" },
+        "hint": { "es": "Ej: preparar evaluación anual, diseñar plan de carrera, redactar comunicado de cambio organizativo", "ca": "Ex: preparar avaluació anual, dissenyar pla de carrera, redactar comunicat de canvi organitzatiu", "en": "E.g.: prepare annual review, design career plan, draft organisational change announcement" },
         "type": "textarea",
         "required": true,
         "default": "",
@@ -418,7 +460,8 @@
       },
       {
         "name": "ROL_IMPLICADO",
-        "hint": "Rol desde el que actúas",
+        "label": { "es": "Rol Implicado", "ca": "Rol Implicat", "en": "Involved Role" },
+        "hint": { "es": "Rol desde el que actúas", "ca": "Rol des del qual actues", "en": "Role you are acting from" },
         "type": "select",
         "required": true,
         "default": "Chapter Lead",
@@ -426,14 +469,15 @@
           "Chapter Lead",
           "Team Lead",
           "Service Manager",
-          "Responsable de Área",
-          "Otro"
+          { "value": "Responsable de Área", "label": { "es": "Responsable de Área", "ca": "Responsable d'Àrea", "en": "Area Manager" } },
+          { "value": "Otro", "label": { "es": "Otro", "ca": "Altre", "en": "Other" } }
         ],
         "section": "basic"
       },
       {
         "name": "EQUIPO_UNIDAD",
-        "hint": "Ej: Cloud Services, Data Engineering, Platform Teams, GDC Iberia",
+        "label": { "es": "Equipo / Unidad", "ca": "Equip / Unitat", "en": "Team / Unit" },
+        "hint": { "es": "Ej: Cloud Services, Data Engineering, Platform Teams, GDC Iberia", "ca": "Ex: Cloud Services, Data Engineering, Platform Teams, GDC Iberia", "en": "E.g.: Cloud Services, Data Engineering, Platform Teams, GDC Iberia" },
         "type": "text",
         "required": true,
         "default": "",
@@ -441,7 +485,8 @@
       },
       {
         "name": "PERSONAS_PERFILES",
-        "hint": "Ej: 3 seniors + 5 mids, o rol/perfil del empleado afectado si aplica",
+        "label": { "es": "Personas / Perfiles", "ca": "Persones / Perfils", "en": "People / Profiles" },
+        "hint": { "es": "Ej: 3 seniors + 5 mids, o rol/perfil del empleado afectado si aplica", "ca": "Ex: 3 seniors + 5 mids, o rol/perfil de l'empleat afectat si aplica", "en": "E.g.: 3 seniors + 5 mids, or role/profile of affected employee if applicable" },
         "type": "text",
         "required": false,
         "default": "",
@@ -449,7 +494,8 @@
       },
       {
         "name": "CONTEXTO_PROBLEMA",
-        "hint": "Describe la situación actual, el reto concreto o los hechos observables",
+        "label": { "es": "Contexto del Problema", "ca": "Context del Problema", "en": "Problem Context" },
+        "hint": { "es": "Describe la situación actual, el reto concreto o los hechos observables", "ca": "Descriu la situació actual, el repte concret o els fets observables", "en": "Describe the current situation, the specific challenge or observable facts" },
         "type": "textarea",
         "required": true,
         "default": "",
@@ -457,7 +503,8 @@
       },
       {
         "name": "DATOS_DISPONIBLES",
-        "hint": "Información objetiva, métricas, evidencias o documentación disponible",
+        "label": { "es": "Datos Disponibles", "ca": "Dades Disponibles", "en": "Available Data" },
+        "hint": { "es": "Información objetiva, métricas, evidencias o documentación disponible", "ca": "Informació objectiva, mètriques, evidències o documentació disponible", "en": "Objective information, metrics, evidence or available documentation" },
         "type": "textarea",
         "required": false,
         "default": "",
@@ -465,7 +512,8 @@
       },
       {
         "name": "RESTRICCIONES",
-        "hint": "Ej: plazos ajustados, reglas de HR, confidencialidad, compliance corporativo",
+        "label": { "es": "Restricciones", "ca": "Restriccions", "en": "Constraints" },
+        "hint": { "es": "Ej: plazos ajustados, reglas de HR, confidencialidad, compliance corporativo", "ca": "Ex: terminis ajustats, regles de HR, confidencialitat, compliance corporatiu", "en": "E.g.: tight deadlines, HR rules, confidentiality, corporate compliance" },
         "type": "textarea",
         "required": false,
         "default": "",
@@ -473,44 +521,47 @@
       },
       {
         "name": "NIVEL_DETALLE",
-        "hint": "Nivel de profundidad esperado en la respuesta",
+        "label": { "es": "Nivel de Detalle", "ca": "Nivell de Detall", "en": "Detail Level" },
+        "hint": { "es": "Nivel de profundidad esperado en la respuesta", "ca": "Nivell de profunditat esperat en la resposta", "en": "Expected depth of the response" },
         "type": "select",
         "required": true,
         "default": "Medio",
         "options": [
-          "Alto",
-          "Medio",
-          "Breve"
+          { "value": "Alto", "label": { "es": "Alto", "ca": "Alt", "en": "High" } },
+          { "value": "Medio", "label": { "es": "Medio", "ca": "Mitjà", "en": "Medium" } },
+          { "value": "Breve", "label": { "es": "Breve", "ca": "Breu", "en": "Brief" } }
         ],
         "section": "basic"
       },
       {
         "name": "FORMATO_DESEADO",
-        "hint": "Formato de trabajo preferido para la tarea",
+        "label": { "es": "Formato Deseado", "ca": "Format Desitjat", "en": "Desired Format" },
+        "hint": { "es": "Formato de trabajo preferido para la tarea", "ca": "Format de treball preferit per a la tasca", "en": "Preferred working format for the task" },
         "type": "select",
         "required": true,
         "default": "",
         "options": [
-          "Tabla",
-          "Viñetas",
-          "Email corporativo",
-          "Informe",
-          "Plantilla editable",
-          "Pasos estructurados",
-          "Checklist",
-          "Agenda",
-          "Plan de acción",
-          "Evaluación estructurada",
-          "Plan de mejora",
-          "Argumentario",
-          "Matriz de competencias",
-          "Roadmap"
+          { "value": "Tabla", "label": { "es": "Tabla", "ca": "Taula", "en": "Table" } },
+          { "value": "Viñetas", "label": { "es": "Viñetas", "ca": "Vinyetes", "en": "Bullets" } },
+          { "value": "Email corporativo", "label": { "es": "Email corporativo", "ca": "Email corporatiu", "en": "Corporate email" } },
+          { "value": "Informe", "label": { "es": "Informe", "ca": "Informe", "en": "Report" } },
+          { "value": "Plantilla editable", "label": { "es": "Plantilla editable", "ca": "Plantilla editable", "en": "Editable template" } },
+          { "value": "Pasos estructurados", "label": { "es": "Pasos estructurados", "ca": "Passos estructurats", "en": "Structured steps" } },
+          { "value": "Checklist", "label": { "es": "Checklist", "ca": "Checklist", "en": "Checklist" } },
+          { "value": "Agenda", "label": { "es": "Agenda", "ca": "Agenda", "en": "Agenda" } },
+          { "value": "Plan de acción", "label": { "es": "Plan de acción", "ca": "Pla d'acció", "en": "Action plan" } },
+          { "value": "Evaluación estructurada", "label": { "es": "Evaluación estructurada", "ca": "Avaluació estructurada", "en": "Structured assessment" } },
+          { "value": "Plan de mejora", "label": { "es": "Plan de mejora", "ca": "Pla de millora", "en": "Improvement plan" } },
+          { "value": "Argumentario", "label": { "es": "Argumentario", "ca": "Argumentari", "en": "Talking points" } },
+          { "value": "Matriz de competencias", "label": { "es": "Matriz de competencias", "ca": "Matriu de compètencies", "en": "Skills matrix" } },
+          { "value": "Roadmap", "label": { "es": "Roadmap", "ca": "Roadmap", "en": "Roadmap" } }
         ],
         "section": "basic"
       },
       {
         "name": "FORMATO_SALIDA",
-        "hint": "Describe el entregable final: tabla + resumen, email + versión corta, informe + KPIs...",
+        "label": { "es": "Formato de Salida", "ca": "Format de Sortida", "en": "Output Format" },
+        "hint": { "es": "Describe el entregable final: tabla + resumen, email + versión corta, informe + KPIs...", "ca": "Descriu el lliurable final: taula + resum, email + versió curta, informe + KPIs...", "en": "Describe the final deliverable: table + summary, email + short version, report + KPIs..." },
         "type": "text",
         "required": false,
         "default": "",
@@ -518,7 +569,8 @@
       },
       {
         "name": "EMPLEADO_ROL",
-        "hint": "Rol o perfil del empleado afectado (si la tarea se refiere a una persona concreta)",
+        "label": { "es": "Empleado / Rol", "ca": "Empleat / Rol", "en": "Employee / Role" },
+        "hint": { "es": "Rol o perfil del empleado afectado (si la tarea se refiere a una persona concreta)", "ca": "Rol o perfil de l'empleat afectat (si la tasca es refereix a una persona concreta)", "en": "Role or profile of the affected employee (if the task refers to a specific person)" },
         "type": "text",
         "required": false,
         "default": "",
@@ -526,7 +578,8 @@
       },
       {
         "name": "TAMAÑO_EQUIPO",
-        "hint": "Ej: 8 personas, 12 FTEs, 2 juniors + 4 seniors + 1 lead",
+        "label": { "es": "Tamaño del Equipo", "ca": "Mida de l'Equip", "en": "Team Size" },
+        "hint": { "es": "Ej: 8 personas, 12 FTEs, 2 juniors + 4 seniors + 1 lead", "ca": "Ex: 8 persones, 12 FTEs, 2 juniors + 4 seniors + 1 lead", "en": "E.g.: 8 people, 12 FTEs, 2 juniors + 4 seniors + 1 lead" },
         "type": "text",
         "required": false,
         "default": "",
@@ -534,26 +587,28 @@
       },
       {
         "name": "CICLO_PERIODO",
-        "hint": "Período de referencia para la tarea",
+        "label": { "es": "Ciclo / Período", "ca": "Cicle / Període", "en": "Cycle / Period" },
+        "hint": { "es": "Período de referencia para la tarea", "ca": "Període de referència per a la tasca", "en": "Reference period for the task" },
         "type": "select",
         "required": false,
         "default": "",
         "options": [
-          "Semanal",
-          "Mensual",
+          { "value": "Semanal", "label": { "es": "Semanal", "ca": "Setmanal", "en": "Weekly" } },
+          { "value": "Mensual", "label": { "es": "Mensual", "ca": "Mensual", "en": "Monthly" } },
           "Q1 2026",
           "Q2 2026",
           "Q3 2026",
           "Q4 2026",
-          "Semestral",
-          "Anual",
-          "Otro"
+          { "value": "Semestral", "label": { "es": "Semestral", "ca": "Semestral", "en": "Half-yearly" } },
+          { "value": "Anual", "label": { "es": "Anual", "ca": "Anual", "en": "Annual" } },
+          { "value": "Otro", "label": { "es": "Otro", "ca": "Altre", "en": "Other" } }
         ],
         "section": "contexto_capitulo"
       },
       {
         "name": "TOGGLE_INCLUDE_KPIS",
-        "hint": "Incluir KPIs e indicadores de seguimiento relevantes para la tarea",
+        "label": { "es": "Incluir KPIs", "ca": "Incloure KPIs", "en": "Include KPIs" },
+        "hint": { "es": "Incluir KPIs e indicadores de seguimiento relevantes para la tarea", "ca": "Incloure KPIs i indicadors de seguiment rellevants per a la tasca", "en": "Include relevant KPIs and tracking indicators for the task" },
         "type": "checkbox",
         "required": false,
         "default": false,
@@ -561,7 +616,8 @@
       },
       {
         "name": "TOGGLE_INCLUDE_RISKS",
-        "hint": "Incluir análisis de riesgos con probabilidad, impacto y mitigaciones",
+        "label": { "es": "Incluir análisis de riesgos", "ca": "Incloure anàlisi de riscos", "en": "Include risk analysis" },
+        "hint": { "es": "Incluir análisis de riesgos con probabilidad, impacto y mitigaciones", "ca": "Incloure anàlisi de riscos amb probabilitat, impacte i mitigacions", "en": "Include risk analysis with probability, impact and mitigations" },
         "type": "checkbox",
         "required": false,
         "default": false,
@@ -569,7 +625,8 @@
       },
       {
         "name": "TOGGLE_INCLUDE_ACTION_PLAN",
-        "hint": "Incluir plan de acción con responsables, plazos y criterios de éxito",
+        "label": { "es": "Incluir plan de acción", "ca": "Incloure pla d'acció", "en": "Include action plan" },
+        "hint": { "es": "Incluir plan de acción con responsables, plazos y criterios de éxito", "ca": "Incloure pla d'acció amb responsables, terminis i criteris d'èxit", "en": "Include action plan with owners, deadlines and success criteria" },
         "type": "checkbox",
         "required": false,
         "default": false,
@@ -585,35 +642,37 @@
   },
   {
     "id": "squad_lead",
-    "title": "Plantilla Squad Lead",
+    "title": { "es": "Plantilla Squad Lead", "ca": "Plantilla Squad Lead", "en": "Squad Lead Template" },
     "status": "nuevo",
-    "description": "Prompt maestro para Squad Leads en entornos híbridos (on-prem + AWS/Azure). Cubre los 10 casos de uso del handbook: rendimiento, backlog, incidentes, comunicación, riesgos, 1:1, reporting, emails, documentación y actas.",
+    "description": { "es": "Prompt maestro para Squad Leads en entornos híbridos (on-prem + AWS/Azure). Cubre los 10 casos de uso del handbook: rendimiento, backlog, incidentes, comunicación, riesgos, 1:1, reporting, emails, documentación y actas.", "ca": "Prompt mestre per a Squad Leads en entorns híbrids (on-prem + AWS/Azure). Cobreix els 10 casos d'ús del handbook: rendiment, backlog, incidents, comunicació, riscos, 1:1, reporting, emails, documentació i actes.", "en": "Master prompt for Squad Leads in hybrid environments (on-prem + AWS/Azure). Covers the 10 handbook use cases: performance, backlog, incidents, communication, risks, 1:1, reporting, emails, documentation and meeting notes." },
     "prompt": "Actúa como un asistente especializado en operaciones híbridas y soporte a equipos técnicos dentro de T-Systems Iberia. Tu rol es ayudar al Squad Lead a ganar claridad operativa, prevenir riesgos y optimizar la carga del equipo; trabajando en entornos Enterprise híbridos (on-prem + AWS/Azure).\n\nCONTEXTO DEL ROL:\nEres responsable de la estabilidad, eficiencia y bienestar del equipo técnico. No ejecutas tareas técnicas ni tomas decisiones operativas críticas.\n\nTu prioridad es:\n- Garantizar la estabilidad operativa y la continuidad del servicio.\n- Coordinar los equipos técnicos, Customer Delivery y el soporte corporativo.\n- Asegurar el cumplimiento de los procesos (SLA, turnos, formación, imputaciones).\n- Detectar riesgos antes de que afecten al servicio.\n- Facilitar el bienestar, la carga equilibrada y el desarrollo del equipo.\n\nForma de trabajar:\n- Prioridad absoluta: estabilidad del equipo y del servicio.\n- Nunca autorizas automatizaciones sin validación humana.\n- Usas la IA como asistente de decisión, no como ejecutor.\n- Diagnóstico basado en datos de rendimiento, patrones de incidencias y feedback del equipo.\n- Pensamiento orientado a la prevención, no a la reacción.\n\nCONTEXTO DE LA SOLICITUD:\n- Rol implicado: Squad Lead – Hybrid Operations.\n- Equipo o unidad: [EQUIPO_UNIDAD].\n- Contexto o problema: [CONTEXTO_PROBLEMA].\n- Nivel de urgencia: [NIVEL_URGENCIA].\n- Nivel de detalle requerido: [NIVEL_DETALLE].\n\nCaso de uso: [CASO_DE_USO]\n\nOBJETIVO:\n[OBJETIVO]\n\nINFORMACIÓN DISPONIBLE:\n[DATOS_OPERATIVOS]\n\nFORMATO DE SALIDA:\n[FORMATO_SALIDA]\n\n[CRITERIOS_SQUAD]\n\n[TONO_SQUAD]\n\n[RESTRICCIONES_SQUAD]\n\nFORMATO ESPERADO DE RESPUESTA:\nCuando aplique, organiza la respuesta así:\n• Contexto breve\n• Análisis o diagnóstico\n• Propuesta operativa (estructura, pasos o plantilla)\n• Riesgos o validaciones requeridas\n• Próximos pasos para el Squad Lead\n\nOBJETIVO FINAL:\nAyudar a un Squad Lead sénior a ganar claridad, prevenir riesgos, reducir la carga manual repetitiva, estandarizar comunicación, reporting y documentación y garantizar que el equipo opere con estabilidad, eficiencia y bienestar; sin perder el control, sin violar el compliance y sin reemplazar el juicio humano.\n\n[DATOS_ADICIONALES]\n\nSi faltan datos críticos, pedirlos antes de generar la respuesta.",
     "fields": [
       {
         "name": "CASO_DE_USO",
-        "hint": "Selecciona el caso de uso del handbook Squad Lead",
+        "label": { "es": "Caso de Uso", "ca": "Cas d'Ús", "en": "Use Case" },
+        "hint": { "es": "Selecciona el caso de uso del handbook Squad Lead", "ca": "Selecciona el cas d'ús del handbook Squad Lead", "en": "Select the Squad Lead handbook use case" },
         "type": "select",
         "required": true,
         "default": "",
         "options": [
-          "Master Prompt - Squad Lead",
-          "Seguimiento de rendimiento del equipo",
-          "Priorización operativa y backlog",
-          "Gestión de incidentes y coordinación",
-          "Comunicación y alineación de equipo",
-          "Identificación de riesgos operativos",
-          "Seguimiento individual (1:1)",
-          "Reporting y visibilidad",
-          "Reducción de redacción en Emails",
-          "Documentación operativa y conocimiento",
-          "Resúmenes de reuniones técnicas"
+          { "value": "Master Prompt - Squad Lead", "label": { "es": "Master Prompt - Squad Lead", "ca": "Master Prompt - Squad Lead", "en": "Master Prompt - Squad Lead" } },
+          { "value": "Seguimiento de rendimiento del equipo", "label": { "es": "Seguimiento de rendimiento del equipo", "ca": "Seguiment de rendiment de l'equip", "en": "Team performance tracking" } },
+          { "value": "Priorización operativa y backlog", "label": { "es": "Priorización operativa y backlog", "ca": "Priorització operativa i backlog", "en": "Operational prioritisation and backlog" } },
+          { "value": "Gestión de incidentes y coordinación", "label": { "es": "Gestión de incidentes y coordinación", "ca": "Gestió d'incidents i coordinació", "en": "Incident management and coordination" } },
+          { "value": "Comunicación y alineación de equipo", "label": { "es": "Comunicación y alineación de equipo", "ca": "Comunicació i alineació d'equip", "en": "Team communication and alignment" } },
+          { "value": "Identificación de riesgos operativos", "label": { "es": "Identificación de riesgos operativos", "ca": "Identificació de riscos operatius", "en": "Operational risk identification" } },
+          { "value": "Seguimiento individual (1:1)", "label": { "es": "Seguimiento individual (1:1)", "ca": "Seguiment individual (1:1)", "en": "Individual follow-up (1:1)" } },
+          { "value": "Reporting y visibilidad", "label": { "es": "Reporting y visibilidad", "ca": "Reporting i visibilitat", "en": "Reporting and visibility" } },
+          { "value": "Reducción de redacción en Emails", "label": { "es": "Reducción de redacción en Emails", "ca": "Reducció de redacció en Emails", "en": "Email drafting reduction" } },
+          { "value": "Documentación operativa y conocimiento", "label": { "es": "Documentación operativa y conocimiento", "ca": "Documentació operativa i coneixement", "en": "Operational documentation and knowledge" } },
+          { "value": "Resúmenes de reuniones técnicas", "label": { "es": "Resúmenes de reuniones técnicas", "ca": "Resums de reunions tècniques", "en": "Technical meeting summaries" } }
         ],
         "section": "basic"
       },
       {
         "name": "EQUIPO_UNIDAD",
-        "hint": "Nombre del equipo o unidad. Ej: [TEAM-01], Cloud Operations, GDC Iberia, Hybrid Ops",
+        "label": { "es": "Equipo / Unidad", "ca": "Equip / Unitat", "en": "Team / Unit" },
+        "hint": { "es": "Nombre del equipo o unidad. Ej: [TEAM-01], Cloud Operations, GDC Iberia, Hybrid Ops", "ca": "Nom de l'equip o unitat. Ex: [TEAM-01], Cloud Operations, GDC Iberia, Hybrid Ops", "en": "Team or unit name. E.g.: [TEAM-01], Cloud Operations, GDC Iberia, Hybrid Ops" },
         "type": "text",
         "required": true,
         "default": "",
@@ -621,7 +680,8 @@
       },
       {
         "name": "CONTEXTO_PROBLEMA",
-        "hint": "Describe la situación operativa. Ej: «Hay 5 incidentes repetidos en 7 días relacionados con [SERVICE-X], el equipo está sobrecargado y no hay tiempo para formación.»",
+        "label": { "es": "Contexto del Problema", "ca": "Context del Problema", "en": "Problem Context" },
+        "hint": { "es": "Describe la situación operativa. Ej: «Hay 5 incidentes repetidos en 7 días relacionados con [SERVICE-X], el equipo está sobrecargado y no hay tiempo para formación.»", "ca": "Descriu la situació operativa. Ex: «Hi ha 5 incidents repetits en 7 dies relacionats amb [SERVICE-X], l'equip està sobrecarregat i no hi ha temps per a formació.»", "en": "Describe the operational situation. E.g.: '5 repeated incidents in 7 days related to [SERVICE-X], team is overloaded and no time for training.'" },
         "type": "textarea",
         "required": true,
         "default": "",
@@ -629,33 +689,36 @@
       },
       {
         "name": "NIVEL_URGENCIA",
-        "hint": "Nivel de urgencia de la solicitud",
+        "label": { "es": "Nivel de Urgencia", "ca": "Nivell d'Urgència", "en": "Urgency Level" },
+        "hint": { "es": "Nivel de urgencia de la solicitud", "ca": "Nivell d'urgència de la sol·licitud", "en": "Request urgency level" },
         "type": "select",
         "required": true,
         "default": "",
         "options": [
-          "Alto",
-          "Medio",
-          "Bajo"
+          { "value": "Alto", "label": { "es": "Alto", "ca": "Alt", "en": "High" } },
+          { "value": "Medio", "label": { "es": "Medio", "ca": "Mitjà", "en": "Medium" } },
+          { "value": "Bajo", "label": { "es": "Bajo", "ca": "Baix", "en": "Low" } }
         ],
         "section": "basic"
       },
       {
         "name": "NIVEL_DETALLE",
-        "hint": "Nivel de detalle esperado en la respuesta",
+        "label": { "es": "Nivel de Detalle", "ca": "Nivell de Detall", "en": "Detail Level" },
+        "hint": { "es": "Nivel de detalle esperado en la respuesta", "ca": "Nivell de detall esperat en la resposta", "en": "Expected detail level in the response" },
         "type": "select",
         "required": true,
         "default": "",
         "options": [
-          "Alto",
-          "Medio",
-          "Breve"
+          { "value": "Alto", "label": { "es": "Alto", "ca": "Alt", "en": "High" } },
+          { "value": "Medio", "label": { "es": "Medio", "ca": "Mitjà", "en": "Medium" } },
+          { "value": "Breve", "label": { "es": "Breve", "ca": "Breu", "en": "Brief" } }
         ],
         "section": "basic"
       },
       {
         "name": "OBJETIVO",
-        "hint": "Qué necesitas conseguir exactamente. Ej: «Plantilla de comunicación a Customer Delivery.» / «Checklist mensual de compliance.» / «Diagnóstico preliminar de incidente.» / «Resumen 1:1 + tabla de seguimiento.»",
+        "label": { "es": "Objetivo", "ca": "Objectiu", "en": "Objective" },
+        "hint": { "es": "Qué necesitas conseguir exactamente. Ej: «Plantilla de comunicación a Customer Delivery.» / «Checklist mensual de compliance.» / «Diagnóstico preliminar de incidente.»", "ca": "Què necessites aconseguir exactament. Ex: «Plantilla de comunicació a Customer Delivery.» / «Checklist mensual de compliance.»", "en": "What you need to achieve exactly. E.g.: 'Communication template to Customer Delivery.' / 'Monthly compliance checklist.' / 'Preliminary incident diagnosis.'" },
         "type": "textarea",
         "required": true,
         "default": "",
@@ -663,28 +726,30 @@
       },
       {
         "name": "FORMATO_SALIDA",
-        "hint": "Formato de salida deseado para la respuesta",
+        "label": { "es": "Formato de Salida", "ca": "Format de Sortida", "en": "Output Format" },
+        "hint": { "es": "Formato de salida deseado para la respuesta", "ca": "Format de sortida desitjat per a la resposta", "en": "Desired output format for the response" },
         "type": "select",
         "required": false,
         "default": "",
         "options": [
-          "Email",
-          "Checklist",
-          "Agenda de turno editable",
-          "Resumen ejecutivo de riesgos operativos",
-          "Propuesta de automatización (Power Automate)",
-          "Guión de comunicación para 1:1",
-          "Agenda estructurada",
-          "Lista de riesgos y mitigaciones",
-          "Tabla de KPIs y riesgos",
-          "Plantilla reutilizable",
-          "Tabla de acciones (acción → responsable → fecha → estado)"
+          { "value": "Email", "label": { "es": "Email", "ca": "Email", "en": "Email" } },
+          { "value": "Checklist", "label": { "es": "Checklist", "ca": "Checklist", "en": "Checklist" } },
+          { "value": "Agenda de turno editable", "label": { "es": "Agenda de turno editable", "ca": "Agenda de torn editable", "en": "Editable shift agenda" } },
+          { "value": "Resumen ejecutivo de riesgos operativos", "label": { "es": "Resumen ejecutivo de riesgos operativos", "ca": "Resum executiu de riscos operatius", "en": "Executive summary of operational risks" } },
+          { "value": "Propuesta de automatización (Power Automate)", "label": { "es": "Propuesta de automatización (Power Automate)", "ca": "Proposta d'automatització (Power Automate)", "en": "Automation proposal (Power Automate)" } },
+          { "value": "Guión de comunicación para 1:1", "label": { "es": "Guión de comunicación para 1:1", "ca": "Guió de comunicació per a 1:1", "en": "Communication script for 1:1" } },
+          { "value": "Agenda estructurada", "label": { "es": "Agenda estructurada", "ca": "Agenda estructurada", "en": "Structured agenda" } },
+          { "value": "Lista de riesgos y mitigaciones", "label": { "es": "Lista de riesgos y mitigaciones", "ca": "Llista de riscos i mitigacions", "en": "Risk and mitigation list" } },
+          { "value": "Tabla de KPIs y riesgos", "label": { "es": "Tabla de KPIs y riesgos", "ca": "Taula de KPIs i riscos", "en": "KPI and risk table" } },
+          { "value": "Plantilla reutilizable", "label": { "es": "Plantilla reutilizable", "ca": "Plantilla reutilitzable", "en": "Reusable template" } },
+          { "value": "Tabla de acciones (acción → responsable → fecha → estado)", "label": { "es": "Tabla de acciones (acción → responsable → fecha → estado)", "ca": "Taula d'accions (acció → responsable → data → estat)", "en": "Action table (action → owner → date → status)" } }
         ],
         "section": "governance"
       },
       {
         "name": "DATOS_OPERATIVOS",
-        "hint": "Datos operativos disponibles: nº tickets abiertos/cerrados (últimos 7 días), patrones [INC-XXXX], MTTR actual, estado del backlog, horas imputadas, formación pendiente, feedback de 1:1...",
+        "label": { "es": "Datos Operativos", "ca": "Dades Operatives", "en": "Operational Data" },
+        "hint": { "es": "Datos operativos disponibles: nº tickets abiertos/cerrados (últimos 7 días), patrones [INC-XXXX], MTTR actual, estado del backlog, horas imputadas, formación pendiente, feedback de 1:1...", "ca": "Dades operatives disponibles: nº tickets oberts/tancats (darrers 7 dies), patrons [INC-XXXX], MTTR actual, estat del backlog, hores imputades, formació pendent, feedback de 1:1...", "en": "Available operational data: no. open/closed tickets (last 7 days), [INC-XXXX] patterns, current MTTR, backlog status, logged hours, pending training, 1:1 feedback..." },
         "type": "textarea",
         "required": false,
         "default": "",
@@ -692,7 +757,8 @@
       },
       {
         "name": "DATOS_ADICIONALES",
-        "hint": "Contexto extra, restricciones específicas, entorno técnico u otra información relevante para la tarea",
+        "label": { "es": "Datos Adicionales", "ca": "Dades Addicionals", "en": "Additional Data" },
+        "hint": { "es": "Contexto extra, restricciones específicas, entorno técnico u otra información relevante para la tarea", "ca": "Context extra, restriccions específiques, entorn tècnic o altra informació rellevant per a la tasca", "en": "Extra context, specific constraints, technical environment or other relevant information for the task" },
         "type": "textarea",
         "required": false,
         "default": "",
@@ -700,7 +766,8 @@
       },
       {
         "name": "CRITERIOS_SQUAD",
-        "hint": "Criterios obligatorios del handbook (editables para ajustar al caso de uso)",
+        "label": { "es": "Criterios del Squad", "ca": "Criteris del Squad", "en": "Squad Criteria" },
+        "hint": { "es": "Criterios obligatorios del handbook (editables para ajustar al caso de uso)", "ca": "Criteris obligatoris del handbook (editables per ajustar al cas d'ús)", "en": "Mandatory handbook criteria (editable to fit the use case)" },
         "type": "textarea",
         "required": false,
         "default": "CRITERIOS OBLIGATORIOS:\n• Ser aplicable en entornos de producción reales.\n• Respetar las normas de compliance de T-Systems Iberia.\n• No tomar decisiones técnicas (no proponer cambios en servidores, bases de datos o redes) y basarse únicamente en la información proporcionada.\n• Priorizar la supervisión humana en cualquier automatización.\n• Incluir riesgos operativos (p.ej., \"Si automatizas esto sin validación, pierdes trazabilidad\").\n• Incluir acciones de validación requeridas (p.ej., \"Requiere aprobación de RR.HH. para enviar a formación\").\n• Usar lenguaje profesional, claro, directo y orientado a la acción.\n• Nunca incluir nombres reales, IDs, IPs, logs ni datos sensibles — usar [TEAM01], [INC-XXXX], [EMPLOYEE-01].\n• Si faltan datos críticos, pedirlos antes de generar la respuesta.",
@@ -708,7 +775,8 @@
       },
       {
         "name": "TONO_SQUAD",
-        "hint": "Tono esperado de la respuesta (editable)",
+        "label": { "es": "Tono del Squad", "ca": "To del Squad", "en": "Squad Tone" },
+        "hint": { "es": "Tono esperado de la respuesta (editable)", "ca": "To esperat de la resposta (editable)", "en": "Expected response tone (editable)" },
         "type": "textarea",
         "required": false,
         "default": "TONO:\n• Técnico, claro y directo.\n• Orientado a la acción operativa, no a la teoría de gestión.\n• Profesional, alineado con la cultura empresarial de T-Systems Iberia.\n• Empático pero conciso.",
@@ -716,7 +784,8 @@
       },
       {
         "name": "RESTRICCIONES_SQUAD",
-        "hint": "Restricciones de seguridad y compliance del handbook (editables)",
+        "label": { "es": "Restricciones del Squad", "ca": "Restriccions del Squad", "en": "Squad Constraints" },
+        "hint": { "es": "Restricciones de seguridad y compliance del handbook (editables)", "ca": "Restriccions de seguretat i compliance del handbook (editables)", "en": "Handbook security and compliance constraints (editable)" },
         "type": "textarea",
         "required": false,
         "default": "RESTRICCIONES (OBLIGATORIO):\n• No ejecutar comandos ni proponer cambios en servidores, bases de datos o redes.\n• No generar configuraciones técnicas, scripts finales ni instrucciones peligrosas.\n• No incluir nombres reales, IPs, logs reales ni información sensible.\n• No asumir acceso root, sudo ni permisos de administrador.\n• No inventar datos: si no hay información, pedirla.\n• Solo generar borradores, plantillas, sugerencias o estructuras.\n• Todo lo generado debe ser revisado, validado y aprobado por el Squad Lead.",
@@ -727,37 +796,39 @@
   },
   {
     "id": "java_engineer",
-    "title": "Plantilla Java Engineer",
+    "title": { "es": "Plantilla Java Engineer", "ca": "Plantilla Java Engineer", "en": "Java Engineer Template" },
     "status": "nuevo",
-    "description": "Prompt maestro para Java Engineers en entornos híbridos (on-premise + cloud). Cubre los 13 casos de uso del handbook: API, testing, seguridad, arquitectura, CI/CD, cloud, troubleshooting y más.",
+    "description": { "es": "Prompt maestro para Java Engineers en entornos híbridos (on-premise + cloud). Cubre los 13 casos de uso del handbook: API, testing, seguridad, arquitectura, CI/CD, cloud, troubleshooting y más.", "ca": "Prompt mestre per a Java Engineers en entorns híbrids (on-premise + cloud). Cobreix els 13 casos d'ús del handbook: API, testing, seguretat, arquitectura, CI/CD, cloud, troubleshooting i més.", "en": "Master prompt for Java Engineers in hybrid environments (on-premise + cloud). Covers the 13 handbook use cases: API, testing, security, architecture, CI/CD, cloud, troubleshooting and more." },
     "prompt": "Actúa como un asistente técnico especializado en desarrollo backend y operaciones híbridas (on-premise + cloud) dentro del ecosistema Java. Tu función es apoyar al ingeniero en tareas de análisis, documentación, generación de código, refactorización y troubleshooting, sin sustituir el criterio profesional ni ejecutar decisiones técnicas.\n\nCONTEXTO DEL ROL:\nEl Java Engineer diseña, desarrolla y mantiene servicios backend y APIs, resuelve incidencias técnicas, optimiza rendimiento, crea tests y colabora con DevOps, arquitectos y otros ingenieros para garantizar estabilidad y calidad del servicio.\n\nTu prioridad es:\n- Acelerar tareas repetitivas y de baja complejidad.\n- Proporcionar diagnósticos preliminares.\n- Generar estructuras de código y documentación técnica.\n- Reformular, clarificar o analizar contenido técnico.\n\nNo ejecutas código, no tomas decisiones técnicas y no interactúas con sistemas reales.\n\nCaso de uso: [CASO_DE_USO]\n\nCONTEXTO DE LA SOLICITUD\n[CONTEXTO_SOLICITUD]\n\n[CONTEXTO_TECNICO]\n\nOBJETIVO\n[OBJETIVO]\n\nFORMATO DE SALIDA\n[FORMATO_SALIDA]\n\n[CRITERIOS_JAVA]\n\n[RESTRICCIONES_JAVA]\n\nFORMATO ESPERADO DE RESPUESTA\n• Cuando corresponda, responde en este orden:\n• Contexto breve\n• Análisis o explicación técnica\n• Propuesta operativa (código, diagnóstico, estructura, pasos, recomendaciones)\n• Riesgos o puntos a validar\n• Próximos pasos para el ingeniero\n\n[DATOS_ADICIONALES]\n\nOBJETIVO FINAL\nDar soporte técnico al ingeniero para:\n- Acelerar desarrollo y troubleshooting.\n- Mejorar documentación y claridad técnica.\n- Estandarizar código, tests y patrones.\n- Reducir tareas repetitivas.\n- Aumentar calidad y productividad.\n\nSin sustituir el juicio profesional ni la responsabilidad final del Java Engineer.\n\nSi falta información crítica, indícalo al usuario antes de generar una respuesta final.",
     "fields": [
       {
         "name": "CASO_DE_USO",
-        "hint": "Selecciona el caso de uso del handbook Java Engineer",
+        "label": { "es": "Caso de Uso", "ca": "Cas d'Ús", "en": "Use Case" },
+        "hint": { "es": "Selecciona el caso de uso del handbook Java Engineer", "ca": "Selecciona el cas d'ús del handbook Java Engineer", "en": "Select the Java Engineer handbook use case" },
         "type": "select",
         "required": true,
         "default": "",
         "options": [
-          "Master Prompt - Java Engineer",
-          "Desarrollo Web API",
-          "Optimización & Rendimiento",
-          "Seguridad",
-          "Arquitectura avanzada",
-          "Testing",
-          "DevOps & CI/CD",
-          "Cloud & Microservices",
-          "Troubleshooting",
-          "Generación de código base (boilerplate)",
-          "Explicación de código legacy",
-          "Refactorización",
-          "Documentación técnica"
+          { "value": "Master Prompt - Java Engineer", "label": { "es": "Master Prompt - Java Engineer", "ca": "Master Prompt - Java Engineer", "en": "Master Prompt - Java Engineer" } },
+          { "value": "Desarrollo Web API", "label": { "es": "Desarrollo Web API", "ca": "Desenvolupament Web API", "en": "Web API Development" } },
+          { "value": "Optimización & Rendimiento", "label": { "es": "Optimización & Rendimiento", "ca": "Optimització & Rendiment", "en": "Optimisation & Performance" } },
+          { "value": "Seguridad", "label": { "es": "Seguridad", "ca": "Seguretat", "en": "Security" } },
+          { "value": "Arquitectura avanzada", "label": { "es": "Arquitectura avanzada", "ca": "Arquitectura avançada", "en": "Advanced architecture" } },
+          { "value": "Testing", "label": { "es": "Testing", "ca": "Testing", "en": "Testing" } },
+          { "value": "DevOps & CI/CD", "label": { "es": "DevOps & CI/CD", "ca": "DevOps & CI/CD", "en": "DevOps & CI/CD" } },
+          { "value": "Cloud & Microservices", "label": { "es": "Cloud & Microservices", "ca": "Cloud & Microservices", "en": "Cloud & Microservices" } },
+          { "value": "Troubleshooting", "label": { "es": "Troubleshooting", "ca": "Troubleshooting", "en": "Troubleshooting" } },
+          { "value": "Generación de código base (boilerplate)", "label": { "es": "Generación de código base (boilerplate)", "ca": "Generació de codi base (boilerplate)", "en": "Base code generation (boilerplate)" } },
+          { "value": "Explicación de código legacy", "label": { "es": "Explicación de código legacy", "ca": "Explicació de codi legacy", "en": "Legacy code explanation" } },
+          { "value": "Refactorización", "label": { "es": "Refactorización", "ca": "Refactorització", "en": "Refactoring" } },
+          { "value": "Documentación técnica", "label": { "es": "Documentación técnica", "ca": "Documentació tècnica", "en": "Technical documentation" } }
         ],
         "section": "basic"
       },
       {
         "name": "CONTEXTO_SOLICITUD",
-        "hint": "Describe brevemente la situación. Ej: «Tengo un stacktrace y necesito entender el origen del error.» / «Debo generar un CRUD básico siguiendo nuestros estándares.» / «Necesito optimizar un endpoint con latencias elevadas.»",
+        "label": { "es": "Contexto de la Solicitud", "ca": "Context de la Sol·licitud", "en": "Request Context" },
+        "hint": { "es": "Describe brevemente la situación. Ej: «Tengo un stacktrace y necesito entender el origen del error.» / «Debo generar un CRUD básico siguiendo nuestros estándares.»", "ca": "Descriu breument la situació. Ex: «Tinc un stacktrace i necesito entendre l'origen de l'error.» / «He de generar un CRUD bàsic seguint els nostres estàndards.»", "en": "Briefly describe the situation. E.g.: 'I have a stacktrace and need to understand the error origin.' / 'I need to generate a basic CRUD following our standards.'" },
         "type": "textarea",
         "required": true,
         "default": "",
@@ -765,7 +836,8 @@
       },
       {
         "name": "OBJETIVO",
-        "hint": "Define qué quieres conseguir exactamente. Ej: «Generar código base (API, DTOs, servicios).» / «Crear tests unitarios o de integración.» / «Explicar un error o stacktrace.» / «Documentar endpoints o módulos.»",
+        "label": { "es": "Objetivo", "ca": "Objectiu", "en": "Objective" },
+        "hint": { "es": "Define qué quieres conseguir exactamente. Ej: «Generar código base (API, DTOs, servicios).» / «Crear tests unitarios o de integración.» / «Explicar un error o stacktrace.»", "ca": "Defineix què vols aconseguir exactament. Ex: «Generar codi base (API, DTOs, serveis).» / «Crear tests unitaris o d'integració.» / «Explicar un error o stacktrace.»", "en": "Define what you want to achieve exactly. E.g.: 'Generate base code (API, DTOs, services).' / 'Create unit or integration tests.' / 'Explain an error or stacktrace.'" },
         "type": "textarea",
         "required": true,
         "default": "",
@@ -773,7 +845,8 @@
       },
       {
         "name": "VERSION_JAVA",
-        "hint": "Versión de Java usada en el proyecto",
+        "label": { "es": "Versión Java", "ca": "Versió Java", "en": "Java Version" },
+        "hint": { "es": "Versión de Java usada en el proyecto", "ca": "Versió de Java usada al projecte", "en": "Java version used in the project" },
         "type": "select",
         "required": false,
         "default": "",
@@ -782,13 +855,14 @@
           "Java 11",
           "Java 17",
           "Java 21",
-          "Otra"
+          { "value": "Otra", "label": { "es": "Otra", "ca": "Altra", "en": "Other" } }
         ],
         "section": "contexto_tecnico"
       },
       {
         "name": "FRAMEWORK",
-        "hint": "Framework principal del proyecto",
+        "label": { "es": "Framework", "ca": "Framework", "en": "Framework" },
+        "hint": { "es": "Framework principal del proyecto", "ca": "Framework principal del projecte", "en": "Main project framework" },
         "type": "select",
         "required": false,
         "default": "",
@@ -798,30 +872,32 @@
           "Jakarta EE",
           "Quarkus",
           "Micronaut",
-          "Otro"
+          { "value": "Otro", "label": { "es": "Otro", "ca": "Altre", "en": "Other" } }
         ],
         "section": "contexto_tecnico"
       },
       {
         "name": "ARQUITECTURA",
-        "hint": "Patrón arquitectónico del servicio",
+        "label": { "es": "Arquitectura", "ca": "Arquitectura", "en": "Architecture" },
+        "hint": { "es": "Patrón arquitectónico del servicio", "ca": "Patró arquitectònic del servei", "en": "Service architectural pattern" },
         "type": "select",
         "required": false,
         "default": "",
         "options": [
           "Microservicios",
-          "Monolito modular",
+          { "value": "Monolito modular", "label": { "es": "Monolito modular", "ca": "Monolit modular", "en": "Modular monolith" } },
           "CQRS",
           "Hexagonal / Ports & Adapters",
           "Clean Architecture",
-          "Monolito tradicional",
-          "Otra"
+          { "value": "Monolito tradicional", "label": { "es": "Monolito tradicional", "ca": "Monolit tradicional", "en": "Traditional monolith" } },
+          { "value": "Otra", "label": { "es": "Otra", "ca": "Altra", "en": "Other" } }
         ],
         "section": "contexto_tecnico"
       },
       {
         "name": "ENTORNO",
-        "hint": "Entorno de ejecución donde aplica la tarea",
+        "label": { "es": "Entorno", "ca": "Entorn", "en": "Environment" },
+        "hint": { "es": "Entorno de ejecución donde aplica la tarea", "ca": "Entorn d'execució on aplica la tasca", "en": "Execution environment where the task applies" },
         "type": "select",
         "required": false,
         "default": "",
@@ -834,7 +910,8 @@
       },
       {
         "name": "BASE_DATOS",
-        "hint": "Base de datos principal del servicio",
+        "label": { "es": "Base de Datos", "ca": "Base de Dades", "en": "Database" },
+        "hint": { "es": "Base de datos principal del servicio", "ca": "Base de dades principal del servei", "en": "Main service database" },
         "type": "select",
         "required": false,
         "default": "",
@@ -846,13 +923,14 @@
           "Redis",
           "Cosmos DB",
           "Oracle",
-          "Otra"
+          { "value": "Otra", "label": { "es": "Otra", "ca": "Altra", "en": "Other" } }
         ],
         "section": "contexto_tecnico"
       },
       {
         "name": "INFRAESTRUCTURA",
-        "hint": "Infraestructura o plataforma de despliegue",
+        "label": { "es": "Infraestructura", "ca": "Infraestructura", "en": "Infrastructure" },
+        "hint": { "es": "Infraestructura o plataforma de despliegue", "ca": "Infraestructura o plataforma de desplegament", "en": "Infrastructure or deployment platform" },
         "type": "select",
         "required": false,
         "default": "",
@@ -860,35 +938,37 @@
           "Azure",
           "Kubernetes / AKS",
           "Docker",
-          "On-premise",
+          { "value": "On-premise", "label": { "es": "On-premise", "ca": "On-premise", "en": "On-premise" } },
           "Azure + Kubernetes",
-          "Otra"
+          { "value": "Otra", "label": { "es": "Otra", "ca": "Altra", "en": "Other" } }
         ],
         "section": "contexto_tecnico"
       },
       {
         "name": "FORMATO_SALIDA",
-        "hint": "Formato esperado de la respuesta (opcional)",
+        "label": { "es": "Formato de Salida", "ca": "Format de Sortida", "en": "Output Format" },
+        "hint": { "es": "Formato esperado de la respuesta (opcional)", "ca": "Format esperat de la resposta (opcional)", "en": "Expected response format (optional)" },
         "type": "select",
         "required": false,
         "default": "",
         "options": [
-          "Código Java",
-          "Plantilla de API",
-          "Tests JUnit / Mockito",
-          "Tabla de diagnóstico",
-          "Lista de pasos",
-          "Documentación técnica",
-          "UML textual / diagramas descriptivos",
-          "OpenAPI / ejemplo de endpoints",
-          "YAML comentado",
-          "Otro"
+          { "value": "Código Java", "label": { "es": "Código Java", "ca": "Codi Java", "en": "Java code" } },
+          { "value": "Plantilla de API", "label": { "es": "Plantilla de API", "ca": "Plantilla d'API", "en": "API template" } },
+          { "value": "Tests JUnit / Mockito", "label": { "es": "Tests JUnit / Mockito", "ca": "Tests JUnit / Mockito", "en": "JUnit / Mockito tests" } },
+          { "value": "Tabla de diagnóstico", "label": { "es": "Tabla de diagnóstico", "ca": "Taula de diagnòstic", "en": "Diagnostic table" } },
+          { "value": "Lista de pasos", "label": { "es": "Lista de pasos", "ca": "Llista de passos", "en": "Step list" } },
+          { "value": "Documentación técnica", "label": { "es": "Documentación técnica", "ca": "Documentació tècnica", "en": "Technical documentation" } },
+          { "value": "UML textual / diagramas descriptivos", "label": { "es": "UML textual / diagramas descriptivos", "ca": "UML textual / diagrames descriptius", "en": "Textual UML / descriptive diagrams" } },
+          { "value": "OpenAPI / ejemplo de endpoints", "label": { "es": "OpenAPI / ejemplo de endpoints", "ca": "OpenAPI / exemple d'endpoints", "en": "OpenAPI / endpoint examples" } },
+          { "value": "YAML comentado", "label": { "es": "YAML comentado", "ca": "YAML comentat", "en": "Commented YAML" } },
+          { "value": "Otro", "label": { "es": "Otro", "ca": "Altre", "en": "Other" } }
         ],
         "section": "governance"
       },
       {
         "name": "DATOS_ADICIONALES",
-        "hint": "Fragmento de código anonimizado, stacktrace, contexto extra u otra información relevante para la tarea",
+        "label": { "es": "Datos Adicionales", "ca": "Dades Addicionals", "en": "Additional Data" },
+        "hint": { "es": "Fragmento de código anonimizado, stacktrace, contexto extra u otra información relevante para la tarea", "ca": "Fragment de codi anonimitzat, stacktrace, context extra o altra informació rellevant per a la tasca", "en": "Anonymised code snippet, stacktrace, extra context or other relevant information for the task" },
         "type": "textarea",
         "required": false,
         "default": "",
@@ -896,7 +976,8 @@
       },
       {
         "name": "CRITERIOS_JAVA",
-        "hint": "Criterios obligatorios precargados del handbook (editable)",
+        "label": { "es": "Criterios Java", "ca": "Criteris Java", "en": "Java Criteria" },
+        "hint": { "es": "Criterios obligatorios precargados del handbook (editable)", "ca": "Criteris obligatoris precorreguts del handbook (editable)", "en": "Mandatory pre-loaded handbook criteria (editable)" },
         "type": "textarea",
         "required": false,
         "default": "CRITERIOS OBLIGATORIOS\n- Lenguaje claro, técnico y orientado a acción.\n- Basarse únicamente en la información proporcionada.\n- Seguir buenas prácticas de desarrollo (SOLID, Clean Code).\n- Respetar estándares habituales de Spring Boot.\n- Cuando sugieras código, incluir comentarios aclaratorios.\n- Si faltan datos críticos, pedirlos antes de generar la respuesta.\n- Evitar complejidad innecesaria y priorizar simplicidad mantenible.",
@@ -904,7 +985,8 @@
       },
       {
         "name": "RESTRICCIONES_JAVA",
-        "hint": "Restricciones de seguridad precargadas del handbook (editable)",
+        "label": { "es": "Restricciones Java", "ca": "Restriccions Java", "en": "Java Constraints" },
+        "hint": { "es": "Restricciones de seguridad precargadas del handbook (editable)", "ca": "Restriccions de seguretat precorregudes del handbook (editable)", "en": "Pre-loaded handbook security constraints (editable)" },
         "type": "textarea",
         "required": false,
         "default": "RESTRICCIONES (OBLIGATORIO)\n- No incluir datos sensibles, secretos, tokens, URLs internas o logs reales.\n- No generar comandos, configuraciones o scripts que impliquen ejecución real.\n- No proponer cambios directos en infraestructura o producción.\n- No inventar datos no proporcionados (IPs, nombres de clases, rutas).\n- No generar código inseguro ni técnicas obsoletas.\n- No emitir juicios sobre personas o decisiones de diseño previas.\n\nUsar siempre placeholders:\n[CLASS_NAME], [SERVICE-X], [METHOD-Y], [ENDPOINT-Z], [TABLE-01], [TRACE-XXX]",
@@ -917,14 +999,15 @@
   },
   {
     "id": "delivery",
-    "title": "Plantilla Delivery & Operations",
+    "title": { "es": "Plantilla Delivery & Operations", "ca": "Plantilla Delivery & Operacions", "en": "Delivery & Operations Template" },
     "status": "proximamente",
-    "description": "Para responsables de entrega, operaciones y gestión de servicios (Delivery Managers, Service Managers, Operations Leads).",
+    "description": { "es": "Para responsables de entrega, operaciones y gestión de servicios (Delivery Managers, Service Managers, Operations Leads).", "ca": "Per a responsables de lliurament, operacions i gestió de serveis (Delivery Managers, Service Managers, Operations Leads).", "en": "For delivery, operations and service management leads (Delivery Managers, Service Managers, Operations Leads)." },
     "prompt": "Eres un asistente experto en Delivery Management y Operaciones para un [ROL_DELIVERY] de [UNIDAD] en [EMPRESA].\n\nTus competencias clave:\n- Gestión de proyectos y programas complejos\n- Service delivery y operaciones IT\n- Optimización de procesos y eficiencia operativa\n- Gestión de riesgos y calidad\n\nContexto operacional:\n- Servicios/proyectos bajo gestión: [SERVICIOS]\n- Tamaño del equipo: [EQUIPO]\n- Metodología de trabajo: [METODOLOGIA]\n- SLAs críticos: [SLAS]\n- Principales riesgos actuales: [RIESGOS]\n\nObjetivo operacional:\n[OBJETIVO_DELIVERY]\n\nSituación o desafío:\n[SITUACION]\n\nAcción requerida:\n[ACCION_REQUERIDA]\n\nFormato de respuesta:\n[FORMATO]",
     "fields": [
       {
         "name": "ROL_DELIVERY",
-        "hint": "Ej: Delivery Manager, Service Manager, Head of Operations",
+        "label": { "es": "Rol Delivery", "ca": "Rol Delivery", "en": "Delivery Role" },
+        "hint": { "es": "Ej: Delivery Manager, Service Manager, Head of Operations", "ca": "Ex: Delivery Manager, Service Manager, Head of Operations", "en": "E.g.: Delivery Manager, Service Manager, Head of Operations" },
         "type": "select",
         "required": true,
         "default": "",
@@ -933,45 +1016,50 @@
           "Service Manager",
           "Head of Operations",
           "PMO Lead",
-          "Otro"
+          { "value": "Otro", "label": { "es": "Otro", "ca": "Altre", "en": "Other" } }
         ]
       },
       {
         "name": "UNIDAD",
-        "hint": "Ej: Service Delivery Center, Cloud Operations",
+        "label": { "es": "Unidad", "ca": "Unitat", "en": "Unit" },
+        "hint": { "es": "Ej: Service Delivery Center, Cloud Operations", "ca": "Ex: Service Delivery Center, Cloud Operations", "en": "E.g.: Service Delivery Center, Cloud Operations" },
         "type": "text",
         "required": true,
         "default": ""
       },
       {
         "name": "EMPRESA",
-        "hint": "Ej: T-Systems, Deutsche Telekom IT",
+        "label": { "es": "Empresa", "ca": "Empresa", "en": "Company" },
+        "hint": { "es": "Ej: T-Systems, Deutsche Telekom IT", "ca": "Ex: T-Systems, Deutsche Telekom IT", "en": "E.g.: T-Systems, Deutsche Telekom IT" },
         "type": "select",
         "required": true,
         "default": "",
         "options": [
           "Deutsche Telekom",
           "T-Systems",
-          "Otra"
+          { "value": "Otra", "label": { "es": "Otra", "ca": "Altra", "en": "Other" } }
         ]
       },
       {
         "name": "SERVICIOS",
-        "hint": "Ej: SAP managed services, Cloud platform operations",
+        "label": { "es": "Servicios", "ca": "Serveis", "en": "Services" },
+        "hint": { "es": "Ej: SAP managed services, Cloud platform operations", "ca": "Ex: SAP managed services, Cloud platform operations", "en": "E.g.: SAP managed services, Cloud platform operations" },
         "type": "textarea",
         "required": true,
         "default": ""
       },
       {
         "name": "EQUIPO",
-        "hint": "Ej: 30 FTEs, 2 squads ágiles",
+        "label": { "es": "Equipo", "ca": "Equip", "en": "Team" },
+        "hint": { "es": "Ej: 30 FTEs, 2 squads ágiles", "ca": "Ex: 30 FTEs, 2 squads àgils", "en": "E.g.: 30 FTEs, 2 agile squads" },
         "type": "text",
         "required": false,
         "default": ""
       },
       {
         "name": "METODOLOGIA",
-        "hint": "Ej: Scrum, SAFe, ITIL v4",
+        "label": { "es": "Metodología", "ca": "Metodologia", "en": "Methodology" },
+        "hint": { "es": "Ej: Scrum, SAFe, ITIL v4", "ca": "Ex: Scrum, SAFe, ITIL v4", "en": "E.g.: Scrum, SAFe, ITIL v4" },
         "type": "select",
         "required": false,
         "default": "",
@@ -981,48 +1069,54 @@
           "ITIL v4",
           "Agile",
           "Waterfall",
-          "Híbrido",
-          "Otra"
+          { "value": "Híbrido", "label": { "es": "Híbrido", "ca": "Híbrid", "en": "Hybrid" } },
+          { "value": "Otra", "label": { "es": "Otra", "ca": "Altra", "en": "Other" } }
         ]
       },
       {
         "name": "SLAS",
-        "hint": "Ej: 99.5% availability, MTTR < 4h",
+        "label": { "es": "SLAs", "ca": "SLAs", "en": "SLAs" },
+        "hint": { "es": "Ej: 99.5% availability, MTTR < 4h", "ca": "Ex: 99.5% availability, MTTR < 4h", "en": "E.g.: 99.5% availability, MTTR < 4h" },
         "type": "textarea",
         "required": false,
         "default": ""
       },
       {
         "name": "RIESGOS",
-        "hint": "Ej: dependencias externas, shortage de skills",
+        "label": { "es": "Riesgos", "ca": "Riscos", "en": "Risks" },
+        "hint": { "es": "Ej: dependencias externas, shortage de skills", "ca": "Ex: dependències externes, manca de skills", "en": "E.g.: external dependencies, skills shortage" },
         "type": "textarea",
         "required": false,
         "default": ""
       },
       {
         "name": "OBJETIVO_DELIVERY",
-        "hint": "Ej: on-time delivery 95%, reducir incidents 20%",
+        "label": { "es": "Objetivo Delivery", "ca": "Objectiu Delivery", "en": "Delivery Objective" },
+        "hint": { "es": "Ej: on-time delivery 95%, reducir incidents 20%", "ca": "Ex: on-time delivery 95%, reduir incidents 20%", "en": "E.g.: on-time delivery 95%, reduce incidents 20%" },
         "type": "textarea",
         "required": true,
         "default": ""
       },
       {
         "name": "SITUACION",
-        "hint": "Ej: proyecto crítico retrasado 2 sprints, incident rate aumentando",
+        "label": { "es": "Situación", "ca": "Situació", "en": "Situation" },
+        "hint": { "es": "Ej: proyecto crítico retrasado 2 sprints, incident rate aumentando", "ca": "Ex: projecte crític endarrerit 2 sprints, incident rate augmentant", "en": "E.g.: critical project delayed 2 sprints, increasing incident rate" },
         "type": "textarea",
         "required": true,
         "default": ""
       },
       {
         "name": "ACCION_REQUERIDA",
-        "hint": "Ej: plan de recuperación, análisis root cause",
+        "label": { "es": "Acción Requerida", "ca": "Acció Requerida", "en": "Required Action" },
+        "hint": { "es": "Ej: plan de recuperación, análisis root cause", "ca": "Ex: pla de recuperació, anàlisi root cause", "en": "E.g.: recovery plan, root cause analysis" },
         "type": "textarea",
         "required": true,
         "default": ""
       },
       {
         "name": "FORMATO",
-        "hint": "Ej: action plan con owners y plazos, risk register",
+        "label": { "es": "Formato", "ca": "Format", "en": "Format" },
+        "hint": { "es": "Ej: action plan con owners y plazos, risk register", "ca": "Ex: action plan amb owners i terminis, risk register", "en": "E.g.: action plan with owners and deadlines, risk register" },
         "type": "text",
         "required": false,
         "default": ""

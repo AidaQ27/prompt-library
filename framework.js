@@ -3,6 +3,16 @@ let frameworks = [];
 let selectedFramework = null;
 let formValues = {}; // Store user input values
 
+// Resolve a multilingual string value based on current language.
+// Accepts either a plain string (legacy) or { es, ca, en } object.
+function getText(value, lang) {
+  if (!value && value !== 0) return '';
+  if (typeof value === 'object' && !Array.isArray(value)) {
+    return value[lang] || value['es'] || '';
+  }
+  return String(value);
+}
+
 // Load frameworks from JSON with security validation
 async function loadFrameworks() {
   try {
@@ -12,6 +22,10 @@ async function loadFrameworks() {
     if (frameworks.length > 0) {
       selectFramework(frameworks[0].id);
     }
+    // Trigger tour after content is ready
+    if (typeof window._fwTourCheckAndShow === 'function') {
+      window._fwTourCheckAndShow();
+    }
   } catch (error) {
     console.error('Error loading frameworks:', error);
     document.getElementById('frameworkTabs').innerHTML = '<div class="error">Error al cargar plantillas: ' + escapeHtml(error.message) + '</div>';
@@ -20,6 +34,8 @@ async function loadFrameworks() {
 
 // Render the list of framework tabs (safe from XSS)
 function renderFrameworkTabs() {
+  const lang = getLang();
+  console.log('[framework] renderFrameworkTabs | lang:', lang, '| frameworks loaded:', frameworks.length);
   const tabsContainer = document.getElementById('frameworkTabs');
   tabsContainer.innerHTML = ''; // Clear
   
@@ -37,7 +53,7 @@ function renderFrameworkTabs() {
     // Title span
     const titleSpan = document.createElement('span');
     titleSpan.className = 'frameworkTab__title';
-    titleSpan.textContent = fw.title;
+    titleSpan.textContent = getText(fw.title, getLang());
     button.appendChild(titleSpan);
     
     // Status badge
@@ -76,16 +92,22 @@ function selectFramework(id) {
 function updatePlantillaBadge() {
   const badgeContainer = document.getElementById('currentPlantillaBadge');
   if (badgeContainer && selectedFramework) {
-    badgeContainer.innerHTML = `<span class="badge">${t('builder.badge.current')} ${selectedFramework.title}</span>`;
+    badgeContainer.innerHTML = `<span class="badge">${escapeHtml(t('builder.badge.current'))} ${escapeHtml(getText(selectedFramework.title, getLang()))}</span>`;
   }
 }
 
 // Render the selected framework detail with form
 function renderFrameworkDetail() {
+  const currentLang = getLang();
+  if (selectedFramework) {
+    console.log('[framework] renderFrameworkDetail | lang:', currentLang);
+    console.log('[framework] template title raw:', selectedFramework.title);
+    console.log('[framework] template title rendered:', getText(selectedFramework.title, currentLang));
+  }
   const detailContainer = document.getElementById('frameworkDetail');
   
   if (!selectedFramework) {
-    detailContainer.innerHTML = '<div class="emptyState">Selecciona una plantilla de la lista</div>';
+    detailContainer.innerHTML = '<div class="emptyState">' + escapeHtml(t('framework.empty')) + '</div>';
     return;
   }
 
@@ -97,11 +119,11 @@ function renderFrameworkDetail() {
   header.className = 'frameworkHeader';
   
   const title = document.createElement('h2');
-  title.textContent = selectedFramework.title;
+  title.textContent = getText(selectedFramework.title, getLang());
   
   const desc = document.createElement('p');
   desc.className = 'frameworkDescription';
-  desc.textContent = selectedFramework.description;
+  desc.textContent = getText(selectedFramework.description, getLang());
   
   header.appendChild(title);
   header.appendChild(desc);
@@ -112,7 +134,7 @@ function renderFrameworkDetail() {
   builder.className = 'promptBuilder';
   
   const builderTitle = document.createElement('h3');
-  builderTitle.textContent = t('builder.title');
+  builderTitle.innerHTML = '<i data-lucide="pencil" class="sectionIcon" aria-hidden="true"></i> ' + escapeHtml(t('builder.title'));
   builder.appendChild(builderTitle);
   
   const formGrid = document.createElement('div');
@@ -126,18 +148,18 @@ function renderFrameworkDetail() {
   
   const resetBtn = document.createElement('button');
   resetBtn.className = 'actionButton secondary';
-  resetBtn.textContent = t('builder.reset');
+  resetBtn.innerHTML = '<i data-lucide="rotate-ccw" class="btnIcon" aria-hidden="true"></i> ' + escapeHtml(t('builder.reset'));
   resetBtn.addEventListener('click', resetForm);
   
   const copyTemplateBtn = document.createElement('button');
   copyTemplateBtn.className = 'actionButton primary';
-  copyTemplateBtn.textContent = t('builder.copyTemplate');
+  copyTemplateBtn.innerHTML = '<i data-lucide="clipboard" class="btnIcon" aria-hidden="true"></i> ' + escapeHtml(t('builder.copyTemplate'));
   copyTemplateBtn.addEventListener('click', copyTemplateToClipboard);
   
   const copyFinalBtn = document.createElement('button');
   copyFinalBtn.className = 'actionButton primary';
   copyFinalBtn.id = 'copyFinalBtn';
-  copyFinalBtn.textContent = t('builder.copyFinal');
+  copyFinalBtn.innerHTML = '<i data-lucide="clipboard-check" class="btnIcon" aria-hidden="true"></i> ' + escapeHtml(t('builder.copyFinal'));
   copyFinalBtn.disabled = true;
   copyFinalBtn.addEventListener('click', copyFinalPromptToClipboard);
   
@@ -155,7 +177,7 @@ function renderFrameworkDetail() {
   previewHeader.className = 'previewHeader';
   const previewLabel = document.createElement('span');
   previewLabel.className = 'previewLabel';
-  previewLabel.textContent = t('builder.preview');
+  previewLabel.innerHTML = '<i data-lucide="eye" class="sectionIcon" aria-hidden="true"></i> ' + escapeHtml(t('builder.preview'));
   previewHeader.appendChild(previewLabel);
   preview.appendChild(previewHeader);
   
@@ -193,6 +215,7 @@ function renderFrameworkDetail() {
   }
   
   updatePreview();
+  if (window.lucide) lucide.createIcons();
 }
 
 // Render dynamic form inputs based on field definitions with sections
@@ -238,7 +261,7 @@ function renderDynamicForm() {
     if (capitulFields.length > 0) {
       html += `
         <div class="formSectionHeader">
-          <h4>${t('section.contexto_capitulo')}</h4>
+          <h4><i data-lucide="users" class="sectionIcon" aria-hidden="true"></i> ${escapeHtml(t('section.contexto_capitulo'))}</h4>
         </div>
         <div class="formSection">
           ${capitulFields.map(field => renderField(field)).join('')}
@@ -250,7 +273,7 @@ function renderDynamicForm() {
     if (contextoFields.length > 0) {
       html += `
         <div class="formSectionHeader">
-          <h4>${t('section.contexto_operativo')}</h4>
+          <h4><i data-lucide="bar-chart-2" class="sectionIcon" aria-hidden="true"></i> ${escapeHtml(t('section.contexto_operativo'))}</h4>
         </div>
         <div class="formSection">
           ${contextoFields.map(field => renderField(field)).join('')}
@@ -262,7 +285,7 @@ function renderDynamicForm() {
     if (okrsFields.length > 0) {
       html += `
         <div class="formSectionHeader">
-          <h4>${t('section.okrs')}</h4>
+          <h4><i data-lucide="target" class="sectionIcon" aria-hidden="true"></i> ${escapeHtml(t('section.okrs'))}</h4>
         </div>
         <div class="formSection">
           ${okrsFields.map(field => renderField(field)).join('')}
@@ -270,11 +293,11 @@ function renderDynamicForm() {
       `;
     }
 
-    // Stack Técnico (Java Engineer y futuros perfiles técnicos)
+    // Stack Técnico
     if (tecnicoFields.length > 0) {
       html += `
         <div class="formSectionHeader">
-          <h4>${t('section.contexto_tecnico')}</h4>
+          <h4><i data-lucide="wrench" class="sectionIcon" aria-hidden="true"></i> ${escapeHtml(t('section.contexto_tecnico'))}</h4>
         </div>
         <div class="formSection">
           ${tecnicoFields.map(field => renderField(field)).join('')}
@@ -286,7 +309,7 @@ function renderDynamicForm() {
     if (governanceFields.length > 0) {
       html += `
         <div class="formSectionHeader">
-          <h4>${t('section.governance')}</h4>
+          <h4><i data-lucide="settings" class="sectionIcon" aria-hidden="true"></i> ${escapeHtml(t('section.governance'))}</h4>
         </div>
         <div class="formSection formSectionGovernance">
           ${governanceFields.map(field => renderField(field)).join('')}
@@ -298,13 +321,19 @@ function renderDynamicForm() {
   }
 
   formContainer.innerHTML = html;
+  if (window.lucide) lucide.createIcons();
 }
 
 // Render individual field (safe from inline XSS via data attributes)
 function renderField(field) {
+  const lang = getLang();
   const fieldId = `field_${field.name}`;
   const isRequired = field.required ? '<span class="required">*</span>' : '';
-  
+  // Use multilingual label if provided, otherwise derive from field name
+  const labelText = escapeHtml(getText(field.label || field.name.replace(/_/g, ' '), lang));
+  const hintText = escapeHtml(getText(field.hint, lang));
+  console.log('[framework] renderField', field.name, '| lang:', lang, '| label:', labelText);
+
   let inputHTML = '';
   
   switch (field.type) {
@@ -312,26 +341,27 @@ function renderField(field) {
       inputHTML = `<textarea 
         id="${fieldId}" 
         class="formTextarea" 
-        placeholder="Escribe aquí..."
-      >${formValues[field.name] || ''}</textarea>`;
+        placeholder="${escapeHtml(t('field.placeholder.textarea'))}"
+      >${escapeHtml(formValues[field.name] || '')}</textarea>`;
       break;
       
-    case 'select':
+    case 'select': {
       const options = field.options || [];
       inputHTML = `<select 
         id="${fieldId}" 
         class="formSelect"
       >
-        <option value="">Selecciona...</option>
-        ${options.map(opt => `
-          <option value="${opt}" ${formValues[field.name] === opt ? 'selected' : ''}>
-            ${opt}
-          </option>
-        `).join('')}
+        <option value="">${escapeHtml(t('field.select.default'))}</option>
+        ${options.map(opt => {
+          const optValue = typeof opt === 'object' ? opt.value : opt;
+          const optLabel = escapeHtml(typeof opt === 'object' ? getText(opt.label, lang) : opt);
+          return `<option value="${escapeHtml(optValue)}" ${formValues[field.name] === optValue ? 'selected' : ''}>${optLabel}</option>`;
+        }).join('')}
       </select>`;
       break;
+    }
       
-    case 'checkbox':
+    case 'checkbox': {
       const checked = formValues[field.name] === true ? 'checked' : '';
       inputHTML = `
         <div class="checkboxWrapper">
@@ -341,10 +371,11 @@ function renderField(field) {
             class="formCheckbox"
             ${checked}
           />
-          <label class="checkboxLabel" for="${fieldId}">${field.hint}</label>
+          <label class="checkboxLabel" for="${fieldId}">${hintText}</label>
         </div>
       `;
       break;
+    }
       
     case 'text':
     default:
@@ -352,8 +383,8 @@ function renderField(field) {
         type="text" 
         id="${fieldId}" 
         class="formInput" 
-        placeholder="Escribe..."
-        value="${formValues[field.name] || ''}"
+        placeholder="${escapeHtml(t('field.placeholder.text'))}"
+        value="${escapeHtml(formValues[field.name] || '')}"
       />`;
       break;
   }
@@ -370,10 +401,10 @@ function renderField(field) {
   return `
     <div class="formField ${field.required ? 'required-field' : ''}" data-field="${field.name}">
       <label class="formLabel" for="${fieldId}">
-        ${field.name.replace(/_/g, ' ')} ${isRequired}
+        ${labelText} ${isRequired}
       </label>
       ${inputHTML}
-      <span class="fieldHelper">${field.hint}</span>
+      <span class="fieldHelper">${hintText}</span>
     </div>
   `;
 }
@@ -838,4 +869,210 @@ document.addEventListener('DOMContentLoaded', () => {
 window.addEventListener('languageChanged', () => {
   if (frameworks.length > 0) renderFrameworkTabs();
   if (selectedFramework) renderFrameworkDetail();
+  if (typeof window._fwTourUpdateI18n === 'function') window._fwTourUpdateI18n();
 });
+
+// ══════════════════════════════════════════════════════════════════════
+// FRAMEWORK ONBOARDING TOUR
+// Mirrors the tour system in app.js (index.html).
+// localStorage key: 'frameworkTourCompleted'
+// Steps target stable selectors in the framework page DOM.
+// ══════════════════════════════════════════════════════════════════════
+(function () {
+  const FW_TOUR_KEY = 'frameworkTourCompleted';
+
+  const FW_TOUR_STEPS = [
+    { el: '.frameworkSidebar',    textKey: 'fw.tour.step1.text', pos: 'right'  },
+    { el: '#dynamicForm',         textKey: 'fw.tour.step2.text', pos: 'top'    },
+    { el: '.advancedSectionCard', textKey: 'fw.tour.step3.text', pos: 'top'    },
+    { el: '#promptPreview',       textKey: 'fw.tour.step4.text', pos: 'top'    },
+    { el: '.formActions',         textKey: 'fw.tour.step5.text', pos: 'top'    },
+  ];
+
+  let _active  = false;
+  let _stepIdx = 0;
+
+  // DOM refs — resolved after DOMContentLoaded
+  let _welcomeEl, _startBtn, _skipWelcomeBtn,
+      _backdropEl, _highlightEl, _tooltipEl,
+      _tipText, _progressEl, _prevBtn, _nextBtn, _skipBtn, _replayBtn;
+
+  function _refs() {
+    _welcomeEl     = document.getElementById('tourWelcome');
+    _startBtn      = document.getElementById('tourStartBtn');
+    _skipWelcomeBtn= document.getElementById('tourSkipWelcome');
+    _backdropEl    = document.getElementById('tourBackdrop');
+    _highlightEl   = document.getElementById('tourHighlight');
+    _tooltipEl     = document.getElementById('tourTooltip');
+    _tipText       = document.getElementById('tourTooltipText');
+    _progressEl    = document.getElementById('tourProgress');
+    _prevBtn       = document.getElementById('tourPrevBtn');
+    _nextBtn       = document.getElementById('tourNextBtn');
+    _skipBtn       = document.getElementById('tourSkipBtn');
+    _replayBtn     = document.getElementById('tourReplayBtn');
+  }
+
+  function _tr(key) {
+    return (typeof t === 'function') ? t(key) : key;
+  }
+
+  function _populateWelcome() {
+    document.getElementById('tourWelcomeTitle').textContent = _tr('fw.tour.welcome.title');
+    document.getElementById('tourWelcomeBody').textContent  = _tr('fw.tour.welcome.body');
+    _startBtn.textContent       = _tr('tour.welcome.start');
+    _skipWelcomeBtn.textContent = _tr('tour.welcome.skip');
+  }
+
+  function _checkAndShow() {
+    if (!localStorage.getItem(FW_TOUR_KEY)) {
+      setTimeout(() => {
+        _populateWelcome();
+        _welcomeEl.hidden = false;
+      }, 800);
+    }
+  }
+
+  function _startTour() {
+    _welcomeEl.hidden = true;
+    _active  = true;
+    _stepIdx = 0;
+    _showStep(0);
+  }
+
+  function _dismissWelcome() {
+    _welcomeEl.hidden = true;
+    localStorage.setItem(FW_TOUR_KEY, 'true');
+  }
+
+  function _showStep(idx) {
+    const step   = FW_TOUR_STEPS[idx];
+    const target = document.querySelector(step.el);
+
+    // If element is absent (e.g. advanced section not yet open), skip it
+    if (!target) {
+      if (idx < FW_TOUR_STEPS.length - 1) { _stepIdx = idx + 1; _showStep(idx + 1); }
+      else _finishTour();
+      return;
+    }
+
+    target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+    setTimeout(() => {
+      const rect = target.getBoundingClientRect();
+      const PAD  = 6;
+
+      _highlightEl.style.top    = `${rect.top    - PAD}px`;
+      _highlightEl.style.left   = `${rect.left   - PAD}px`;
+      _highlightEl.style.width  = `${rect.width  + PAD * 2}px`;
+      _highlightEl.style.height = `${rect.height + PAD * 2}px`;
+      _highlightEl.hidden = false;
+      _backdropEl.hidden  = false;
+
+      _tipText.textContent    = _tr(step.textKey);
+      _progressEl.textContent = `${idx + 1} / ${FW_TOUR_STEPS.length}`;
+      _prevBtn.hidden         = idx === 0;
+      _prevBtn.textContent    = _tr('tour.btn.prev');
+      _skipBtn.textContent    = _tr('tour.btn.skip');
+      const isLast = idx === FW_TOUR_STEPS.length - 1;
+      _nextBtn.textContent    = isLast ? _tr('tour.btn.finish') : _tr('tour.btn.next');
+
+      _positionTooltip(rect, step.pos);
+      _tooltipEl.hidden = false;
+    }, 300);
+  }
+
+  function _positionTooltip(rect, pref) {
+    const TW  = 300;
+    const vW  = window.innerWidth;
+    const vH  = window.innerHeight;
+    const pad = 14;
+    const tH  = _tooltipEl.offsetHeight || 140;
+
+    const clampL = (l) => Math.max(pad, Math.min(l, vW - TW - pad));
+    const clampT = (top) => Math.max(pad, Math.min(top, vH - tH - pad));
+
+    const canBottom = rect.bottom + tH + pad < vH;
+    const canTop    = rect.top    - tH - pad > 0;
+    const canRight  = rect.right  + TW + pad < vW;
+
+    let top, left;
+    if      (pref === 'bottom' && canBottom) { top = rect.bottom + pad; left = clampL(rect.left); }
+    else if (pref === 'top'    && canTop)    { top = rect.top - tH - pad; left = clampL(rect.left); }
+    else if (pref === 'right'  && canRight)  { top = clampT(rect.top); left = rect.right + pad; }
+    else if (canBottom)                      { top = rect.bottom + pad; left = clampL(rect.left); }
+    else if (canTop)                         { top = rect.top - tH - pad; left = clampL(rect.left); }
+    else                                     { top = (vH - tH) / 2; left = (vW - TW) / 2; }
+
+    _tooltipEl.style.top  = `${top}px`;
+    _tooltipEl.style.left = `${left}px`;
+  }
+
+  function _nextStep() {
+    if (_stepIdx < FW_TOUR_STEPS.length - 1) { _stepIdx++; _showStep(_stepIdx); }
+    else _finishTour();
+  }
+
+  function _prevStep() {
+    if (_stepIdx > 0) { _stepIdx--; _showStep(_stepIdx); }
+  }
+
+  function _finishTour() {
+    _hideTour();
+    localStorage.setItem(FW_TOUR_KEY, 'true');
+  }
+
+  function _skipTour() {
+    _hideTour();
+    localStorage.setItem(FW_TOUR_KEY, 'true');
+  }
+
+  function _hideTour() {
+    _active = false;
+    _backdropEl.hidden  = true;
+    _highlightEl.hidden = true;
+    _tooltipEl.hidden   = true;
+  }
+
+  // Called by languageChanged listener above
+  window._fwTourUpdateI18n = function () {
+    const rSpan = _replayBtn && _replayBtn.querySelector('span');
+    if (rSpan) rSpan.textContent = _tr('tour.btn.replay');
+    if (_welcomeEl && !_welcomeEl.hidden) _populateWelcome();
+    if (_active) _showStep(_stepIdx);
+  };
+
+  document.addEventListener('DOMContentLoaded', () => {
+    _refs();
+
+    // Wire welcome modal
+    _startBtn.addEventListener('click', _startTour);
+    _skipWelcomeBtn.addEventListener('click', _dismissWelcome);
+
+    // Wire tooltip controls
+    _nextBtn.addEventListener('click', _nextStep);
+    _prevBtn.addEventListener('click', _prevStep);
+    _skipBtn.addEventListener('click', _skipTour);
+
+    // Replay floating button
+    if (_replayBtn) {
+      const rSpan = _replayBtn.querySelector('span');
+      if (rSpan) rSpan.textContent = _tr('tour.btn.replay');
+      _replayBtn.addEventListener('click', () => {
+        _active  = true;
+        _stepIdx = 0;
+        _showStep(0);
+      });
+    }
+
+    // Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        if (_welcomeEl && !_welcomeEl.hidden) { _dismissWelcome(); return; }
+        if (_active) { _skipTour(); }
+      }
+    });
+
+    // Show welcome after frameworks finish loading (triggered from loadFrameworks)
+    window._fwTourCheckAndShow = _checkAndShow;
+  });
+}());

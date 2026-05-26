@@ -175,19 +175,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (dpc === 0 || dpc === 1) {
             status.class = 'dpcResultCard--permitido';
-            status.icon = '✅';
+            status.icon = '<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>';
             status.title = t('dpc.result.permitido');
             status.label = resultLabel;
             status.recommendation = t('dpc.result.rec.ok');
         } else if (dpc === 2) {
             status.class = 'dpcResultCard--limitado';
-            status.icon = '⚠️';
+            status.icon = '<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>';
             status.title = t('dpc.result.limitado');
             status.label = resultLabel;
             status.recommendation = t('dpc.result.rec.limited');
         } else if (dpc === 3) {
             status.class = 'dpcResultCard--prohibido';
-            status.icon = '❌';
+            status.icon = '<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>';
             status.title = t('dpc.result.prohibido');
             status.label = resultLabel;
             status.recommendation = t('dpc.result.rec.blocked');
@@ -218,7 +218,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Create result elements with safe DOM methods
         const iconDiv = document.createElement('div');
         iconDiv.className = 'dpcResultIcon';
-        iconDiv.textContent = status.icon;
+        iconDiv.innerHTML = status.icon;
 
         const titleDiv = document.createElement('div');
         titleDiv.className = 'dpcResultTitle';

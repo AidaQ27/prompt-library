@@ -6,16 +6,32 @@
     <title>DPC Check</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="dpc.css">
+    <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
 </head>
 <body>
     <header class="header">
         <div class="headerContent">
-            <h1 class="logo">🔍 DPC Check</h1>
+            <h1 class="logo">
+                <i data-lucide="shield-check" class="logoIcon" aria-hidden="true"></i>
+                DPC Check
+            </h1>
             <nav class="headerNav">
-                <a href="index.html" class="navLink">📚 Prompts</a>
-                <a href="agents.html" class="navLink">🤖 Agentes</a>
-                <a href="framework.html" class="navLink">⚡ Plantillas Ejecutivas</a>
-                <a href="dpc.html" class="navLink active">🔍 DPC Check</a>
+                <a href="index.html" class="navLink">
+                  <i data-lucide="book-open" class="navIcon" aria-hidden="true"></i>
+                  <span data-i18n="nav.prompts">Prompts</span>
+                </a>
+                <a href="agents.html" class="navLink">
+                  <i data-lucide="bot" class="navIcon" aria-hidden="true"></i>
+                  <span data-i18n="nav.agents">Agentes</span>
+                </a>
+                <a href="framework.html" class="navLink">
+                  <i data-lucide="layout-template" class="navIcon" aria-hidden="true"></i>
+                  <span data-i18n="nav.frameworks">Plantillas Ejecutivas</span>
+                </a>
+                <a href="dpc.html" class="navLink active">
+                  <i data-lucide="shield-check" class="navIcon" aria-hidden="true"></i>
+                  <span data-i18n="nav.dpc">DPC Check</span>
+                </a>
             </nav>
         </div>
     </header>
@@ -23,7 +39,7 @@
     <div class="dpcContainer">
         <section class="dpcHero">
             <h1 class="dpcHeroTitle" data-i18n="dpc.hero.title">DPC Check</h1>
-            <p class="dpcHeroSubtitle" data-i18n="dpc.hero.subtitle">Herramienta para clasificar datos antes de usar ChatGPT Enterprise</p>
+            <p class="dpcHeroSubtitle" data-i18n="dpc.hero.subtitle">Herramienta para clasificar la sensibilidad de los datos</p>
             <p class="dpcHeroDescription" data-i18n="dpc.hero.desc">Responde el cuestionario para determinar la categoría de sensibilidad de tus datos según la política interna DPC.</p>
         </section>
 
@@ -214,5 +230,6 @@
     <script src="i18n.js"></script>
     <script src="dpc.js"></script>
     <script src="dpc.test.js"></script>
+    <script>if (window.lucide) lucide.createIcons();</script>
 </body>
 </html>

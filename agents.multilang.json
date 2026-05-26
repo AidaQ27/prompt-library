@@ -1,0 +1,232 @@
+[
+  {
+    "id": "convenio",
+    "dpcLevel": "DPC 0",
+    "title": {
+      "es": "Agente IA – Convenio Colectivo",
+      "ca": "Agent IA – Conveni Col·lectiu",
+      "en": "AI Agent – Collective Bargaining Agreement"
+    },
+    "team": {
+      "es": "Chapter Leads",
+      "ca": "Chapter Leads",
+      "en": "Chapter Leads"
+    },
+    "type": {
+      "es": "Agente",
+      "ca": "Agent",
+      "en": "Agent"
+    },
+    "before": {
+      "es": "Búsqueda manual en el PDF del convenio + consulta a RRHH + interpretación normativa.",
+      "ca": "Cerca manual al PDF del conveni + consulta a RRHH + interpretació normativa.",
+      "en": "Manual search in the collective agreement PDF + HR consultation + regulatory interpretation."
+    },
+    "timeBefore": {
+      "es": "20 min por consulta",
+      "ca": "20 min per consulta",
+      "en": "20 min per query"
+    },
+    "timeNow": {
+      "es": "2–3 min",
+      "ca": "2–3 min",
+      "en": "2–3 min"
+    },
+    "timeSavings": {
+      "es": "−17 min por consulta",
+      "ca": "−17 min per consulta",
+      "en": "−17 min per query"
+    },
+    "impact": {
+      "es": "Mejora la fiabilidad de las respuestas al basarse directamente en el documento oficial del convenio y reduce la necesidad de consultas recurrentes a RRHH.",
+      "ca": "Millora la fiabilitat de les respostes en basar-se directament en el document oficial del conveni i redueix la necessitat de consultes recurrents a RRHH.",
+      "en": "Improves answer reliability by relying directly on the official collective bargaining document and reduces the need for recurring HR queries."
+    },
+    "notes": {
+      "es": "El knowledge del agente se basa en el documento oficial del convenio.",
+      "ca": "El coneixement de l'agent es basa en el document oficial del conveni.",
+      "en": "The agent's knowledge base is the official collective bargaining document."
+    }
+  },
+  {
+    "id": "formacion-planes",
+    "dpcLevel": "DPC 1",
+    "title": {
+      "es": "Creación de planes de formación",
+      "ca": "Creació de plans de formació",
+      "en": "Training plan creation"
+    },
+    "team": {
+      "es": "Area leads / BO",
+      "ca": "Area leads / BO",
+      "en": "Area leads / BO"
+    },
+    "type": {
+      "es": "Proyecto",
+      "ca": "Projecte",
+      "en": "Project"
+    },
+    "before": {
+      "es": "Era necesario recopilar información de programas similares y analizar qué nuevos contenidos o enfoques se podían proponer.",
+      "ca": "Calia recopilar informació de programes similars i analitzar quins nous continguts o enfocaments es podien proposar.",
+      "en": "It was necessary to gather information from similar programmes and analyse what new content or approaches could be proposed."
+    },
+    "timeBefore": {
+      "es": "4 h (mínimo)",
+      "ca": "4 h (mínim)",
+      "en": "4 h (minimum)"
+    },
+    "timeNow": {
+      "es": "1 h",
+      "ca": "1 h",
+      "en": "1 h"
+    },
+    "timeSavings": {
+      "es": "3 h (mínimo)",
+      "ca": "3 h (mínim)",
+      "en": "3 h (minimum)"
+    },
+    "impact": {
+      "es": "Acelera la definición de nuevos programas formativos y aporta consistencia en la estructura y contenidos entre equipos.",
+      "ca": "Accelera la definició de nous programes formatius i aporta consistència en l'estructura i continguts entre equips.",
+      "en": "Speeds up the definition of new training programmes and brings consistency in structure and content across teams."
+    },
+    "notes": {
+      "es": "Nos pidieron una propuesta y se crearon 2.",
+      "ca": "Ens van demanar una proposta i se'n van crear 2.",
+      "en": "We were asked for one proposal and ended up creating 2."
+    }
+  },
+  {
+    "id": "local-apps",
+    "dpcLevel": "DPC 0",
+    "title": {
+      "es": "Generador de apps locales para uso personal",
+      "ca": "Generador d'apps locals per a ús personal",
+      "en": "Local app generator for personal use"
+    },
+    "team": {
+      "es": "Chapter Leads",
+      "ca": "Chapter Leads",
+      "en": "Chapter Leads"
+    },
+    "type": {
+      "es": "Agente",
+      "ca": "Agent",
+      "en": "Agent"
+    },
+    "before": {
+      "es": "Era necesario crear un Excel o un script.",
+      "ca": "Calia crear un Excel o un script.",
+      "en": "It was necessary to create an Excel file or a script."
+    },
+    "timeBefore": {
+      "es": "1 h – 4 h",
+      "ca": "1 h – 4 h",
+      "en": "1 h – 4 h"
+    },
+    "timeNow": {
+      "es": "5 minutos",
+      "ca": "5 minuts",
+      "en": "5 minutes"
+    },
+    "timeSavings": {
+      "es": "1 – 4 h",
+      "ca": "1 – 4 h",
+      "en": "1 – 4 h"
+    },
+    "impact": {
+      "es": "Permite crear pequeñas aplicaciones internas para estructurar información o prototipar soluciones sin necesidad de desarrollo formal.",
+      "ca": "Permet crear petites aplicacions internes per estructurar informació o crear prototips de solucions sense necessitat de desenvolupament formal.",
+      "en": "Enables creating small internal applications to structure information or prototype solutions without formal development."
+    }
+  },
+  {
+    "id": "email-drafter",
+    "dpcLevel": "DPC 0",
+    "title": {
+      "es": "Redactor de emails corporativos",
+      "ca": "Redactor de correus corporatius",
+      "en": "Corporate email drafter"
+    },
+    "team": {
+      "es": "Area leads / BO",
+      "ca": "Area leads / BO",
+      "en": "Area leads / BO"
+    },
+    "type": {
+      "es": "Agente",
+      "ca": "Agent",
+      "en": "Agent"
+    },
+    "before": {
+      "es": "Se redactaba el correo a mano.",
+      "ca": "El correu s'escrivia a mà.",
+      "en": "The email was drafted manually."
+    },
+    "timeBefore": {
+      "es": "5 – 20 min",
+      "ca": "5 – 20 min",
+      "en": "5 – 20 min"
+    },
+    "timeNow": {
+      "es": "2 minutos",
+      "ca": "2 minuts",
+      "en": "2 minutes"
+    },
+    "timeSavings": {
+      "es": "3 – 17 min por correo",
+      "ca": "3 – 17 min per correu",
+      "en": "3 – 17 min per email"
+    },
+    "impact": {
+      "es": "El agente genera un correo a partir de unas pocas palabras y produce un archivo .eml listo para ser descargado, abierto y enviado.",
+      "ca": "L'agent genera un correu a partir d'unes poques paraules i produeix un fitxer .eml llest per ser descarregat, obert i enviat.",
+      "en": "The agent generates an email from just a few words and produces a .eml file ready to be downloaded, opened and sent."
+    }
+  },
+  {
+    "id": "prompt-refiner",
+    "dpcLevel": "DPC 0",
+    "title": {
+      "es": "Refinador de prompts",
+      "ca": "Refinador de prompts",
+      "en": "Prompt refiner"
+    },
+    "team": {
+      "es": "Chapter Leads",
+      "ca": "Chapter Leads",
+      "en": "Chapter Leads"
+    },
+    "type": {
+      "es": "Agente",
+      "ca": "Agent",
+      "en": "Agent"
+    },
+    "before": {
+      "es": "El refinamiento de prompts se hacía a mano, sin tener en cuenta el rol específico del usuario dentro de la compañía.",
+      "ca": "El refinament de prompts es feia a mà, sense tenir en compte el rol específic de l'usuari dins de l'empresa.",
+      "en": "Prompt refinement was done manually, without taking into account the user's specific role within the company."
+    },
+    "timeBefore": {
+      "es": "7 min",
+      "ca": "7 min",
+      "en": "7 min"
+    },
+    "timeNow": {
+      "es": "2 min",
+      "ca": "2 min",
+      "en": "2 min"
+    },
+    "timeSavings": {
+      "es": "5 min",
+      "ca": "5 min",
+      "en": "5 min"
+    },
+    "impact": {
+      "es": "Un buen prompt puede ahorrar mucho tiempo y mejorar la eficiencia de una tarea. Hacer un prompt premium a mano es susceptible a errores y descuidos.",
+      "ca": "Un bon prompt pot estalviar molt de temps i millorar l'eficiència d'una tasca. Fer un prompt premium a mà és susceptible a errors i descuits.",
+      "en": "A good prompt can save significant time and improve task efficiency. Writing a premium prompt by hand is prone to errors and oversights."
+    }
+  }
+]

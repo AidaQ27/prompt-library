@@ -4,23 +4,35 @@
   <link rel="stylesheet" href="styles.css">
   <meta charset="UTF-8">
   <title>Librería de Prompts</title>
+  <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
 </head>
 <body>
   <header>
     <div class="headerContent">
       <h1 data-i18n="index.title">Prompt Library</h1>
       <nav class="headerNav">
-        <a href="index.html" class="navLink active" data-i18n="nav.prompts">📚 Prompts</a>
-        <a href="agents.html" class="navLink" data-i18n="nav.agents">🤖 Agentes</a>
-        <a href="framework.html" class="navLink" data-i18n="nav.frameworks">⚡ Plantillas Ejecutivas</a>
-        <a href="dpc.html" class="navLink" data-i18n="nav.dpc">🔍 DPC Check</a>
-        <!-- <a href="decision-tree.html" class="navLink">🎯 Decision Tree</a> -->
+        <a href="index.html" class="navLink active">
+          <i data-lucide="book-open" class="navIcon" aria-hidden="true"></i>
+          <span data-i18n="nav.prompts">Prompts</span>
+        </a>
+        <a href="agents.html" class="navLink">
+          <i data-lucide="bot" class="navIcon" aria-hidden="true"></i>
+          <span data-i18n="nav.agents">Agentes</span>
+        </a>
+        <a href="framework.html" class="navLink">
+          <i data-lucide="layout-template" class="navIcon" aria-hidden="true"></i>
+          <span data-i18n="nav.frameworks">Plantillas Ejecutivas</span>
+        </a>
+        <a href="dpc.html" class="navLink">
+          <i data-lucide="shield-check" class="navIcon" aria-hidden="true"></i>
+          <span data-i18n="nav.dpc">DPC Check</span>
+        </a>
       </nav>
     </div>
   </header>
 
   <div class="container">
-    <div class="topRow">
+    <div class="topControls">
   <div class="legend">
     <div class="legendTitle" data-i18n="index.dpc.guide">DPC (guía rápida)</div>
     <div class="legendRow"><span class="dot"></span><b>DPC 0</b> <span data-i18n="index.dpc.0">Público / anónimo</span></div>
@@ -29,34 +41,88 @@
     <div class="legendRow"><span class="dot"></span><b>DPC 3</b> <span data-i18n="index.dpc.3">Crítico (prohibido)</span></div>
   </div>
 
-  <div class="toolbar">
-    <div>
-      <div class="labelTop" data-i18n="index.profile.label">Escoge tu perfil</div>
-      <select id="teamSelect">
-        <option value="" data-i18n="index.profile.option">Escoge tu perfil...</option>
-      </select>
-    </div>
+  <div class="profileBlock">
+    <div class="labelTop" data-i18n="index.profile.label">Escoge tu perfil</div>
+    <select id="teamSelect">
+      <option value="" data-i18n="index.profile.option">Escoge tu perfil...</option>
+    </select>
+  </div>
 
-    <div>
-      <div class="labelTop" data-i18n="index.search.label">Buscar</div>
-      <input id="searchInput" type="text" data-i18n-ph="index.search.placeholder" placeholder="Busca por título o descripción…" />
-    </div>
+  <div class="searchBlock">
+    <div class="labelTop" data-i18n="index.search.label">Buscar</div>
+    <input id="searchInput" type="text" data-i18n-ph="index.search.placeholder" placeholder="Busca por intención: ej. quiero resumir una reunión" />
+    <p id="searchHint" class="searchHint" data-i18n="index.search.hint">Puedes escribir lo que necesitas hacer, por ejemplo: resumir una reunión, redactar un email, comparar opciones o crear una API.</p>
+    <div id="searchChips" class="searchChips"></div>
   </div>
 </div>
+
+<div id="promptCounter" class="promptCounter" aria-live="polite"></div>
 
 <div id="cards"></div>
   </div>
 
   <script src="i18n.js"></script>
   <script src="app.js"></script>
+
+  <!-- Quick Guide drawer -->
+  <button id="qgBtn" class="qgOpenBtn" type="button" aria-expanded="false" data-i18n-title="qg.toggle.tooltip" title="Descubre cómo usar la librería">
+    <i data-lucide="compass" class="btnIcon" aria-hidden="true"></i>
+    <span data-i18n="qg.toggle">Guía rápida</span>
+  </button>
+  <div id="qgOverlay" class="qgOverlay" aria-hidden="true"></div>
+  <aside id="qgDrawer" class="qgDrawer" aria-hidden="true">
+    <div class="qgDrawerHeader">
+      <span id="qgDrawerTitle" class="qgDrawerTitle">
+        <i data-lucide="compass" class="sectionIcon" aria-hidden="true"></i>
+        <span data-i18n="qg.drawerTitle">Ayúdame a encontrar un prompt</span>
+      </span>
+      <button id="qgCloseBtn" class="qgCloseBtn" type="button" aria-label="Cerrar">
+        <i data-lucide="x" class="btnIcon" aria-hidden="true"></i>
+      </button>
+    </div>
+    <div id="quickGuide" class="qgDrawerBody"></div>
+  </aside>
+
+  <!-- Onboarding Tour -->
+  <div id="tourWelcome" class="tourWelcome" aria-modal="true" role="dialog" hidden>
+    <div class="tourWelcomeBox">
+      <p id="tourWelcomeTitle" class="tourWelcomeTitle"></p>
+      <p id="tourWelcomeBody" class="tourWelcomeBody"></p>
+      <div class="tourWelcomeBtns">
+        <button id="tourStartBtn" class="tourBtnPrimary" type="button"></button>
+        <button id="tourSkipWelcome" class="tourBtnGhost" type="button"></button>
+      </div>
+    </div>
+  </div>
+  <div id="tourBackdrop" class="tourBackdrop" hidden></div>
+  <div id="tourHighlight" class="tourHighlight" aria-hidden="true" hidden></div>
+  <div id="tourTooltip" class="tourTooltip" role="tooltip" hidden>
+    <p id="tourTooltipText" class="tourTooltipText"></p>
+    <div class="tourTooltipFooter">
+      <span id="tourProgress" class="tourProgress"></span>
+      <div class="tourTooltipBtns">
+        <button id="tourSkipBtn" class="tourBtnGhost tourBtnSm" type="button"></button>
+        <button id="tourPrevBtn" class="tourBtnSec tourBtnSm" type="button" hidden></button>
+        <button id="tourNextBtn" class="tourBtnPrim tourBtnSm" type="button"></button>
+      </div>
+    </div>
+  </div>
+  <button id="tourReplayBtn" class="tourReplayBtn" type="button">
+    <i data-lucide="play-circle" class="btnIcon" aria-hidden="true"></i>
+    <span></span>
+  </button>
+
+  <!-- Decision-tree widget (optional module — only runs if the file exists) -->
+  <div id="decisionTreeBox"></div>
+  <script type="module">
+    try {
+      const { initDecisionTree } = await import("./components/decision-tree/decision-tree-module.js");
+      initDecisionTree("decisionTreeBox", {
+        dataUrl: "./components/decision-tree/decision-tree.json"
+      });
+    } catch (_) { /* module not present — ignore */ }
+  </script>
+  <script>if (window.lucide) lucide.createIcons();</script>
 </body>
 </html>
-
-<div id="decisionTreeBox"></div>
-
-<script type="module">
-  import { initDecisionTree } from "./components/decision-tree/decision-tree-module.js";
-  initDecisionTree("decisionTreeBox", {
-    dataUrl: "./components/decision-tree/decision-tree.json"
-  });
-</script>
+me 
